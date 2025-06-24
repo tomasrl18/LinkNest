@@ -38,7 +38,7 @@ export function HomePage() {
                     variants={child}
                     className="text-5xl md:text-6xl font-extrabold leading-tight tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-fuchsia-500 drop-shadow-sm"
                 >
-                    Organiza tus enlaces <br className="hidden md:block" /> en un solo lugar.
+                    Organiza tus enlaces <br className="hidden md:block" /> en un solo lugar
                 </motion.h1>
 
                 <motion.p
