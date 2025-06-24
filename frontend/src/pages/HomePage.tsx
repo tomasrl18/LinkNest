@@ -45,7 +45,7 @@ export function HomePage() {
                     variants={child}
                     className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto"
                 >
-                    Link&nbsp;Nest te ayuda a guardar, clasificar y redescubrir cualquier enlace,
+                    LinkNest te ayuda a guardar, clasificar y redescubrir cualquier enlace,
                     desde artículos de referencia hasta vídeos inspiradores, con un solo clic.
                 </motion.p>
 
