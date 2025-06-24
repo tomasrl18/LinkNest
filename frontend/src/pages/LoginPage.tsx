@@ -18,7 +18,7 @@ export const LoginPage = () => {
         <section className='min-h-screen flex items-center justify-center px-4'>
             <form onSubmit={handleSubmit} className="card w-full max-w-sm bg-base-200/60 backdrop-blur-md shadow-xl">
                 <div className="card-body space-y-4">
-                    <h2 className="card-title">Inicia sesión</h2>
+                    <h2 className="card-title justify-center">Inicia sesión</h2>
 
                     <input
                         name="email"

@@ -77,21 +77,24 @@ function DashboardPage() {
     };
 
     return (
-        <div className="flex min-h-screen flex-col bg-gray-50">
-            <header className="flex items-center justify-between bg-white px-4 py-3 shadow">
+        <div className="flex min-h-screen flex-col bg-darkblue text-white">
+            <header className="flex items-center justify-between bg-darkblue px-4 py-3 shadow border-b border-gray-700">
                 <h1 className="text-lg font-bold">LinkNest</h1>
                 <button
                     onClick={() => signOut()}
-                    className="text-sm font-medium text-red-600 hover:underline"
+                    className="
+                        text-sm font-medium text-red-600 cursor-pointer border border-red-600 rounded px-3 py-1
+                        hover:transform hover:bg-red-500 hover:text-white hover:scale-105 transition-transform duration-300
+                    "
                 >
-                    Cerrar sesión
+                    Cerrar Sesión
                 </button>
             </header>
 
             <main className="mx-auto w-full max-w-3xl flex-1 space-y-8 p-4">
                 <form
                     onSubmit={handleSubmit}
-                    className="space-y-3 rounded-xl bg-white p-4 shadow"
+                    className="space-y-3 rounded-xl p-4 shadow"
                 >
                     <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                         <input
