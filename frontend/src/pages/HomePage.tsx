@@ -49,15 +49,30 @@ export function HomePage() {
                     desde artículos de referencia hasta vídeos inspiradores, con un solo clic.
                 </motion.p>
 
-                <motion.div variants={child} className="flex justify-center gap-4">
-                    <Button asChild className="text-base text-white px-6 py-3 rounded-2xl shadow-xl bg-green-600">
+                <motion.div variants={child} className="flex flex-col sm:flex-row justify-center gap-4 mt-4">
+                    <Button
+                        asChild
+                        className="group relative inline-flex items-center gap-2 text-base font-semibold px-8 py-3 rounded-2xl shadow-lg bg-gradient-to-r from-emerald-500 via-lime-500 to-emerald-600 hover:brightness-110 focus:outline-none focus:ring-2 focus:ring-lime-400/80 transition"
+                    >
                         <Link to="/login" className="flex items-center gap-2">
-                            Empieza ahora <ArrowRight size={18} />
+                            Empieza ahora
+                            <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
                         </Link>
                     </Button>
-                    <Button variant="secondary" asChild className="text-base px-6 py-3 rounded-2xl">
-                        <a href="https://github.com/tomasrl18/LinkNest" target="_blank" rel="noreferrer" className="flex items-center gap-2">
-                            Código fuente <Code size={18} />
+
+                    <Button
+                        asChild
+                        variant="secondary"
+                        className="group relative inline-flex items-center gap-2 text-base px-8 py-3 rounded-2xl border border-indigo-500/50 text-indigo-300 hover:bg-indigo-500/10 hover:text-indigo-100 transition"
+                    >
+                        <a
+                            href="https://github.com/tomasrl18/LinkNest"
+                            target="_blank"
+                            rel="noreferrer"
+                            className="flex items-center gap-2"
+                        >
+                            Código fuente
+                            <Code size={18} className="transition-transform group-hover:-rotate-6" />
                         </a>
                     </Button>
                 </motion.div>
@@ -88,7 +103,7 @@ export function HomePage() {
                         key={title}
                         variants={child}
                         className="rounded-2xl bg-gray-900/80 backdrop-blur border border-gray-800 p-6 shadow-lg hover:scale-[1.02] transition-transform"
-                        >
+                    >
                         <div className="w-12 h-12 flex items-center justify-center bg-indigo-900/40 rounded-full mb-4">
                             {icon}
                         </div>
@@ -99,7 +114,7 @@ export function HomePage() {
             </motion.section>
 
             <motion.footer variants={child} className="text-sm text-gray-500 mt-24">
-            Hecho con ❤️ y café — © {new Date().getFullYear()} LinkNest
+                Hecho con ❤️ y café — © {new Date().getFullYear()} LinkNest
             </motion.footer>
         </motion.main>
     );
