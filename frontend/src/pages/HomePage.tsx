@@ -50,7 +50,7 @@ export function HomePage() {
                 </motion.p>
 
                 <motion.div variants={child} className="flex justify-center gap-4">
-                    <Button asChild className="text-base px-6 py-3 rounded-2xl shadow-xl">
+                    <Button asChild className="text-base text-white px-6 py-3 rounded-2xl shadow-xl bg-green-600">
                         <Link to="/login" className="flex items-center gap-2">
                             Empieza ahora <ArrowRight size={18} />
                         </Link>
