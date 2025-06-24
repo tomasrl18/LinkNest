@@ -23,8 +23,7 @@ export const LoginPage = () => {
             animate="animate"
             exit="exit"
             transition={pageTransition}
-            className='
-                min-h-screen flex items-center justify-center px-4 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-950 overflow-x-hidden
+            className='h-[calc(100dvh-80px)] flex items-start justify-center pt-24 px-4 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-950
             '
         >
             <motion.form
