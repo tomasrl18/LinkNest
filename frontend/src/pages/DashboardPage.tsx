@@ -5,7 +5,7 @@ import type { Link } from "../types/link";
 import LinkCard from "../components/LinkCard";
 import { useAuth } from "../context/AuthProvider";
 
-function DashboardPage() {
+export function DashboardPage() {
     const { user, signOut } = useAuth();
     const { links, addLink, updateLink, deleteLink } = useLinks();
 
@@ -187,5 +187,3 @@ function DashboardPage() {
         </div>
     );
 }
-
-export default DashboardPage;

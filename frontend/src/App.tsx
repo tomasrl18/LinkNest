@@ -3,7 +3,7 @@ import { PrivateRoute } from './components/PrivateRoute'
 import { LoginPage } from './pages/LoginPage';
 import { HomePage } from './pages/HomePage';
 import { Header } from './components/Header';
-import DashboardPage from './pages/DashboardPage';
+import { DashboardPage } from './pages/DashboardPage';
 
 function App() {
     return (
@@ -13,14 +13,11 @@ function App() {
                 <Route path="/" element={<HomePage />} />
                 <Route path="/login" element={<LoginPage />} />
 
-                <Route
-                    path="/dashboard"
-                    element={
-                        <PrivateRoute>
-                            <DashboardPage />
-                        </PrivateRoute>
-                    }
-                />
+                <Route element={<PrivateRoute />}>
+                    <Route path="/dashboard" element={<DashboardPage />} />
+                </Route>
+
+                <Route path="*" element={<HomePage />} />
             </Routes>
         </BrowserRouter>
     );
