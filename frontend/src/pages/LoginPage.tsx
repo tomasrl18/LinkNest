@@ -15,10 +15,29 @@ export const LoginPage = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit} className="space-y-4">
-            <input type="email" name="email" required className="input w-full" placeholder="Email" />
-            <input type="password" name="password" required className="input w-full" placeholder="Password" />
-            <button type="submit" className="btn-primary w-full">Sign in</button>
-        </form>
+        <section className='min-h-screen flex items-center justify-center px-4'>
+            <form onSubmit={handleSubmit} className="card w-full max-w-sm bg-base-200/60 backdrop-blur-md shadow-xl">
+                <div className="card-body space-y-4">
+                    <h2 className="card-title">Inicia sesión</h2>
+
+                    <input
+                        name="email"
+                        type="email"
+                        required
+                        placeholder="Email"
+                        className="input input-bordered w-full"
+                    />
+                    <input
+                        name="password"
+                        type="password"
+                        required
+                        placeholder="Contraseña"
+                        className="input input-bordered w-full"
+                    />
+
+                    <button type="submit" className="btn btn-primary w-full">Entrar</button>
+                </div>
+            </form>
+        </section>
     );
 };

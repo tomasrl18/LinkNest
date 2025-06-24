@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useState, useMemo } from "react";
 import { useLinks } from "../hooks/useLinks";
 import type { Link } from "../types/link";
