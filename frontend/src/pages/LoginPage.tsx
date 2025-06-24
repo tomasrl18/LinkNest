@@ -23,30 +23,41 @@ export const LoginPage = () => {
             animate="animate"
             exit="exit"
             transition={pageTransition}
-            className='min-h-screen flex items-center justify-center px-4'
+            className='
+                min-h-screen flex items-center justify-center px-4 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-950 overflow-x-hidden
+            '
         >
-            <form onSubmit={handleSubmit} className="card w-full max-w-sm bg-base-200/60 backdrop-blur-md shadow-xl">
-                <div className="card-body space-y-4">
-                    <h2 className="card-title justify-center">Inicia sesión</h2>
+            <motion.form
+                onSubmit={handleSubmit}
+                className="w-full max-w-sm rounded-2xl bg-gray-800/70 backdrop-blur
+                   ring-1 ring-white/10 shadow-xl"
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ type: "spring", stiffness: 140, damping: 18, delay: 0.15 }}
+            >
+                <div className="p-8 space-y-6">
+                    <h2 className="text-center text-2xl font-semibold text-gray-100">Inicia sesión</h2>
 
                     <input
                         name="email"
                         type="email"
                         required
                         placeholder="Email"
-                        className="input input-bordered w-full"
+                        className="input input-bordered w-full bg-gray-900/50 text-gray-100"
                     />
                     <input
                         name="password"
                         type="password"
                         required
                         placeholder="Contraseña"
-                        className="input input-bordered w-full"
+                        className="input input-bordered w-full bg-gray-900/50 text-gray-100"
                     />
 
-                    <button type="submit" className="btn btn-primary w-full">Entrar</button>
+                    <button type="submit" className="btn btn-primary w-full rounded-xl">
+                        Entrar
+                    </button>
                 </div>
-            </form>
+            </motion.form>
         </motion.section>
     );
 };

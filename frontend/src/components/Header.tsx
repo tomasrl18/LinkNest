@@ -9,7 +9,7 @@ export function Header() {
 
     const handleLogout = async () => {
         await signOut();
-        navigate("/login");
+        setTimeout(() => navigate("/login"), 150);
     };
 
     return (
