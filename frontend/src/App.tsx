@@ -1,8 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-/* import { PrivateRoute } from '@/components/PrivateRoute';
-import { LoginPage } from '@/pages/LoginPage';
-import { DashboardPage } from '@/pages/DashboardPage'; */
+import { PrivateRoute } from './components/PrivateRoute'
 import { LoginPage } from './pages/LoginPage';
+import DashboardPage from './pages/DashboardPage';
 
 function App() {
     return (
@@ -10,17 +9,17 @@ function App() {
             <Routes>
                 <Route path="/login" element={<LoginPage />} />
 
-                {/* <Route
-                    path="/"
+                <Route
+                    path="*"
                     element={
-                    <PrivateRoute>
-                        <DashboardPage />
-                    </PrivateRoute>
+                        <PrivateRoute>
+                            <DashboardPage />
+                        </PrivateRoute>
                     }
-                /> */}
+                />
             </Routes>
         </BrowserRouter>
-  );
+    );
 }
 
-export default App
+export default App;

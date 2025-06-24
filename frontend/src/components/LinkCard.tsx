@@ -1,6 +1,5 @@
 import type { Link } from "../types/link";
 
-
 function LinkCard({ link }: { link: Link }) {
     return (
         <article className="flex items-start gap-3 p-4 border rounded-xl shadow-sm">
