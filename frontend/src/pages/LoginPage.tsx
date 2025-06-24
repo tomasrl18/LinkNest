@@ -1,4 +1,6 @@
 import { useAuth } from '../context/AuthProvider';
+import { motion } from "framer-motion";
+import { pageVariants, pageTransition } from "../animations/pageVariants";
 
 export const LoginPage = () => {
     const { signIn } = useAuth();
@@ -15,7 +17,14 @@ export const LoginPage = () => {
     };
 
     return (
-        <section className='min-h-screen flex items-center justify-center px-4'>
+        <motion.section
+            variants={pageVariants}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            transition={pageTransition}
+            className='min-h-screen flex items-center justify-center px-4'
+        >
             <form onSubmit={handleSubmit} className="card w-full max-w-sm bg-base-200/60 backdrop-blur-md shadow-xl">
                 <div className="card-body space-y-4">
                     <h2 className="card-title justify-center">Inicia sesión</h2>
@@ -38,6 +47,6 @@ export const LoginPage = () => {
                     <button type="submit" className="btn btn-primary w-full">Entrar</button>
                 </div>
             </form>
-        </section>
+        </motion.section>
     );
 };
