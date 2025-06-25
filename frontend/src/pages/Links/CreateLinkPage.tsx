@@ -61,7 +61,7 @@ export function CreateLinkPage() {
                 >
                     <header className="text-center space-y-1">
                         <h1 className="text-xl font-semibold">Nuevo enlace</h1>
-                        <p className="text-sm text-gray-400">Completa los campos necesarios.</p>
+                        <p className="text-sm text-gray-400">Completa los campos necesarios</p>
                     </header>
 
                     <div className="flex flex-col gap-1">
