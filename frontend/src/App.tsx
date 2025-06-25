@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { PrivateRoute } from './components/PrivateRoute'
 import { LoginPage } from './pages/LoginPage';
 import { HomePage } from './pages/HomePage';
@@ -20,6 +20,8 @@ function AnimatedRoutes() {
                     <Route path="/links" element={<ListLinkPage />} />
                     <Route path="/links/new" element={<CreateLinkPage />} />
                 </Route>
+
+                <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
         </AnimatePresence>
     );
