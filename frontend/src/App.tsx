@@ -3,7 +3,7 @@ import { PrivateRoute } from './components/PrivateRoute'
 import { LoginPage } from './pages/LoginPage';
 import { HomePage } from './pages/HomePage';
 import { Header } from './components/Header';
-/* import { ListLinkPage } from './pages/Links/ListLinkPage'; */
+import { ListLinkPage } from './pages/Links/ListLinkPage';
 import { CreateLinkPage } from './pages/Links/CreateLinkPage';
 import { AnimatePresence } from "framer-motion";
 
@@ -17,7 +17,7 @@ function AnimatedRoutes() {
                 <Route path="/login" element={<LoginPage />} />
 
                 <Route element={<PrivateRoute />}>
-                    {/* <Route path="/links" element={<ListLinkPage />} /> */}
+                    <Route path="/links" element={<ListLinkPage />} />
                     <Route path="/links/create" element={<CreateLinkPage />} />
                 </Route>
             </Routes>
