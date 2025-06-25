@@ -13,7 +13,6 @@ function LinkCard({ link }: { link: Link }) {
                     </ul>
                 )}
             </div>
-            {/* <button onClick={() => toggleFav(link.id)}>★</button> */}
         </article>
     );
 }
