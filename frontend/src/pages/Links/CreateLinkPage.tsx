@@ -2,13 +2,13 @@ import { useState } from "react";
 import { useLinks } from "../../hooks/useLinks";
 import type { Link } from "../../types/link";
 import { useAuth } from "../../context/AuthProvider";
-import { Loader2 } from "lucide-react";
+import { Loader2, Plus } from "lucide-react";
 import { useCategories } from "../../hooks/useCategories";
 
 export function CreateLinkPage() {
     const { user } = useAuth();
     const { addLink } = useLinks();
-    const { categories } = useCategories();
+    const { categories, createCategory } = useCategories();
 
     const [form, setForm] = useState({
         url: "",
@@ -54,9 +54,15 @@ export function CreateLinkPage() {
         }
     };
 
-    const createCategory = async (name: string) => {
-        if (!name) return;
-    }
+    const handleAddCategory = async () => {
+        const name = prompt("Nombre de la nueva categoría");
+        if (name?.trim()) {
+            await createCategory({
+                name: name.trim(),
+                user_id: user?.id
+            });
+        }
+    };
 
     return (
         <main className="min-h-screen bg-darkblue text-white flex flex-col items-center">
@@ -116,13 +122,10 @@ export function CreateLinkPage() {
 
                             <button
                                 type="button"
-                                onClick={async () => {
-                                    const name = prompt("Nombre de la nueva categoría");
-                                    if (name) await createCategory(name.trim());
-                                }}
-                                className="text-xs text-indigo-400 underline mt-1 self-start"
+                                onClick={handleAddCategory}
+                                className="flex items-center gap-1 text-indigo-400 hover:text-white hover:bg-indigo-600/20 active:bg-indigo-600/30 rounded-lg px-2 py-1 text-xs font-medium transition-colors mt-2 self-start"
                             >
-                                + añadir categoría
+                                <Plus size={14} strokeWidth={2} /> Añadir categoría
                             </button>
                         </div>
                     </div>
