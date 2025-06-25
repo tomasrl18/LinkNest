@@ -1,16 +1,21 @@
 import { useAuth } from '../context/AuthProvider';
 import { motion } from "framer-motion";
 import { pageVariants, pageTransition } from "../animations/pageVariants";
+import { useNavigate } from 'react-router-dom';
 
 export const LoginPage = () => {
     const { signIn } = useAuth();
+    const navigate = useNavigate();
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+
         const email = e.currentTarget.email.value;
         const pass  = e.currentTarget.password.value;
+
         try {
             await signIn(email, pass);
+            navigate('/dashboard');
         } catch (err) {
             console.error(err);
         }
@@ -23,8 +28,7 @@ export const LoginPage = () => {
             animate="animate"
             exit="exit"
             transition={pageTransition}
-            className='h-[calc(100dvh-80px)] flex items-start justify-center pt-24 px-4 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-950
-            '
+            className='h-[calc(100dvh-80px)] flex items-start justify-center pt-24 px-4 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-950'
         >
             <motion.form
                 onSubmit={handleSubmit}
