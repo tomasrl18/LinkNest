@@ -3,16 +3,18 @@ import { useLinks } from "../../hooks/useLinks";
 import type { Link } from "../../types/link";
 import { useAuth } from "../../context/AuthProvider";
 import { Loader2 } from "lucide-react";
+import { useCategories } from "../../hooks/useCategories";
 
 export function CreateLinkPage() {
     const { user } = useAuth();
     const { addLink } = useLinks();
+    const { categories } = useCategories();
 
     const [form, setForm] = useState({
         url: "",
         title: "",
         description: "",
-        category: "",
+        category_id: "",
         tags: "",
         favorite: false,
     });
@@ -31,7 +33,7 @@ export function CreateLinkPage() {
             url: form.url.trim(),
             title: form.title.trim() || null,
             description: form.description.trim() || null,
-            category: form.category.trim() || null,
+            category_id: form.category_id.trim() || null,
             tags:
                 form.tags
                     .split(",")
@@ -44,13 +46,17 @@ export function CreateLinkPage() {
         try {
             setLoading(true);
             await addLink(payload);
-            setForm({ url: "", title: "", description: "", category: "", tags: "", favorite: false });
+            setForm({ url: "", title: "", description: "", category_id: "", tags: "", favorite: false });
         } catch (err) {
             console.error(err);
         } finally {
             setLoading(false);
         }
     };
+
+    const createCategory = async (name: string) => {
+        if (!name) return;
+    }
 
     return (
         <main className="min-h-screen bg-darkblue text-white flex flex-col items-center">
@@ -91,15 +97,33 @@ export function CreateLinkPage() {
                             />
                         </div>
                         <div className="flex flex-col gap-1">
-                            <label htmlFor="category" className="text-sm font-medium">Categoría</label>
-                            <input
-                                id="category"
-                                name="category"
-                                value={form.category}
-                                onChange={handleChange}
-                                placeholder="Lectura"
+                            <label htmlFor="category_id" className="text-sm font-medium">
+                                Categoría
+                            </label>
+
+                            <select
+                                id="category_id"
+                                name="category_id"
+                                value={form.category_id}
+                                onChange={e => setForm(prev => ({ ...prev, category_id: e.target.value }))}
                                 className="rounded-xl px-3 py-2 text-sm bg-gray-800"
-                            />
+                            >
+                                <option value="">Sin categoría</option>
+                                {categories.map(c => (
+                                    <option key={c.id} value={c.id}>{c.name}</option>
+                                ))}
+                            </select>
+
+                            <button
+                                type="button"
+                                onClick={async () => {
+                                    const name = prompt("Nombre de la nueva categoría");
+                                    if (name) await createCategory(name.trim());
+                                }}
+                                className="text-xs text-indigo-400 underline mt-1 self-start"
+                            >
+                                + añadir categoría
+                            </button>
                         </div>
                     </div>
 
