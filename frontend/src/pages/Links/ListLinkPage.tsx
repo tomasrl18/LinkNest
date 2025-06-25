@@ -1,22 +1,24 @@
 import { useMemo, useState } from "react";
 import { useLinks } from "../../hooks/useLinks";
+import { useCategories } from "../../hooks/useCategories";
 import LinkCard from "../../components/LinkCard";
 import { Sparkles, Heart, Search } from "lucide-react";
 
 export function ListLinkPage() {
     const { links, updateLink /*, deleteLink*/ } = useLinks();
+    const { categories } = useCategories();
     const [search, setSearch] = useState("");
-    const [category, setCategory] = useState("");
     const [onlyFavs, setOnlyFavs] = useState(false);
+    const [categoryId, setCategoryId] = useState("");
 
     const filtered = useMemo(() => {
         return links.filter(l => {
             const matchSearch = !search || l.title?.toLowerCase().includes(search.toLowerCase()) || l.url.toLowerCase().includes(search.toLowerCase());
-            const matchCategory = !category || (l.category ?? "").toLowerCase() === category.toLowerCase();
+            const matchCategory = !categoryId || l.category_id === categoryId;
             const matchFav = !onlyFavs || l.favorite;
             return matchSearch && matchCategory && matchFav;
         });
-    }, [links, search, category, onlyFavs]);
+    }, [links, search, categoryId, onlyFavs]);
 
     const toggleFav = async (id: string, fav: boolean) => {
         try {
@@ -39,12 +41,16 @@ export function ListLinkPage() {
                             className="w-full bg-transparent outline-none placeholder:text-gray-500 text-sm"
                         />
                     </div>
-                    <input
-                        placeholder="Categoría"
-                        value={category}
-                        onChange={e => setCategory(e.target.value)}
-                        className="bg-gray-900/60 backdrop-blur rounded-xl px-4 py-2 text-sm placeholder:text-gray-500"
-                    />
+                    <select
+                        value={categoryId}
+                        onChange={e => setCategoryId(e.target.value)}
+                        className="bg-gray-900/60 backdrop-blur rounded-xl px-4 py-2 text-sm"
+                    >
+                        <option value="">Todas</option>
+                        {categories.map(c => (
+                            <option key={c.id} value={c.id}>{c.name}</option>
+                        ))}
+                    </select>
                     <label className="flex items-center gap-2 text-sm">
                         <input type="checkbox" checked={onlyFavs} onChange={e => setOnlyFavs(e.target.checked)} />
                         Sólo favoritos
