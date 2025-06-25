@@ -1,12 +1,12 @@
 import { supabase } from './supabase';
 import type { Link } from '../types/link';
 
-export async function addLink(data: Omit<Link, 'id' | 'created_at'>) {
-    return supabase.from('links').insert(data).single();
-}
-
 export async function getLinks() {
     return supabase.from('links').select('*').order('created_at', { ascending: false });
+}
+
+export async function addLink(data: Omit<Link, 'id' | 'created_at'>) {
+    return supabase.from('links').insert(data).single();
 }
 
 export async function updateLink(id: string, patch: Partial<Link>) {
