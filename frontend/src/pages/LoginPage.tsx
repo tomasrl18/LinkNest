@@ -15,7 +15,7 @@ export const LoginPage = () => {
 
         try {
             await signIn(email, pass);
-            navigate('/dashboard');
+            navigate('/links');
         } catch (err) {
             console.error(err);
         }

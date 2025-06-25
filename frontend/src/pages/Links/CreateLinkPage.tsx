@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { useState, useMemo } from "react";
-import { useLinks } from "../hooks/useLinks";
-import type { Link } from "../types/link";
-import LinkCard from "../components/LinkCard";
-import { useAuth } from "../context/AuthProvider";
+import { useLinks } from "../../hooks/useLinks";
+import type { Link } from "../../types/link";
+import LinkCard from "../../components/LinkCard";
+import { useAuth } from "../../context/AuthProvider";
 
-export function DashboardPage() {
+export function CreateLinkPage() {
     const { user } = useAuth();
     const { links, addLink, updateLink, deleteLink } = useLinks();
 
