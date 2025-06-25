@@ -1,13 +1,12 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import { useState, useMemo } from "react";
+import { useState } from "react";
 import { useLinks } from "../../hooks/useLinks";
 import type { Link } from "../../types/link";
-import LinkCard from "../../components/LinkCard";
 import { useAuth } from "../../context/AuthProvider";
+import { Loader2 } from "lucide-react";
 
 export function CreateLinkPage() {
     const { user } = useAuth();
-    const { links, addLink, updateLink, deleteLink } = useLinks();
+    const { addLink } = useLinks();
 
     const [form, setForm] = useState({
         url: "",
@@ -17,30 +16,11 @@ export function CreateLinkPage() {
         tags: "",
         favorite: false,
     });
-
-    const [search, setSearch] = useState("");
-    const [filterCategory, setFilterCategory] = useState("");
-
-    const filteredLinks = useMemo(() => {
-        return links.filter((link) => {
-            const matchesSearch =
-                !search ||
-                link.title?.toLowerCase().includes(search.toLowerCase()) ||
-                link.url.toLowerCase().includes(search.toLowerCase());
-            const matchesCategory =
-                !filterCategory ||
-                (link.category ?? "").toLowerCase() === filterCategory.toLowerCase();
-            return matchesSearch && matchesCategory;
-        });
-    }, [links, search, filterCategory]);
+    const [loading, setLoading] = useState(false);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        const target = e.target as HTMLInputElement | HTMLTextAreaElement;
-        const { name, value, type } = target;
-        setForm((prev) => ({
-            ...prev,
-            [name]: type === "checkbox" ? (target as HTMLInputElement).checked : value,
-        }));
+        const { name, type, value, checked } = e.target as HTMLInputElement;
+        setForm(prev => ({ ...prev, [name]: type === "checkbox" ? checked : value }));
     };
 
     const handleSubmit = async (e: React.FormEvent) => {
@@ -55,122 +35,123 @@ export function CreateLinkPage() {
             tags:
                 form.tags
                     .split(",")
-                    .map((t) => t.trim())
+                    .map(t => t.trim())
                     .filter(Boolean) || null,
             favorite: form.favorite,
             user_id: user?.id ?? "",
         };
 
         try {
+            setLoading(true);
             await addLink(payload);
-            setForm({
-                url: "",
-                title: "",
-                description: "",
-                category: "",
-                tags: "",
-                favorite: false,
-            });
+            setForm({ url: "", title: "", description: "", category: "", tags: "", favorite: false });
         } catch (err) {
             console.error(err);
+        } finally {
+            setLoading(false);
         }
     };
 
     return (
-        <div className="flex min-h-screen flex-col bg-darkblue text-white">
-            <main className="mx-auto w-full max-w-3xl flex-1 space-y-8 p-4">
+        <main className="min-h-screen bg-darkblue text-white flex flex-col items-center">
+            <section className="w-full max-w-lg px-4 py-10">
                 <form
                     onSubmit={handleSubmit}
-                    className="space-y-3 rounded-xl p-4 shadow"
+                    className="space-y-6 bg-gray-900/60 backdrop-blur rounded-2xl p-6 shadow-xl"
                 >
-                    <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                    <header className="text-center space-y-1">
+                        <h1 className="text-xl font-semibold">Nuevo enlace</h1>
+                        <p className="text-sm text-gray-400">Completa los campos necesarios.</p>
+                    </header>
+
+                    <div className="flex flex-col gap-1">
+                        <label htmlFor="url" className="text-sm font-medium">URL <span className="text-pink-500">*</span></label>
                         <input
+                            id="url"
                             name="url"
+                            type="url"
+                            required
                             value={form.url}
                             onChange={handleChange}
-                            placeholder="URL *"
-                            className="w-full rounded border px-3 py-2 text-sm"
-                            required
-                        />
-                        <input
-                            name="title"
-                            value={form.title}
-                            onChange={handleChange}
-                            placeholder="Título"
-                            className="w-full rounded border px-3 py-2 text-sm"
-                        />
-                        <input
-                            name="category"
-                            value={form.category}
-                            onChange={handleChange}
-                            placeholder="Categoría"
-                            className="w-full rounded border px-3 py-2 text-sm"
-                        />
-                        <input
-                            name="tags"
-                            value={form.tags}
-                            onChange={handleChange}
-                            placeholder="Tags (separados por comas)"
-                            className="w-full rounded border px-3 py-2 text-sm"
+                            placeholder="https://ejemplo.com/articulo"
+                            className="rounded-xl px-3 py-2 text-sm bg-gray-800 focus:ring-2 focus:ring-indigo-500 outline-none"
                         />
                     </div>
-                    <textarea
-                        name="description"
-                        value={form.description}
-                        onChange={handleChange}
-                        placeholder="Descripción"
-                        rows={2}
-                        className="w-full rounded border px-3 py-2 text-sm"
-                    />
-                    <label className="inline-flex items-center gap-2 text-sm">
-                        <input
-                            type="checkbox"
-                            name="favorite"
-                            checked={form.favorite}
+
+                    <div className="grid sm:grid-cols-2 gap-4">
+                        <div className="flex flex-col gap-1">
+                            <label htmlFor="title" className="text-sm font-medium">Título</label>
+                            <input
+                                id="title"
+                                name="title"
+                                value={form.title}
+                                onChange={handleChange}
+                                placeholder="Cómo ser productivo"
+                                className="rounded-xl px-3 py-2 text-sm bg-gray-800"
+                            />
+                        </div>
+                        <div className="flex flex-col gap-1">
+                            <label htmlFor="category" className="text-sm font-medium">Categoría</label>
+                            <input
+                                id="category"
+                                name="category"
+                                value={form.category}
+                                onChange={handleChange}
+                                placeholder="Lectura"
+                                className="rounded-xl px-3 py-2 text-sm bg-gray-800"
+                            />
+                        </div>
+                    </div>
+
+                    <div className="flex flex-col gap-1">
+                        <label htmlFor="description" className="text-sm font-medium">Descripción</label>
+                        <textarea
+                            id="description"
+                            name="description"
+                            rows={3}
+                            value={form.description}
                             onChange={handleChange}
+                            placeholder="Pequeño resumen o notas..."
+                            className="rounded-xl px-3 py-2 text-sm bg-gray-800 resize-none"
                         />
-                        Favorito
-                    </label>
+                        <span className="text-xs text-gray-500 text-right">
+                            {form.description.length}/240
+                        </span>
+                    </div>
+
+                    <div className="grid sm:grid-cols-2 gap-4">
+                        <div className="flex flex-col gap-1">
+                            <label htmlFor="tags" className="text-sm font-medium">Tags</label>
+                            <input
+                                id="tags"
+                                name="tags"
+                                value={form.tags}
+                                onChange={handleChange}
+                                placeholder="web, ui, inspiración"
+                                className="rounded-xl px-3 py-2 text-sm bg-gray-800"
+                            />
+                        </div>
+                        <label className="flex items-center gap-2 text-sm pt-6 sm:pt-0">
+                            <input
+                                type="checkbox"
+                                name="favorite"
+                                checked={form.favorite}
+                                onChange={handleChange}
+                            />
+                            Marcar como favorito
+                        </label>
+                    </div>
+
                     <button
                         type="submit"
-                        className="rounded bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700"
+                        disabled={loading}
+                        className="w-full flex justify-center items-center gap-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 py-2 text-sm font-medium disabled:opacity-60"
                     >
+                        {loading && <Loader2 className="w-4 h-4 animate-spin" />}
                         Añadir enlace
                     </button>
                 </form>
-
-                <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                    <input
-                        type="text"
-                        placeholder="Buscar..."
-                        value={search}
-                        onChange={(e) => setSearch(e.target.value)}
-                        className="w-full rounded border px-3 py-2 text-sm sm:max-w-xs"
-                    />
-                    <input
-                        type="text"
-                        placeholder="Filtrar categoría"
-                        value={filterCategory}
-                        onChange={(e) => setFilterCategory(e.target.value)}
-                        className="w-full rounded border px-3 py-2 text-sm sm:max-w-xs"
-                    />
-                </div>
-
-                <div className="space-y-3">
-                    {filteredLinks.length ? (
-                        filteredLinks.map((link) => (
-                            <LinkCard
-                                key={link.id}
-                                link={link}
-                            />
-                        ))
-                    ) : (
-                        <p className="text-center text-sm text-gray-500">
-                            Aún no hay enlaces.
-                        </p>
-                    )}
-                </div>
-            </main>
-        </div>
+            </section>
+        </main>
     );
 }

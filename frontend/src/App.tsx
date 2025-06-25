@@ -18,7 +18,7 @@ function AnimatedRoutes() {
 
                 <Route element={<PrivateRoute />}>
                     <Route path="/links" element={<ListLinkPage />} />
-                    <Route path="/links/create" element={<CreateLinkPage />} />
+                    <Route path="/links/new" element={<CreateLinkPage />} />
                 </Route>
             </Routes>
         </AnimatePresence>
