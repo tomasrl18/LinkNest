@@ -6,7 +6,7 @@ import LinkCard from "../components/LinkCard";
 import { useAuth } from "../context/AuthProvider";
 
 export function DashboardPage() {
-    const { user, signOut } = useAuth();
+    const { user } = useAuth();
     const { links, addLink, updateLink, deleteLink } = useLinks();
 
     const [form, setForm] = useState({
@@ -78,19 +78,6 @@ export function DashboardPage() {
 
     return (
         <div className="flex min-h-screen flex-col bg-darkblue text-white">
-            <header className="flex items-center justify-between bg-darkblue px-4 py-3 shadow border-b border-gray-700">
-                <h1 className="text-lg font-bold">LinkNest</h1>
-                <button
-                    onClick={() => signOut()}
-                    className="
-                        text-sm font-medium text-red-600 cursor-pointer border border-red-600 rounded px-3 py-1
-                        hover:transform hover:bg-red-500 hover:text-white hover:scale-105 transition-transform duration-300
-                    "
-                >
-                    Cerrar Sesión
-                </button>
-            </header>
-
             <main className="mx-auto w-full max-w-3xl flex-1 space-y-8 p-4">
                 <form
                     onSubmit={handleSubmit}
