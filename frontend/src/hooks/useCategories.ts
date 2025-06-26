@@ -25,10 +25,12 @@ export function useCategories() {
 
     const createCategory = useCallback(
         async (payload: Omit<Category, 'id' | 'created_at'>) => {
-        const { data: created, error } = await addCategory(payload);
-        if (error) throw error;
-        if (created) setCategories(prev => [created as Category, ...prev]);
-    }, []);
+            const { data: created, error } = await addCategory(payload);
+            if (error) throw error;
+            if (created) setCategories(prev => [created as Category, ...prev]);
+            return created as Category | null;
+        },
+    []);
 
     const updateCategory = useCallback(
         async (id: string, patch: Partial<Category>) => {

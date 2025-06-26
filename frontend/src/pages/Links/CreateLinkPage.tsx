@@ -63,7 +63,10 @@ export function CreateLinkPage() {
                 open={categoryDialogOpen}
                 onClose={() => setCategoryDialogOpen(false)}
                 onCreate={async (name) => {
-                    await createCategory({ name, user_id: user?.id });
+                    const newCat = await createCategory({ name, user_id: user?.id });
+                    if (newCat && newCat.id) {
+                        setForm(prev => ({ ...prev, category_id: newCat.id }));
+                    }
                 }}
             />
             <span className="absolute -top-1 -right-1 opacity-10 pointer-events-none select-none z-0">
