@@ -5,6 +5,7 @@ import { useAuth } from "../../context/AuthProvider";
 import { motion } from "framer-motion";
 import { Bookmark, Loader2, Plus, Link as LinkIcon } from "lucide-react";
 import { useCategories } from "../../hooks/useCategories";
+import { CreateCategoryDialog } from "../../components/CreateCategoryDialog";
 
 export function CreateLinkPage() {
     const { user } = useAuth();
@@ -20,6 +21,7 @@ export function CreateLinkPage() {
         favorite: false,
     });
     const [loading, setLoading] = useState(false);
+    const [categoryDialogOpen, setCategoryDialogOpen] = useState(false);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, type, value, checked } = e.target as HTMLInputElement;
@@ -55,18 +57,15 @@ export function CreateLinkPage() {
         }
     };
 
-    const handleAddCategory = async () => {
-        const name = prompt("Nombre de la nueva categoría");
-        if (name?.trim()) {
-            await createCategory({
-                name: name.trim(),
-                user_id: user?.id
-            });
-        }
-    };
-
     return (
         <main className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-950 text-white flex flex-col items-center relative overflow-hidden">
+            <CreateCategoryDialog
+                open={categoryDialogOpen}
+                onClose={() => setCategoryDialogOpen(false)}
+                onCreate={async (name) => {
+                    await createCategory({ name, user_id: user?.id });
+                }}
+            />
             <span className="absolute -top-1 -right-1 opacity-10 pointer-events-none select-none z-0">
                 <LinkIcon size={320} />
             </span>
@@ -128,7 +127,7 @@ export function CreateLinkPage() {
                                     </select>
                                     <button
                                         type="button"
-                                        onClick={handleAddCategory}
+                                        onClick={() => setCategoryDialogOpen(true)}
                                         className="btn btn-xs btn-outline btn-primary rounded-lg px-2 py-1 font-medium min-h-0 h-8"
                                     >
                                         <Plus size={14} strokeWidth={2} />
