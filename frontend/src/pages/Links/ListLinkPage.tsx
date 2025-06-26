@@ -29,7 +29,7 @@ export function ListLinkPage() {
     };
 
     return (
-        <main className="min-h-screen bg-darkblue text-white flex flex-col items-center">
+        <main className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-950 text-white flex flex-col items-center">
             <section className="w-full max-w-4xl px-4 py-10 space-y-8">
                 <header className="flex flex-col gap-4 sm:flex-row sm:items-end">
                     <div className="flex-1 flex items-center gap-2 bg-gray-900/60 backdrop-blur rounded-xl px-4 py-2">
