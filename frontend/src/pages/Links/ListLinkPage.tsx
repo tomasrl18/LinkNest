@@ -13,7 +13,11 @@ export function ListLinkPage() {
 
     const filtered = useMemo(() => {
         return links.filter(l => {
-            const matchSearch = !search || l.title?.toLowerCase().includes(search.toLowerCase()) || l.url.toLowerCase().includes(search.toLowerCase());
+            const matchSearch = !search || 
+                l.title?.toLowerCase().includes(search.toLowerCase()) ||
+                l.url.toLowerCase().includes(search.toLowerCase()) ||
+                l.description?.toLowerCase().includes(search.toLowerCase()) ||
+                l.tags?.some(tag => tag.toLowerCase().includes(search.toLowerCase()));
             const matchCategory = !categoryId || l.category_id === categoryId;
             const matchFav = !onlyFavs || l.favorite;
             return matchSearch && matchCategory && matchFav;
