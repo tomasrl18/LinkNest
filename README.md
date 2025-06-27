@@ -64,4 +64,4 @@ This project is licensed under the [MIT License](LICENSE).
 
 ---
 
-Hecho con ❤️ y café por [@tomasrl18](https://github.com/tomasrl18)
+Done with ❤️ & ☕️ by [@tomasrl18](https://github.com/tomasrl18)
