@@ -2,7 +2,7 @@ import { useMemo, useState } from "react";
 import { useLinks } from "../../hooks/useLinks";
 import { useCategories } from "../../hooks/useCategories";
 import LinkCard from "../../components/LinkCard";
-import { Sparkles, Heart, Search } from "lucide-react";
+import { Sparkles, Search, Star } from "lucide-react";
 
 export function ListLinkPage() {
     const { links, updateLink /*, deleteLink*/ } = useLinks();
@@ -31,30 +31,41 @@ export function ListLinkPage() {
     return (
         <main className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-950 text-white flex flex-col items-center">
             <section className="w-full max-w-4xl px-4 py-10 space-y-8">
-                <header className="flex flex-col gap-4 sm:flex-row sm:items-end">
-                    <div className="flex-1 flex items-center gap-2 bg-gray-900/60 backdrop-blur rounded-xl px-4 py-2">
-                        <Search className="w-4 h-4 text-gray-400" />
-                        <input
-                            placeholder="Buscar enlaces..."
-                            value={search}
-                            onChange={e => setSearch(e.target.value)}
-                            className="w-full bg-transparent outline-none placeholder:text-gray-500 text-sm"
-                        />
+                <header className="flex flex-col gap-4 sm:flex-row sm:items-end w-full bg-gray-900/70 rounded-2xl px-6 py-4 shadow-lg border border-gray-800 mb-4">
+                    <div className="flex-1 flex flex-col gap-2 sm:flex-row sm:items-center">
+                        <div className="flex-1 flex items-center gap-2 bg-gray-800/70 rounded-xl px-4 py-2">
+                            <Search className="w-4 h-4 text-gray-400" />
+                            <input
+                                placeholder="Buscar enlaces..."
+                                value={search}
+                                onChange={e => setSearch(e.target.value)}
+                                className="w-full bg-transparent outline-none placeholder:text-gray-500 text-sm"
+                            />
+                        </div>
                     </div>
-                    <select
-                        value={categoryId}
-                        onChange={e => setCategoryId(e.target.value)}
-                        className="bg-gray-900/60 backdrop-blur rounded-xl px-4 py-2 text-sm"
-                    >
-                        <option value="">Todas</option>
-                        {categories.map(c => (
-                            <option key={c.id} value={c.id}>{c.name}</option>
-                        ))}
-                    </select>
-                    <label className="flex items-center gap-2 text-sm">
-                        <input type="checkbox" checked={onlyFavs} onChange={e => setOnlyFavs(e.target.checked)} />
-                        Sólo favoritos
-                    </label>
+                    <div className="flex flex-col sm:flex-row gap-2 sm:items-center">
+                        <div className="flex items-center gap-2 bg-gray-800/70 rounded-xl px-3 py-1">
+                            <select
+                                value={categoryId}
+                                onChange={e => setCategoryId(e.target.value)}
+                                className="backdrop-blur rounded-xl px-3 py-1 text-sm text-gray-100 shadow-inner transition-all duration-200 outline-none"
+                            >
+                                <option value="" className="bg-gray-900 text-gray-300">Todas</option>
+                                {categories.map(c => (
+                                    <option key={c.id} value={c.id} className="bg-gray-900 text-gray-200">{c.name}</option>
+                                ))}
+                            </select>
+                        </div>
+                        <button
+                            type="button"
+                            onClick={() => setOnlyFavs(v => !v)}
+                            className={`flex items-center gap-2 bg-gray-800/70 rounded-xl px-3 py-1 cursor-pointer select-none transition-colors border border-transparent focus:outline-none ${onlyFavs ? 'border-yellow-400/60 bg-yellow-900/30' : ''}`}
+                            title={onlyFavs ? "Mostrar todos" : "Sólo favoritos"}
+                        >
+                            <Star size={18} className={onlyFavs ? "fill-yellow-400 text-yellow-400 drop-shadow" : "text-gray-400"} />
+                            <span className="text-sm">Favoritos</span>
+                        </button>
+                    </div>
                 </header>
 
                 {filtered.length ? (
@@ -67,12 +78,12 @@ export function ListLinkPage() {
                                     <LinkCard link={link} />
                                     <button
                                         onClick={() => toggleFav(link.id, link.favorite)}
-                                        className="absolute top-3 right-4 z-10 p-1 rounded-full bg-gray-800/80 hover:bg-pink-600 transition-colors border border-gray-700 hover:border-pink-500 shadow group-hover:opacity-100 opacity-80 focus:outline-none"
+                                        className="absolute top-3 right-4 z-10 p-1 shadow opacity-80"
                                         title={link.favorite ? "Quitar de favoritos" : "Marcar como favorito"}
                                     >
-                                        <Heart
+                                        <Star
                                             size={20}
-                                            className={link.favorite ? "fill-pink-600 text-pink-600 drop-shadow" : "text-gray-400"}
+                                            className={link.favorite ? "fill-yellow-400 text-yellow-400 drop-shadow" : "text-gray-400"}
                                         />
                                     </button>
                                 </div>
