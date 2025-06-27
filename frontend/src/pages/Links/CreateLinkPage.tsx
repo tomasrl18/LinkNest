@@ -10,7 +10,7 @@ import { CreateCategoryDialog } from "../../components/CreateCategoryDialog";
 export function CreateLinkPage() {
     const { user } = useAuth();
     const { addLink } = useLinks();
-    const { categories, createCategory } = useCategories();
+    const { categories, createCategory, fetchCategories } = useCategories();
 
     const [form, setForm] = useState({
         url: "",
@@ -64,6 +64,7 @@ export function CreateLinkPage() {
                 onClose={() => setCategoryDialogOpen(false)}
                 onCreate={async (name) => {
                     const newCat = await createCategory({ name, user_id: user?.id });
+                    await fetchCategories();
                     if (newCat && newCat.id) {
                         setForm(prev => ({ ...prev, category_id: newCat.id }));
                     }
