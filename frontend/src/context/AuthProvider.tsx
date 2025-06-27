@@ -1,3 +1,4 @@
+
 import { createContext, useContext, useEffect, useState } from 'react';
 import { supabase } from '../lib/supabase';
 import type { Session, User } from '@supabase/supabase-js';
@@ -6,9 +7,10 @@ type AuthContextType = {
     session: Session | null | undefined;
     user: User | null;
     signIn: (email: string, password: string) => Promise<void>;
-    signUp: (email: string, password: string) => Promise<void>;
+    signUp: (email: string, password: string) => Promise<boolean>;
     signOut: () => Promise<void>;
 };
+
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
@@ -37,12 +39,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const signUp = async (email: string, password: string) => {
         const { data, error } = await supabase.auth.signUp({ email, password });
         if (error) throw error;
-        
-        if (data.session) {
-            return;
-        } else {
-            throw new Error('Revisa tu correo para confirmar tu cuenta antes de iniciar sesión.');
-        }
+        return !!data.session;
     };
 
     const signOut = async () => {

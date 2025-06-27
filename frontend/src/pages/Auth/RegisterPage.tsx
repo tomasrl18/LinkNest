@@ -1,7 +1,9 @@
+
 import { useAuth } from '../../context/AuthProvider';
+import { useNavigate } from 'react-router-dom';
 import { motion } from "framer-motion";
 import { pageVariants, pageTransition } from "../../animations/pageVariants";
-import { useNavigate } from 'react-router-dom';
+
 
 export const RegisterPage = () => {
     const { signUp } = useAuth();
@@ -14,8 +16,10 @@ export const RegisterPage = () => {
         const pass  = e.currentTarget.password.value;
 
         try {
-            await signUp(email, pass);
-            navigate('/links');
+            const canNavigate = await signUp(email, pass);
+            if (canNavigate) {
+                navigate('/links');
+            }
         } catch (err) {
             console.error(err);
         }
