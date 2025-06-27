@@ -83,7 +83,13 @@ export function ListLinkPage() {
                                     >
                                         <Star
                                             size={20}
-                                            className={link.favorite ? "fill-yellow-400 text-yellow-400 drop-shadow" : "text-gray-400"}
+                                            className={
+                                                `transition-all duration-300 transform ${
+                                                    link.favorite
+                                                        ? 'fill-yellow-400 text-yellow-400 drop-shadow scale-125 rotate-12'
+                                                        : 'text-gray-400 scale-100 rotate-0'
+                                                }`
+                                            }
                                         />
                                     </button>
                                 </div>
