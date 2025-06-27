@@ -114,7 +114,7 @@ export function HomePage() {
             </motion.section>
 
             <motion.footer variants={child} className="text-sm text-gray-500 mt-24">
-                Hecho con ❤️ y café — © {new Date().getFullYear()} LinkNest
+                Hecho con ❤️ y ☕️ — © {new Date().getFullYear()} LinkNest
             </motion.footer>
         </motion.main>
     );
