@@ -1,4 +1,3 @@
-/* eslint-disable no-irregular-whitespace */
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight, Bookmark, Sparkles, Code } from "lucide-react";
