@@ -1,10 +1,10 @@
-import { useAuth } from '../context/AuthProvider';
+import { useAuth } from '../../context/AuthProvider';
 import { motion } from "framer-motion";
-import { pageVariants, pageTransition } from "../animations/pageVariants";
-import { useNavigate } from 'react-router-dom';
+import { pageVariants, pageTransition } from "../../animations/pageVariants";
+import { useNavigate, Link } from 'react-router-dom';
 
-export const RegisterPage = () => {
-    const { signUp } = useAuth();
+export const LoginPage = () => {
+    const { signIn } = useAuth();
     const navigate = useNavigate();
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -14,7 +14,7 @@ export const RegisterPage = () => {
         const pass  = e.currentTarget.password.value;
 
         try {
-            await signUp(email, pass);
+            await signIn(email, pass);
             navigate('/links');
         } catch (err) {
             console.error(err);
@@ -32,13 +32,14 @@ export const RegisterPage = () => {
         >
             <motion.form
                 onSubmit={handleSubmit}
-                className="w-full max-w-sm rounded-2xl bg-gray-800/70 backdrop-blur ring-1 ring-white/10 shadow-xl"
+                className="w-full max-w-sm rounded-2xl bg-gray-800/70 backdrop-blur
+                   ring-1 ring-white/10 shadow-xl"
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ type: "spring", stiffness: 140, damping: 18, delay: 0.15 }}
             >
                 <div className="p-8 space-y-6">
-                    <h2 className="text-center text-2xl font-semibold text-gray-100">Crea tu cuenta</h2>
+                    <h2 className="text-center text-2xl font-semibold text-gray-100">Inicia sesión</h2>
 
                     <input
                         name="email"
@@ -56,8 +57,14 @@ export const RegisterPage = () => {
                     />
 
                     <button type="submit" className="btn btn-primary w-full rounded-xl">
-                        Registrarse
+                        Entrar
                     </button>
+                    <p className="text-center text-sm text-gray-400">
+                        ¿No tienes cuenta?{' '}
+                        <Link to="/register" className="text-indigo-300 hover:underline">
+                            Regístrate
+                        </Link>
+                    </p>
                 </div>
             </motion.form>
         </motion.section>

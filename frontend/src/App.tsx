@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { PrivateRoute } from './components/PrivateRoute'
-import { LoginPage } from './pages/LoginPage';
-import { RegisterPage } from './pages/RegisterPage';
+import { LoginPage } from './pages/Auth/LoginPage';
+import { RegisterPage } from './pages/Auth/RegisterPage';
 import { HomePage } from './pages/HomePage';
 import { Header } from './components/Header';
 import { ListLinkPage } from './pages/Links/ListLinkPage';
