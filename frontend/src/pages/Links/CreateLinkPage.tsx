@@ -162,11 +162,11 @@ export function CreateLinkPage() {
                                     value={form.tags}
                                     onChange={handleChange}
                                     placeholder="web, ui, inspiración"
-                                    className="input input-bordered w-full rounded-xl px-3 py-2 text-sm bg-gray-800/80"
+                                    className="input input-bordered w-full rounded-xl px-2 py-2 text-sm bg-gray-800/80"
                                 />
                                 <div className="flex flex-wrap gap-1 mt-1 min-h-[24px]">
                                     {form.tags.split(",").map(t => t.trim()).filter(Boolean).map((tag, i) => (
-                                        <span key={i} className="badge badge-sm badge-info bg-gradient-to-r from-indigo-400 to-pink-400 text-white border-0 opacity-80">{tag}</span>
+                                        <span key={i} className="badge badge-sm badge-info bg-gradient-to-r from-indigo-400 to-pink-400 text-white border-0 opacity-80 px-3">{tag}</span>
                                     ))}
                                 </div>
                                 <button
