@@ -61,17 +61,21 @@ export function ListLinkPage() {
                     <ul className="space-y-3">
                         {filtered.map(link => (
                             <li key={link.id} className="group relative">
-                                <LinkCard link={link} />
-                                <button
-                                    onClick={() => toggleFav(link.id, link.favorite)}
-                                    className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity"
-                                    title={link.favorite ? "Quitar de favoritos" : "Marcar como favorito"}
+                                <div
+                                    className="transition-all duration-200 bg-gray-900/70 border border-gray-800 rounded-2xl shadow-lg hover:shadow-2xl hover:border-pink-600 hover:scale-[1.025] flex items-stretch"
                                 >
-                                    <Heart
-                                        size={18}
-                                        className={link.favorite ? "fill-pink-600 text-pink-600" : "text-gray-400"}
-                                    />
-                                </button>
+                                    <LinkCard link={link} />
+                                    <button
+                                        onClick={() => toggleFav(link.id, link.favorite)}
+                                        className="absolute top-3 right-4 z-10 p-1 rounded-full bg-gray-800/80 hover:bg-pink-600 transition-colors border border-gray-700 hover:border-pink-500 shadow group-hover:opacity-100 opacity-80 focus:outline-none"
+                                        title={link.favorite ? "Quitar de favoritos" : "Marcar como favorito"}
+                                    >
+                                        <Heart
+                                            size={20}
+                                            className={link.favorite ? "fill-pink-600 text-pink-600 drop-shadow" : "text-gray-400"}
+                                        />
+                                    </button>
+                                </div>
                             </li>
                         ))}
                     </ul>
