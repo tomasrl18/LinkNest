@@ -4,7 +4,9 @@ export const pageVariants = {
     exit: { opacity: 0, y: -20 },
 };
 
-export const pageTransition = {
+import type { Transition } from "framer-motion";
+
+export const pageTransition: Transition = {
     duration: 0.5,
-    ease: "easeInOut"
+    ease: "easeInOut",
 };

@@ -62,13 +62,18 @@ export function Header() {
                         Logout
                     </Button>
                 ) : (
-                    <Button
-                        asChild
-                        size="sm"
-                        className="bg-indigo-600 hover:bg-indigo-500 text-white shadow justify-self-end"
-                    >
-                        <Link to="/login">Login</Link>
-                    </Button>
+                    <div className="flex gap-2 justify-self-end">
+                        <Button
+                            asChild
+                            size="sm"
+                            className="bg-indigo-600 hover:bg-indigo-500 text-white shadow"
+                        >
+                            <Link to="/login">Login</Link>
+                        </Button>
+                        <Button asChild size="sm" variant="secondary" className="border-indigo-500 text-indigo-300">
+                            <Link to="/register">Registro</Link>
+                        </Button>
+                    </div>
                 )}
             </div>
         </motion.header>

@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { PrivateRoute } from './components/PrivateRoute'
 import { LoginPage } from './pages/LoginPage';
+import { RegisterPage } from './pages/RegisterPage';
 import { HomePage } from './pages/HomePage';
 import { Header } from './components/Header';
 import { ListLinkPage } from './pages/Links/ListLinkPage';
@@ -15,6 +16,7 @@ function AnimatedRoutes() {
             <Routes location={location} key={location.pathname}>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/login" element={<LoginPage />} />
+                <Route path="/register" element={<RegisterPage />} />
 
                 <Route element={<PrivateRoute />}>
                     <Route path="/links" element={<ListLinkPage />} />
