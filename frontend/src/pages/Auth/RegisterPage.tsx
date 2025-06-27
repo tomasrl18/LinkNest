@@ -16,10 +16,8 @@ export const RegisterPage = () => {
         const pass  = e.currentTarget.password.value;
 
         try {
-            const canNavigate = await signUp(email, pass);
-            if (canNavigate) {
-                navigate('/links');
-            }
+            await signUp(email, pass);
+            navigate('/links');
         } catch (err) {
             console.error(err);
         }
