@@ -53,7 +53,7 @@ export function HomePage() {
                         asChild
                         className="group relative inline-flex items-center gap-2 text-base font-semibold px-8 py-3 rounded-2xl shadow-lg bg-gradient-to-r from-emerald-500 via-lime-500 to-emerald-600 hover:brightness-110 focus:outline-none focus:ring-2 focus:ring-lime-400/80 transition"
                     >
-                        <Link to="/login" className="flex items-center gap-2">
+                        <Link to="/register" className="flex items-center gap-2">
                             Empieza ahora
                             <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
                         </Link>
