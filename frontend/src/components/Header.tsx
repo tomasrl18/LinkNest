@@ -70,9 +70,6 @@ export function Header() {
                         >
                             <Link to="/login">Login</Link>
                         </Button>
-                        <Button asChild size="sm" variant="secondary" className="border-indigo-500 text-indigo-300">
-                            <Link to="/register">Registro</Link>
-                        </Button>
                     </div>
                 )}
             </div>
