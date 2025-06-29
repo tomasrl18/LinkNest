@@ -173,7 +173,7 @@ export function CreateLinkPage() {
                                     type="button"
                                     aria-pressed={form.favorite}
                                     onClick={() => setForm(prev => ({ ...prev, favorite: !prev.favorite }))}
-                                    className={`mx-auto mt-4 sm:mt-1 transition-all duration-200 rounded-full p-2 sm:p-2.5 border-2 focus:outline-none focus:ring-2 focus:ring-pink-400/60 shadow-sm z-10
+                                    className={`cursor-pointer mx-auto mt-4 sm:mt-1 transition-all duration-200 rounded-full p-2 sm:p-2.5 border-2 focus:outline-none focus:ring-2 focus:ring-pink-400/60 shadow-sm z-10
                                         ${form.favorite ? 'bg-pink-500/90 border-pink-400 text-white scale-110' : 'bg-gray-800/80 border-gray-600 text-pink-300 hover:bg-pink-400/20'}`}
                                     title={form.favorite ? 'Quitar de favoritos' : 'Marcar como favorito'}
                                     style={{ boxShadow: '0 2px 8px 0 #0002' }}
@@ -203,7 +203,7 @@ export function CreateLinkPage() {
                         disabled={loading}
                         whileHover={{ scale: 1.04 }}
                         whileTap={{ scale: 0.97 }}
-                        className="w-full flex justify-center items-center gap-2 rounded-xl bg-gradient-to-r from-indigo-600 via-pink-500 to-fuchsia-500 hover:from-indigo-700 hover:to-fuchsia-600 py-3 text-base font-semibold shadow-lg transition-all duration-200 disabled:opacity-60 mt-2"
+                        className="cursor-pointer w-full flex justify-center items-center gap-2 rounded-xl bg-gradient-to-r from-indigo-600 via-pink-500 to-fuchsia-500 hover:from-indigo-700 hover:to-fuchsia-600 py-3 text-base font-semibold shadow-lg transition-all duration-200 disabled:opacity-60 mt-2"
                     >
                         {loading && <Loader2 className="w-5 h-5 animate-spin" />}
                         <span>Añadir enlace</span>

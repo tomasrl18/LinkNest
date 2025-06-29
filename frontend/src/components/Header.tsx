@@ -56,7 +56,7 @@ export function Header() {
                 {user ? (
                     <Button
                         size="sm"
-                        className="bg-indigo-600 hover:bg-indigo-500 text-white shadow justify-self-end"
+                        className="bg-indigo-600 hover:bg-indigo-500 text-white shadow justify-self-end cursor-pointer"
                         onClick={handleLogout}
                     >
                         Logout
@@ -66,7 +66,7 @@ export function Header() {
                         <Button
                             asChild
                             size="sm"
-                            className="bg-indigo-600 hover:bg-indigo-500 text-white shadow"
+                            className="bg-indigo-600 hover:bg-indigo-500 text-white shadow cursor-pointer"
                         >
                             <Link to="/login">Login</Link>
                         </Button>

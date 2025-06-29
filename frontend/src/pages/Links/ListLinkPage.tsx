@@ -82,7 +82,7 @@ export function ListLinkPage() {
                                     <LinkCard link={link} />
                                     <button
                                         onClick={() => toggleFav(link.id, link.favorite)}
-                                        className="absolute top-3 right-4 z-10 p-1 shadow opacity-80"
+                                        className="cursor-pointer absolute top-3 right-4 z-10 p-1 shadow opacity-80"
                                         title={link.favorite ? "Quitar de favoritos" : "Marcar como favorito"}
                                     >
                                         <Star
