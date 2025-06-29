@@ -2,10 +2,10 @@ import { useMemo, useState } from "react";
 import { useLinks } from "../../hooks/useLinks";
 import { useCategories } from "../../hooks/useCategories";
 import LinkCard from "../../components/LinkCard";
-import { Sparkles, Search, Star } from "lucide-react";
+import { Sparkles, Search, Star, Trash } from "lucide-react";
 
 export function ListLinkPage() {
-    const { links, updateLink /*, deleteLink*/ } = useLinks();
+    const { links, updateLink, deleteLink } = useLinks();
     const { categories } = useCategories();
     const [search, setSearch] = useState("");
     const [onlyFavs, setOnlyFavs] = useState(false);
@@ -27,6 +27,16 @@ export function ListLinkPage() {
     const toggleFav = async (id: string, fav: boolean) => {
         try {
             await updateLink(id, { favorite: !fav });
+        } catch (err) {
+            console.error(err);
+        }
+    };
+
+    const handleDelete = async (id: string) => {
+        const ok = confirm("¿Eliminar enlace?");
+        if (!ok) return;
+        try {
+            await deleteLink(id);
         } catch (err) {
             console.error(err);
         }
@@ -80,6 +90,13 @@ export function ListLinkPage() {
                                     className="transition-all duration-200 bg-gray-900/70 border border-gray-800 rounded-2xl shadow-lg hover:shadow-2xl hover:border-pink-600 hover:scale-[1.025] flex items-stretch"
                                 >
                                     <LinkCard link={link} />
+                                    <button
+                                        onClick={() => handleDelete(link.id)}
+                                        className="cursor-pointer absolute top-3 right-12 z-10 p-1 shadow opacity-80"
+                                        title="Eliminar enlace"
+                                    >
+                                        <Trash size={20} className="text-gray-400 hover:text-red-500 transition-colors" />
+                                    </button>
                                     <button
                                         onClick={() => toggleFav(link.id, link.favorite)}
                                         className="cursor-pointer absolute top-3 right-4 z-10 p-1 shadow opacity-80"
