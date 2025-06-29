@@ -3,7 +3,8 @@ import { useMemo, useState } from "react";
 import { useLinks } from "../../hooks/useLinks";
 import { useCategories } from "../../hooks/useCategories";
 import LinkCard from "../../components/links/LinkCard";
-import { Sparkles, Search, Star, Trash } from "lucide-react";
+import { Sparkles, Search, Star, Trash, Pencil } from "lucide-react";
+import { Link } from "react-router-dom";
 import ConfirmDeleteLinkDialog from "../../components/links/ConfirmDeleteLinkDialog";
 
 export function ListLinkPage() {
@@ -98,6 +99,13 @@ export function ListLinkPage() {
                                     className="transition-all duration-200 bg-gray-900/70 border border-gray-800 rounded-2xl shadow-lg hover:shadow-2xl hover:border-pink-600 hover:scale-[1.025] flex items-stretch"
                                 >
                                     <LinkCard link={link} />
+                                    <Link
+                                        to={`/links/${link.id}/edit`}
+                                        className="cursor-pointer absolute top-3 right-20 z-10 p-1 shadow opacity-80"
+                                        title="Editar enlace"
+                                    >
+                                        <Pencil size={20} className="text-gray-400 hover:text-indigo-400 transition-colors" />
+                                    </Link>
                                     <button
                                         onClick={() => setDeleteModal({ open: true, id: link.id })}
                                         className="cursor-pointer absolute top-3 right-12 z-10 p-1 shadow opacity-80"
