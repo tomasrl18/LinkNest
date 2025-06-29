@@ -2,9 +2,9 @@
 import { useMemo, useState } from "react";
 import { useLinks } from "../../hooks/useLinks";
 import { useCategories } from "../../hooks/useCategories";
-import LinkCard from "../../components/LinkCard";
+import LinkCard from "../../components/links/LinkCard";
 import { Sparkles, Search, Star, Trash } from "lucide-react";
-import ConfirmDeleteLinkDialog from "../../components/ConfirmDeleteLinkDialog";
+import ConfirmDeleteLinkDialog from "../../components/links/ConfirmDeleteLinkDialog";
 
 export function ListLinkPage() {
     const { links, updateLink, deleteLink } = useLinks();

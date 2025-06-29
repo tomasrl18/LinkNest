@@ -5,7 +5,7 @@ import { useAuth } from "../../context/AuthProvider";
 import { motion } from "framer-motion";
 import { Bookmark, Loader2, Plus, Link as LinkIcon } from "lucide-react";
 import { useCategories } from "../../hooks/useCategories";
-import { CreateCategoryDialog } from "../../components/CreateCategoryDialog";
+import { CreateCategoryDialog } from "../../components/categories/CreateCategoryDialog";
 
 export function CreateLinkPage() {
     const { user } = useAuth();

@@ -1,6 +1,6 @@
-import type { Link } from "../types/link";
+import type { Link } from "../../types/link";
 import { useMemo } from "react";
-import { gradientColors } from "../constants/gradientColors";
+import { gradientColors } from "../../constants/gradientColors";
 
 function getRandomGradient() {
     return gradientColors[Math.floor(Math.random() * gradientColors.length)];
