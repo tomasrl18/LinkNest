@@ -3,7 +3,7 @@ import { useLinks } from "../../hooks/useLinks";
 import type { Link } from "../../types/link";
 import { useAuth } from "../../context/AuthProvider";
 import { motion } from "framer-motion";
-import { Bookmark, Loader2, Plus, Link as LinkIcon } from "lucide-react";
+import { Bookmark, Loader2, Plus, Link as LinkIcon, Tag } from "lucide-react";
 import { useCategories } from "../../hooks/useCategories";
 import { CreateCategoryDialog } from "../../components/categories/CreateCategoryDialog";
 
@@ -17,15 +17,29 @@ export function CreateLinkPage() {
         title: "",
         description: "",
         category_id: "",
-        tags: "",
+        tags: [] as string[],
         favorite: false,
     });
+    const [tagInput, setTagInput] = useState("");
     const [loading, setLoading] = useState(false);
     const [categoryDialogOpen, setCategoryDialogOpen] = useState(false);
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const handleChange = (
+        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
+    ) => {
         const { name, type, value, checked } = e.target as HTMLInputElement;
         setForm(prev => ({ ...prev, [name]: type === "checkbox" ? checked : value }));
+    };
+
+    const addTag = () => {
+        const newTag = tagInput.trim();
+        if (!newTag) return;
+        if (form.tags.includes(newTag)) {
+            setTagInput("");
+            return;
+        }
+        setForm(prev => ({ ...prev, tags: [...prev.tags, newTag] }));
+        setTagInput("");
     };
 
     const handleSubmit = async (e: React.FormEvent) => {
@@ -37,11 +51,7 @@ export function CreateLinkPage() {
             title: form.title.trim() || null,
             description: form.description.trim() || null,
             category_id: form.category_id.trim() || null,
-            tags:
-                form.tags
-                    .split(",")
-                    .map(t => t.trim())
-                    .filter(Boolean) || null,
+            tags: form.tags.length > 0 ? form.tags : null,
             favorite: form.favorite,
             user_id: user?.id ?? "",
         };
@@ -49,7 +59,8 @@ export function CreateLinkPage() {
         try {
             setLoading(true);
             await addLink(payload);
-            setForm({ url: "", title: "", description: "", category_id: "", tags: "", favorite: false });
+            setForm({ url: "", title: "", description: "", category_id: "", tags: [], favorite: false });
+            setTagInput("");
         } catch (err) {
             console.error(err);
         } finally {
@@ -155,17 +166,26 @@ export function CreateLinkPage() {
                         </div>
                         <div className="flex flex-col sm:flex-row gap-5 items-start sm:items-end">
                             <div className="flex-1 flex flex-col gap-1 relative">
-                                <label htmlFor="tags" className="text-sm font-medium pl-1">Tags</label>
-                                <input
-                                    id="tags"
-                                    name="tags"
-                                    value={form.tags}
-                                    onChange={handleChange}
-                                    placeholder="web, ui, inspiración"
-                                    className="input input-bordered w-full rounded-xl px-2 py-2 text-sm bg-gray-800/80"
-                                />
+                                <label htmlFor="tagInput" className="text-sm font-medium pl-1">Tags</label>
+                                <div className="flex gap-2">
+                                    <input
+                                        id="tagInput"
+                                        value={tagInput}
+                                        onChange={e => setTagInput(e.target.value)}
+                                        onKeyDown={e => { if (e.key === 'Enter') { e.preventDefault(); addTag(); } }}
+                                        placeholder="web, ui, inspiración"
+                                        className="input input-bordered w-full rounded-xl px-2 py-2 text-sm bg-gray-800/80"
+                                    />
+                                    <button
+                                        type="button"
+                                        onClick={addTag}
+                                        className="btn btn-square btn-outline btn-primary rounded-lg min-h-0 h-10 w-10"
+                                    >
+                                        <Tag size={16} />
+                                    </button>
+                                </div>
                                 <div className="flex flex-wrap gap-1 mt-1 min-h-[24px]">
-                                    {form.tags.split(",").map(t => t.trim()).filter(Boolean).map((tag, i) => (
+                                    {form.tags.map((tag, i) => (
                                         <span key={i} className="badge badge-sm badge-info bg-gradient-to-r from-indigo-400 to-pink-400 text-white border-0 opacity-80 px-3">{tag}</span>
                                     ))}
                                 </div>
