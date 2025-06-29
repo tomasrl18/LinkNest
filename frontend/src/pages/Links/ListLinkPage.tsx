@@ -1,8 +1,10 @@
+
 import { useMemo, useState } from "react";
 import { useLinks } from "../../hooks/useLinks";
 import { useCategories } from "../../hooks/useCategories";
 import LinkCard from "../../components/LinkCard";
 import { Sparkles, Search, Star, Trash } from "lucide-react";
+import ConfirmDeleteLinkDialog from "../../components/ConfirmDeleteLinkDialog";
 
 export function ListLinkPage() {
     const { links, updateLink, deleteLink } = useLinks();
@@ -10,6 +12,7 @@ export function ListLinkPage() {
     const [search, setSearch] = useState("");
     const [onlyFavs, setOnlyFavs] = useState(false);
     const [categoryId, setCategoryId] = useState("");
+    const [deleteModal, setDeleteModal] = useState<{ open: boolean; id: string | null }>({ open: false, id: null });
 
     const filtered = useMemo(() => {
         return links.filter(l => {
@@ -32,11 +35,11 @@ export function ListLinkPage() {
         }
     };
 
-    const handleDelete = async (id: string) => {
-        const ok = confirm("¿Eliminar enlace?");
-        if (!ok) return;
+    const handleDelete = async () => {
+        if (!deleteModal.id) return;
         try {
-            await deleteLink(id);
+            await deleteLink(deleteModal.id);
+            setDeleteModal({ open: false, id: null });
         } catch (err) {
             console.error(err);
         }
@@ -44,6 +47,11 @@ export function ListLinkPage() {
 
     return (
         <main className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-950 text-white flex flex-col items-center">
+            <ConfirmDeleteLinkDialog
+                open={deleteModal.open}
+                onCancel={() => setDeleteModal({ open: false, id: null })}
+                onConfirm={handleDelete}
+            />
             <section className="w-full max-w-4xl px-4 py-10 space-y-8">
                 <header className="flex flex-col gap-4 sm:flex-row sm:items-end w-full bg-gray-900/70 rounded-2xl px-6 py-4 shadow-lg border border-gray-800 mb-4">
                     <div className="flex-1 flex flex-col gap-2 sm:flex-row sm:items-center">
@@ -91,7 +99,7 @@ export function ListLinkPage() {
                                 >
                                     <LinkCard link={link} />
                                     <button
-                                        onClick={() => handleDelete(link.id)}
+                                        onClick={() => setDeleteModal({ open: true, id: link.id })}
                                         className="cursor-pointer absolute top-3 right-12 z-10 p-1 shadow opacity-80"
                                         title="Eliminar enlace"
                                     >
@@ -126,3 +134,5 @@ export function ListLinkPage() {
         </main>
     );
 }
+
+export default ListLinkPage;
