@@ -6,6 +6,7 @@ import { HomePage } from './pages/HomePage';
 import { Header } from './components/Header';
 import { ListLinkPage } from './pages/Links/ListLinkPage';
 import { CreateLinkPage } from './pages/Links/CreateLinkPage';
+import EditLinkPage from './pages/Links/EditLinkPage';
 import { AnimatePresence } from "framer-motion";
 
 function AnimatedRoutes() {
@@ -21,6 +22,7 @@ function AnimatedRoutes() {
                 <Route element={<PrivateRoute />}>
                     <Route path="/links" element={<ListLinkPage />} />
                     <Route path="/links/new" element={<CreateLinkPage />} />
+                    <Route path="/links/:id/edit" element={<EditLinkPage />} />
                 </Route>
 
                 <Route path="*" element={<Navigate to="/" replace />} />
