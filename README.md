@@ -1,67 +1,62 @@
 # LinkNest
 
-LinkNest is a web application to organize, categorize and rediscover your favorite links in one place. Save articles, videos, resources and more, with a modern and fast interface built with React, TypeScript, Vite and Supabase.
+![LinkNest Banner](frontend/public/vite.svg)
 
-## Features
+Organiza y redescubre tus enlaces favoritos en un mismo lugar. Guarda artículos, vídeos, recursos y mucho más con una interfaz moderna.
 
-- **User authentication** (Supabase Auth)
-- **Add links** with title, description, category, tags and favorites
-- **Filter and search** by text, category or bookmarks
-- **Modern interface** with Tailwind CSS, DaisyUI and animations with Framer Motion
-- **Link management**: create, edit and delete your links
-- **Responsive**: works on desktop and mobile devices
+## ✨ Características
 
-## Stack
+- 🔑 **Autenticación** con Supabase Auth
+- ➕ **Añade enlaces** con título, descripción, categoría, etiquetas y favoritos
+- 🏷️ **Gestiona categorías y etiquetas**
+- ✏️ **Edita** y 🗑️ **elimina** fácilmente
+- 🔍 **Filtra y busca** por texto, categoría o favoritos
+- ⚡ **Interfaz moderna** gracias a Tailwind CSS, DaisyUI y Framer Motion
+- 📱 **Responsive** en escritorio y móvil
+
+## 🛠️ Tecnologías
 
 - [React](https://react.dev/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [Vite](https://vitejs.dev/)
-- [Supabase](https://supabase.com/) (Database & auth)
+- [Supabase](https://supabase.com/)
 - [Tailwind CSS](https://tailwindcss.com/) + [DaisyUI](https://daisyui.com/)
-- [Framer Motion](https://www.framer.com/motion/) (Animations)
+- [Framer Motion](https://www.framer.com/motion/)
 - [Lucide Icons](https://lucide.dev/)
 
-## Installation Guide
+## 🚀 Comenzar
 
-1. Clone repo:
-
+1. Clona el repositorio:
    ```sh
    git clone https://github.com/tomasrl18/LinkNest.git
    cd LinkNest/frontend
    ```
-
-2. Install dependencies:
-
+2. Instala las dependencias:
    ```sh
    npm install
    ```
-
-3. Set the environment variables in `.env.local`:
-
-   ```
+3. Configura las variables de entorno en `.env.local`:
+   ```env
    VITE_SUPABASE_URL=your_url_from_supabase
    VITE_SUPABASE_ANON_KEY=your_anon_key
    ```
-
-4. Launch the app:
-
+4. Inicia el proyecto:
    ```sh
    npm run dev
    ```
+   Abre [http://localhost:5173](http://localhost:5173) en tu navegador.
 
-5. Open [http://localhost:5173](http://localhost:5173) in your browser.
+## 📋 Scripts útiles
 
-## Useful scripts
+- `npm run dev` — servidor de desarrollo
+- `npm run build` — compila para producción
+- `npm run preview` — vista previa de producción
+- `npm run lint` — linting de código
 
-- `npm run dev` — Starts the development server
-- `npm run build` — Compile the app for production
-- `npm run preview` — Preview production app
-- `npm run lint` — Linting of code
+## Licencia
 
-## License
-
-This project is licensed under the [MIT License](LICENSE).
+Proyecto disponible bajo licencia [MIT](LICENSE).
 
 ---
 
-Done with ❤️ & ☕️ by [@tomasrl18](https://github.com/tomasrl18)
+Hecho con ❤️ y ☕ por [@tomasrl18](https://github.com/tomasrl18)
