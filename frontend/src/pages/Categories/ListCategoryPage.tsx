@@ -68,7 +68,7 @@ export function ListCategoryPage() {
                 onCancel={() => setDeleteModal({ open: false, id: null })}
                 onConfirm={handleDelete}
             />
-            <section className="w-full max-w-md px-4 py-10 space-y-6">
+            <section className="w-full max-w-3xl px-4 py-10 space-y-6">
                 <header className="flex items-center justify-between bg-gray-900/70 rounded-2xl px-6 py-4 shadow-lg border border-gray-800">
                     <h1 className="text-xl font-semibold">Categorías</h1>
                     <button
@@ -80,21 +80,21 @@ export function ListCategoryPage() {
                     </button>
                 </header>
                 {categories.length ? (
-                    <ul className="space-y-3">
+                    <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
                         {categories.map(c => (
-                            <li key={c.id} className="group flex items-center justify-between bg-gray-900/70 border border-gray-800 rounded-xl p-3 shadow-lg">
+                            <li key={c.id} className="transition-all duration-200 group flex items-center justify-between bg-gray-900/70 border border-gray-800 rounded-xl p-3 shadow-lg hover:shadow-2xl hover:border-pink-600 hover:scale-[1.025]">
                                 <span className="font-medium">{c.name}</span>
                                 <div className="flex gap-3 opacity-80">
                                     <button
                                         onClick={() => setEditModal({ open: true, category: c })}
-                                        className="p-1 hover:text-indigo-400"
+                                        className="hover:text-indigo-400 transition-colors cursor-pointer"
                                         title="Editar"
                                     >
                                         <Pencil size={18} />
                                     </button>
                                     <button
                                         onClick={() => setDeleteModal({ open: true, id: c.id })}
-                                        className="p-1 hover:text-red-500"
+                                        className="hover:text-red-500 transition-colors cursor-pointer"
                                         title="Eliminar"
                                     >
                                         <Trash size={18} />

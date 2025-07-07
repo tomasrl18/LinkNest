@@ -48,7 +48,7 @@ export function Header() {
                                     : "text-gray-300 hover:text-indigo-200 transition-colors"
                             }
                         >
-                            Categorías
+                            Mis categorías
                         </NavLink>
 
                         <NavLink

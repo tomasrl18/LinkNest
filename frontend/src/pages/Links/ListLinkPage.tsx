@@ -107,14 +107,14 @@ export function ListLinkPage() {
                                         className="cursor-pointer absolute top-3 right-20 z-10 p-1 shadow opacity-80"
                                         title="Editar enlace"
                                     >
-                                        <Pencil size={20} className="text-gray-400 hover:text-indigo-400 transition-colors" />
+                                        <Pencil size={20} className="hover:text-indigo-400 transition-colors" />
                                     </Link>
                                     <button
                                         onClick={() => setDeleteModal({ open: true, id: link.id })}
                                         className="cursor-pointer absolute top-3 right-12 z-10 p-1 shadow opacity-80"
                                         title="Eliminar enlace"
                                     >
-                                        <Trash size={20} className="text-gray-400 hover:text-red-500 transition-colors" />
+                                        <Trash size={20} className="hover:text-red-500 transition-colors" />
                                     </button>
                                     <button
                                         onClick={() => toggleFav(link.id, link.favorite)}
@@ -127,7 +127,7 @@ export function ListLinkPage() {
                                                 `transition-all duration-300 transform ${
                                                     link.favorite
                                                         ? 'fill-yellow-400 text-yellow-400 drop-shadow scale-125 rotate-12'
-                                                        : 'text-gray-400 scale-100 rotate-0'
+                                                        : 'scale-100 rotate-0'
                                                 }`
                                             }
                                         />
