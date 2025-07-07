@@ -26,3 +26,10 @@ dist-ssr
 .env
 .env.local
 .env.*
+
+vitest
+vitest.*
+
+playwright.*
+
+test-results/
