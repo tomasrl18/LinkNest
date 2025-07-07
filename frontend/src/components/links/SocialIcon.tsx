@@ -1,9 +1,11 @@
-import XIcon from "../../assets/links_icons/x.svg";
-import TwitchIcon from "../../assets/links_icons/twitch.svg";
-import TiktokIcon from "../../assets/links_icons/tiktok.svg";
-import InstagramIcon from "../../assets/links_icons/instagram.svg";
-import GoogleIcon from "../../assets/links_icons/google.svg";
-import GitHubIcon from "../../assets/links_icons/github.svg";
+import {
+    XIcon,
+    TwitchIcon,
+    TiktokIcon,
+    InstagramIcon,
+    GoogleIcon,
+    GitHubIcon,
+} from "../../assets/links_icons/index.ts";
 
 // ICONS FROM https://simpleicons.org/
 
