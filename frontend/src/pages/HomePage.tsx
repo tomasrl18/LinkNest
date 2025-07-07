@@ -79,7 +79,7 @@ export function HomePage() {
 
             <motion.section
                 variants={container}
-                className="grid md:grid-cols-3 gap-6 mt-24 w-full max-w-5xl"
+                className="grid md:grid-cols-2 gap-6 mt-24 w-full max-w-5xl"
             >
                 {[
                     {
@@ -92,11 +92,11 @@ export function HomePage() {
                         title: "Clasifica y encuentra",
                         description: "Etiqueta tus enlaces, crea categorías y filtra por favoritos para encontrar lo que buscas en segundos.",
                     },
-                    {
+                    /* {
                         icon: <ArrowRight className="w-6 h-6 text-gray-300" />,
                         title: "Comparte con quien quieras",
                         description: "Genera colecciones públicas o privadas para compartir tus mejores recursos con tu equipo o amigos.",
-                    },
+                    }, */
                 ].map(({ icon, title, description }) => (
                     <motion.article
                         key={title}
