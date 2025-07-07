@@ -32,42 +32,44 @@ export function Header() {
                     Link<span className="text-indigo-200">Nest</span>
                 </Link>
 
-                {user && (
-                    <nav className="hidden sm:flex justify-self-center gap-6 text-sm">
-                        <NavLink
-                            to="/links"
-                            className={({ isActive }) =>
-                                isActive
-                                    ? "font-semibold text-indigo-300"
-                                    : "text-gray-300 hover:text-indigo-200 transition-colors"
-                            }
-                        >
-                            Mis enlaces
-                        </NavLink>
+                <nav className="hidden sm:flex justify-self-center gap-6 text-sm">
+                    {user && (
+                        <nav className="hidden sm:flex justify-self-center gap-6 text-sm">
+                            <NavLink
+                                to="/links"
+                                className={({ isActive }) =>
+                                    isActive
+                                        ? "font-semibold text-indigo-300"
+                                        : "text-gray-300 hover:text-indigo-200 transition-colors"
+                                }
+                            >
+                                Mis enlaces
+                            </NavLink>
 
-                        <NavLink
-                            to="/categories"
-                            className={({ isActive }) =>
-                                isActive
-                                    ? "font-semibold text-indigo-300"
-                                    : "text-gray-300 hover:text-indigo-200 transition-colors"
-                            }
-                        >
-                            Mis categorías
-                        </NavLink>
+                            <NavLink
+                                to="/categories"
+                                className={({ isActive }) =>
+                                    isActive
+                                        ? "font-semibold text-indigo-300"
+                                        : "text-gray-300 hover:text-indigo-200 transition-colors"
+                                }
+                            >
+                                Mis categorías
+                            </NavLink>
 
-                        <NavLink
-                            to="/links/new"
-                            className={({ isActive }) =>
-                                isActive
-                                    ? "font-semibold text-indigo-300"
-                                    : "text-gray-300 hover:text-indigo-200 transition-colors"
-                            }
-                        >
-                            Añadir enlace
-                        </NavLink>
-                    </nav>
-                )}
+                            <NavLink
+                                to="/links/new"
+                                className={({ isActive }) =>
+                                    isActive
+                                        ? "font-semibold text-indigo-300"
+                                        : "text-gray-300 hover:text-indigo-200 transition-colors"
+                                }
+                            >
+                                Añadir enlace
+                            </NavLink>
+                        </nav>
+                    )}
+                </nav>
                 <div className="flex items-center gap-2 justify-self-end">
                     {user && (
                         <button
