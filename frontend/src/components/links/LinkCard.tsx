@@ -1,6 +1,7 @@
 import type { Link } from "../../types/link";
 import { useMemo } from "react";
 import { gradientColors } from "../../constants/gradientColors";
+import SocialIcon from "./SocialIcon";
 
 function getRandomGradient() {
     return gradientColors[Math.floor(Math.random() * gradientColors.length)];
@@ -13,7 +14,7 @@ function LinkCard({ link }: { link: Link }) {
     );
     return (
         <article className="flex items-start gap-3 p-4 rounded-xl shadow-sm">
-            <img src={`https://www.google.com/s2/favicons?domain=${link.url}`} className="w-5 h-5 mt-1" />
+            <SocialIcon url={link.url} />
             <div className="flex-1">
                 <a href={link.url} target="_blank" rel="noreferrer" className="font-semibold">{link.title ? link.title : link.url}</a>
                 <p className="text-sm text-gray-500">{link.description}</p>
