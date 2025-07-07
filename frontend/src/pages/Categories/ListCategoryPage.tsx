@@ -68,7 +68,7 @@ export function ListCategoryPage() {
                 onCancel={() => setDeleteModal({ open: false, id: null })}
                 onConfirm={handleDelete}
             />
-            <section className="w-full max-w-3xl px-4 py-10 space-y-6">
+            <section className="container mx-auto px-4 py-10 space-y-6">
                 <header className="flex items-center justify-between bg-gray-900/70 rounded-2xl px-6 py-4 shadow-lg border border-gray-800">
                     <h1 className="text-xl font-semibold">Categorías</h1>
                     <button

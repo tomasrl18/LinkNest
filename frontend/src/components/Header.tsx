@@ -19,7 +19,7 @@ export function Header() {
             transition={{ type: "spring", stiffness: 120, damping: 14 }}
             className="sticky top-0 inset-x-0 z-50 bg-gray-900/80 backdrop-blur border-b border-gray-800"
         >
-            <div className="max-w-6xl mx-auto grid grid-cols-[auto_1fr_auto] items-center px-4 py-3">
+            <div className="container mx-auto grid grid-cols-[auto_1fr_auto] items-center px-4 py-3">
                 <Link
                     to="/"
                     className="text-xl md:text-2xl font-extrabold tracking-tight bg-gradient-to-r from-indigo-300 to-fuchsia-300 bg-clip-text text-transparent"

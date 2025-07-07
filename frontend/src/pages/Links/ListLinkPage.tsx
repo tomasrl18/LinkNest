@@ -56,7 +56,7 @@ export function ListLinkPage() {
                 onCancel={() => setDeleteModal({ open: false, id: null })}
                 onConfirm={handleDelete}
             />
-            <section className="w-full max-w-4xl px-4 py-10 space-y-8">
+            <section className="container mx-auto px-4 py-10 space-y-8">
                 <header className="flex flex-col gap-4 sm:flex-row sm:items-end w-full bg-gray-900/70 rounded-2xl px-6 py-4 shadow-lg border border-gray-800 mb-4">
                     <div className="flex-1 flex flex-col gap-2 sm:flex-row sm:items-center">
                         <div className="flex-1 flex items-center gap-2 bg-gray-800/70 rounded-xl px-4 py-2">

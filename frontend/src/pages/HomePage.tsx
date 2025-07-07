@@ -32,7 +32,7 @@ export function HomePage() {
             variants={container}
             className="min-h-screen flex flex-col items-center justify-between bg-gradient-to-br from-gray-900 via-gray-800 to-gray-950 overflow-x-hidden py-16 px-4"
         >
-            <section className="max-w-4xl w-full text-center space-y-6">
+            <section className="container mx-auto text-center space-y-6">
                 <motion.h1
                     variants={child}
                     className="text-5xl md:text-6xl font-extrabold leading-tight tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-fuchsia-500 drop-shadow-sm"
@@ -79,7 +79,7 @@ export function HomePage() {
 
             <motion.section
                 variants={container}
-                className="grid md:grid-cols-2 gap-6 mt-24 w-full max-w-5xl"
+                className="grid md:grid-cols-2 gap-6 mt-24 w-full container mx-auto"
             >
                 {[
                     {

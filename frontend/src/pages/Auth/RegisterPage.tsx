@@ -34,7 +34,7 @@ export const RegisterPage = () => {
         >
             <motion.form
                 onSubmit={handleSubmit}
-                className="w-full max-w-sm rounded-2xl bg-gray-800/70 backdrop-blur ring-1 ring-white/10 shadow-xl"
+                className="w-full max-w-xs sm:max-w-sm md:max-w-md rounded-2xl bg-gray-800/70 backdrop-blur ring-1 ring-white/10 shadow-xl"
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ type: "spring", stiffness: 140, damping: 18, delay: 0.15 }}

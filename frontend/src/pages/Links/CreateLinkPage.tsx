@@ -87,7 +87,7 @@ export function CreateLinkPage() {
             <span className="absolute -top-1 -right-1 opacity-10 pointer-events-none select-none z-0">
                 <LinkIcon size={320} />
             </span>
-            <section className="w-full max-w-lg px-4 py-10 z-10">
+            <section className="container mx-auto px-4 py-10 z-10">
                 <motion.form
                     onSubmit={handleSubmit}
                     className="space-y-7 bg-gray-900/70 backdrop-blur-2xl border border-gray-700/40 shadow-2xl rounded-3xl p-8 relative overflow-hidden"
