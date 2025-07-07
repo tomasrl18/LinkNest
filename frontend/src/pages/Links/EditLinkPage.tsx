@@ -7,6 +7,7 @@ import { useCategories } from "../../hooks/useCategories";
 import { CreateCategoryDialog } from "../../components/categories/CreateCategoryDialog";
 import type { Link } from "../../types/link";
 import { useAuth } from "../../context/AuthProvider";
+import { toast } from "react-hot-toast";
 
 export function EditLinkPage() {
     const { user } = useAuth();
@@ -65,9 +66,11 @@ export function EditLinkPage() {
         try {
             setLoading(true);
             await updateLink(id, payload);
+            toast.success("Enlace actualizado");
             navigate("/links");
         } catch (err) {
             console.error(err);
+            toast.error("Error al actualizar el enlace");
         } finally {
             setLoading(false);
         }

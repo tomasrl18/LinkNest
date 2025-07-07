@@ -6,6 +6,7 @@ import LinkCard from "../../components/links/LinkCard";
 import { Sparkles, Search, Star, Trash, Pencil } from "lucide-react";
 import { Link } from "react-router-dom";
 import ConfirmDeleteLinkDialog from "../../components/links/ConfirmDeleteLinkDialog";
+import { toast } from "react-hot-toast";
 
 export function ListLinkPage() {
     const { links, updateLink, deleteLink } = useLinks();
@@ -41,8 +42,10 @@ export function ListLinkPage() {
         try {
             await deleteLink(deleteModal.id);
             setDeleteModal({ open: false, id: null });
+            toast.success("Enlace eliminado");
         } catch (err) {
             console.error(err);
+            toast.error("Error al eliminar el enlace");
         }
     };
 

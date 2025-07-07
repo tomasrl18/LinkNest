@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { Bookmark, Loader2, Plus, Link as LinkIcon, Tag } from "lucide-react";
 import { useCategories } from "../../hooks/useCategories";
 import { CreateCategoryDialog } from "../../components/categories/CreateCategoryDialog";
+import { toast } from "react-hot-toast";
 
 export function CreateLinkPage() {
     const { user } = useAuth();
@@ -59,10 +60,12 @@ export function CreateLinkPage() {
         try {
             setLoading(true);
             await addLink(payload);
+            toast.success("Enlace creado");
             setForm({ url: "", title: "", description: "", category_id: "", tags: [], favorite: false });
             setTagInput("");
         } catch (err) {
             console.error(err);
+            toast.error("Error al crear el enlace");
         } finally {
             setLoading(false);
         }
