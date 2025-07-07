@@ -41,6 +41,17 @@ export function Header() {
                         </NavLink>
 
                         <NavLink
+                            to="/categories"
+                            className={({ isActive }) =>
+                                isActive
+                                    ? "font-semibold text-indigo-300"
+                                    : "text-gray-300 hover:text-indigo-200 transition-colors"
+                            }
+                        >
+                            Categorías
+                        </NavLink>
+
+                        <NavLink
                             to="/links/new"
                             className={({ isActive }) =>
                                 isActive
