@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import { useAuth } from '../../context/AuthProvider';
+import { toast } from 'react-hot-toast';
 import { motion } from "framer-motion";
 import { pageVariants, pageTransition } from "../../animations/pageVariants";
 import { useNavigate, Link } from 'react-router-dom';
@@ -21,6 +22,7 @@ export const LoginPage = () => {
             navigate('/links');
         } catch (err) {
             console.error(err);
+            toast.error('Credenciales incorrectas');
         }
     };
 
