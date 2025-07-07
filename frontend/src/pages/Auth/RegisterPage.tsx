@@ -1,4 +1,6 @@
 
+import { useState } from "react";
+import { Eye, EyeOff } from "lucide-react";
 import { useAuth } from '../../context/AuthProvider';
 import { useNavigate } from 'react-router-dom';
 import { motion } from "framer-motion";
@@ -8,6 +10,7 @@ import { pageVariants, pageTransition } from "../../animations/pageVariants";
 export const RegisterPage = () => {
     const { signUp } = useAuth();
     const navigate = useNavigate();
+    const [showPassword, setShowPassword] = useState(false);
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -49,13 +52,23 @@ export const RegisterPage = () => {
                         placeholder="Email"
                         className="input input-bordered w-full bg-gray-900/50 text-gray-100"
                     />
-                    <input
-                        name="password"
-                        type="password"
-                        required
-                        placeholder="Contraseña"
-                        className="input input-bordered w-full bg-gray-900/50 text-gray-100"
-                    />
+                    <div className="relative">
+                        <input
+                            name="password"
+                            type={showPassword ? "text" : "password"}
+                            required
+                            placeholder="Contraseña"
+                            className="input input-bordered w-full bg-gray-900/50 text-gray-100 pr-10"
+                        />
+                        <button
+                            type="button"
+                            onClick={() => setShowPassword(v => !v)}
+                            className="absolute inset-y-0 right-0 flex items-center px-3 text-gray-400 hover:text-gray-200"
+                            aria-label={showPassword ? "Ocultar contraseña" : "Mostrar contraseña"}
+                        >
+                            {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                        </button>
+                    </div>
 
                     <button type="submit" className="btn btn-primary w-full rounded-xl">
                         Registrarse
