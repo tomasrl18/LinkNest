@@ -9,69 +9,26 @@ import {
 
 // ICONS FROM https://simpleicons.org/
 
+const ICONS: { [key: string]: { domains: string[]; src: string; alt: string } } = {
+    x: { domains: ["x.com", "twitter.com"], src: XIcon, alt: "X icon" },
+    twitch: { domains: ["twitch.tv"], src: TwitchIcon, alt: "Twitch icon" },
+    tiktok: { domains: ["tiktok.com"], src: TiktokIcon, alt: "Tiktok icon" },
+    instagram: { domains: ["instagram.com"], src: InstagramIcon, alt: "Instagram icon" },
+    google: { domains: ["google.com"], src: GoogleIcon, alt: "Google icon" },
+    github: { domains: ["github.com"], src: GitHubIcon, alt: "GitHub icon" },
+};
+
 export default function SocialIcon({ url }: { url: string }) {
-    if (url.includes("x.com") || url.includes("twitter.com")) {
-        return (
-            <img
-                src={XIcon}
-                className="w-5 h-5 mt-1 invert"
-                alt="X icon"
-                style={{ filter: "invert(1)" }}
-            />
-        );
-    }
+    const match = Object.values(ICONS).find(({ domains }) =>
+        domains.some((domain) => url.includes(domain))
+    );
 
-    if (url.includes("twitch.tv")) {
+    if (match) {
         return (
             <img
-                src={TwitchIcon}
+                src={match.src}
                 className="w-5 h-5 mt-1 invert"
-                alt="Twitch icon"
-                style={{ filter: "invert(1)" }}
-            />
-        );
-    }
-
-    if (url.includes("tiktok.com")) {
-        return (
-            <img
-                src={TiktokIcon}
-                className="w-5 h-5 mt-1 invert"
-                alt="Twitch icon"
-                style={{ filter: "invert(1)" }}
-            />
-        );
-    }
-
-    if (url.includes("instagram.com")) {
-        return (
-            <img
-                src={InstagramIcon}
-                className="w-5 h-5 mt-1 invert"
-                alt="Twitch icon"
-                style={{ filter: "invert(1)" }}
-            />
-        );
-    }
-
-    if (url.includes("google.com")) {
-        return (
-            <img
-                src={GoogleIcon}
-                className="w-5 h-5 mt-1 invert"
-                alt="Twitch icon"
-                style={{ filter: "invert(1)" }}
-            />
-        );
-    }
-
-    if (url.includes("github.com")) {
-        return (
-            <img
-                src={GitHubIcon}
-                className="w-5 h-5 mt-1 invert"
-                alt="Twitch icon"
-                style={{ filter: "invert(1)" }}
+                alt={match.alt}
             />
         );
     }
