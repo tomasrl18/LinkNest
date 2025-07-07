@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route, useLocation, Navigate } from 'react-router-dom';
+import { Toaster } from 'react-hot-toast';
 import { PrivateRoute } from './components/PrivateRoute'
 import { LoginPage } from './pages/Auth/LoginPage';
 import { RegisterPage } from './pages/Auth/RegisterPage';
@@ -35,6 +36,7 @@ function App() {
     return (
         <BrowserRouter>
             <Header />
+            <Toaster position="top-right" />
             <AnimatedRoutes />
         </BrowserRouter>
     );
