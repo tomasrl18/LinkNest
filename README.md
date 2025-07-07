@@ -53,6 +53,11 @@ Organiza y redescubre tus enlaces favoritos en un mismo lugar. Guarda artículos
 - `npm run preview` — vista previa de producción
 - `npm run lint` — linting de código
 
+## 🤝 Contribuciones
+
+Las contribuciones son bienvenidas. Si encuentras algún problema o tienes una
+propuesta de mejora, no dudes en abrir un *issue* o enviar un *pull request*.
+
 ## Licencia
 
 Proyecto disponible bajo licencia [MIT](LICENSE).
