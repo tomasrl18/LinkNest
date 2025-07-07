@@ -6,6 +6,7 @@ import { CreateCategoryDialog } from "../../components/categories/CreateCategory
 import { EditCategoryDialog } from "../../components/categories/EditCategoryDialog";
 import ConfirmDeleteCategoryDialog from "../../components/categories/ConfirmDeleteCategoryDialog";
 import type { Category } from "../../types/category";
+import { toast } from "react-hot-toast";
 
 export function ListCategoryPage() {
     const { user } = useAuth();
@@ -15,20 +16,38 @@ export function ListCategoryPage() {
     const [deleteModal, setDeleteModal] = useState<{ open: boolean; id: string | null }>({ open: false, id: null });
 
     const handleCreate = async (name: string) => {
-        await createCategory({ name, user_id: user?.id });
-        await fetchCategories();
+        try {
+            await createCategory({ name, user_id: user?.id });
+            toast.success("Categoría creada");
+            await fetchCategories();
+        } catch (err) {
+            console.error(err);
+            toast.error("Error al crear la categoría");
+        }
     };
 
     const handleEdit = async (name: string) => {
         if (!editModal.category) return;
-        await updateCategory(editModal.category.id, { name });
-        setEditModal({ open: false, category: null });
+        try {
+            await updateCategory(editModal.category.id, { name });
+            toast.success("Categoría actualizada");
+            setEditModal({ open: false, category: null });
+        } catch (err) {
+            console.error(err);
+            toast.error("Error al actualizar la categoría");
+        }
     };
 
     const handleDelete = async () => {
         if (!deleteModal.id) return;
-        await deleteCategory(deleteModal.id);
-        setDeleteModal({ open: false, id: null });
+        try {
+            await deleteCategory(deleteModal.id);
+            toast.success("Categoría eliminada");
+            setDeleteModal({ open: false, id: null });
+        } catch (err) {
+            console.error(err);
+            toast.error("Error al eliminar la categoría");
+        }
     };
 
     return (
