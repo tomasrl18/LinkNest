@@ -99,39 +99,41 @@ export function ListLinkPage() {
                         {filtered.map(link => (
                             <li key={link.id} className="group relative">
                                 <div
-                                    className="transition-all duration-200 bg-gray-900/70 border border-gray-800 rounded-2xl shadow-lg hover:shadow-2xl hover:border-pink-600 hover:scale-[1.025] flex items-stretch"
+                                    className="transition-all duration-200 bg-gray-900/70 border border-gray-800 rounded-2xl shadow-lg hover:shadow-2xl hover:border-pink-600 hover:scale-[1.025] flex flex-col sm:flex-row items-stretch relative"
                                 >
                                     <LinkCard link={link} />
-                                    <Link
-                                        to={`/links/${link.id}/edit`}
-                                        className="cursor-pointer absolute top-3 right-20 z-10 p-1 shadow opacity-80"
-                                        title="Editar enlace"
-                                    >
-                                        <Pencil size={20} className="hover:text-indigo-400 transition-colors" />
-                                    </Link>
-                                    <button
-                                        onClick={() => setDeleteModal({ open: true, id: link.id })}
-                                        className="cursor-pointer absolute top-3 right-12 z-10 p-1 shadow opacity-80"
-                                        title="Eliminar enlace"
-                                    >
-                                        <Trash size={20} className="hover:text-red-500 transition-colors" />
-                                    </button>
-                                    <button
-                                        onClick={() => toggleFav(link.id, link.favorite)}
-                                        className="cursor-pointer absolute top-3 right-4 z-10 p-1 shadow opacity-80"
-                                        title={link.favorite ? "Quitar de favoritos" : "Marcar como favorito"}
-                                    >
-                                        <Star
-                                            size={20}
-                                            className={
-                                                `transition-all duration-300 transform ${
-                                                    link.favorite
-                                                        ? 'fill-yellow-400 text-yellow-400 drop-shadow scale-125 rotate-12'
-                                                        : 'scale-100 rotate-0'
-                                                }`
-                                            }
-                                        />
-                                    </button>
+                                    <div className="flex gap-2 mt-2 sm:mt-0 sm:absolute sm:top-3 sm:right-4 sm:flex-row self-end">
+                                        <Link
+                                            to={`/links/${link.id}/edit`}
+                                            className="cursor-pointer p-1 shadow opacity-80"
+                                            title="Editar enlace"
+                                        >
+                                            <Pencil size={20} className="hover:text-indigo-400 transition-colors" />
+                                        </Link>
+                                        <button
+                                            onClick={() => setDeleteModal({ open: true, id: link.id })}
+                                            className="cursor-pointer p-1 shadow opacity-80"
+                                            title="Eliminar enlace"
+                                        >
+                                            <Trash size={20} className="hover:text-red-500 transition-colors" />
+                                        </button>
+                                        <button
+                                            onClick={() => toggleFav(link.id, link.favorite)}
+                                            className="cursor-pointer p-1 shadow opacity-80"
+                                            title={link.favorite ? "Quitar de favoritos" : "Marcar como favorito"}
+                                        >
+                                            <Star
+                                                size={20}
+                                                className={
+                                                    `transition-all duration-300 transform ${
+                                                        link.favorite
+                                                            ? 'fill-yellow-400 text-yellow-400 drop-shadow scale-125 rotate-12'
+                                                            : 'scale-100 rotate-0'
+                                                    }`
+                                                }
+                                            />
+                                        </button>
+                                    </div>
                                 </div>
                             </li>
                         ))}
