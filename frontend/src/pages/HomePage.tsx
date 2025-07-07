@@ -113,12 +113,7 @@ export function HomePage() {
             </motion.section>
 
             <motion.footer variants={child} className="text-sm text-gray-500 mt-24">
-                <div>
-                    Hecho con ❤️ y ☕️ — © {new Date().getFullYear()} LinkNest
-                </div>
-                <div className="text-center">
-                    By <a href="https://github.com/tomasrl18" target="_blank" rel="noreferrer" className="text-indigo-400 hover:underline text-lg">Tomás</a>
-                </div>
+                Hecho con ❤️ y ☕️ por <a href="https://github.com/tomasrl18" target="_blank" rel="noreferrer" className="text-indigo-400 hover:underline">Tomás</a> — © {new Date().getFullYear()} LinkNest
             </motion.footer>
         </motion.main>
     );
