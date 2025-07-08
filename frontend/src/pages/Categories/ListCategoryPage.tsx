@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { Sparkles, Plus, Pencil, Trash } from "lucide-react";
+import { Sparkles, Plus, Pencil, Trash, Share2 } from "lucide-react";
 import { useCategories } from "../../hooks/useCategories";
 import { useAuth } from "../../context/AuthProvider";
 import { CreateCategoryDialog } from "../../components/categories/CreateCategoryDialog";
 import { EditCategoryDialog } from "../../components/categories/EditCategoryDialog";
 import ConfirmDeleteCategoryDialog from "../../components/categories/ConfirmDeleteCategoryDialog";
+import { ShareCategoryDialog } from "../../components/categories/ShareCategoryDialog";
 import type { Category } from "../../types/category";
 import { toast } from "react-hot-toast";
 
@@ -14,6 +15,7 @@ export function ListCategoryPage() {
     const [createOpen, setCreateOpen] = useState(false);
     const [editModal, setEditModal] = useState<{ open: boolean; category: Category | null }>({ open: false, category: null });
     const [deleteModal, setDeleteModal] = useState<{ open: boolean; id: string | null }>({ open: false, id: null });
+    const [shareModal, setShareModal] = useState<{ open: boolean; id: string | null }>({ open: false, id: null });
 
     const handleCreate = async (name: string) => {
         try {
@@ -68,6 +70,11 @@ export function ListCategoryPage() {
                 onCancel={() => setDeleteModal({ open: false, id: null })}
                 onConfirm={handleDelete}
             />
+            <ShareCategoryDialog
+                open={shareModal.open}
+                categoryId={shareModal.id ?? ''}
+                onClose={() => setShareModal({ open: false, id: null })}
+            />
             <section className="container mx-auto px-4 py-10 space-y-6">
                 <header className="flex items-center justify-between bg-gray-900/70 rounded-2xl px-6 py-4 shadow-lg border border-gray-800">
                     <h1 className="text-xl font-semibold">Categorías</h1>
@@ -98,6 +105,13 @@ export function ListCategoryPage() {
                                         title="Eliminar"
                                     >
                                         <Trash size={18} />
+                                    </button>
+                                    <button
+                                        onClick={() => setShareModal({ open: true, id: c.id })}
+                                        className="hover:text-indigo-400 transition-colors cursor-pointer"
+                                        title="Compartir"
+                                    >
+                                        <Share2 size={18} />
                                     </button>
                                 </div>
                             </li>
