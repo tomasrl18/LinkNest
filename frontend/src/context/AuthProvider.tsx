@@ -40,6 +40,11 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         const { data, error } = await supabase.auth.signUp({ email, password });
         if (error) throw error;
 
+        const userId = data.user?.id;
+        if (userId) {
+            await supabase.from('profiles').insert({ id: userId, email }).catch(() => undefined);
+        }
+
         if (!data.session) {
             const { error: signInError } = await supabase.auth.signInWithPassword({ email, password });
             if (signInError) throw signInError;
