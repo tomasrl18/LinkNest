@@ -22,8 +22,9 @@ export function useCategoryMembers(categoryId: string) {
             const { data, error } = await addCategoryMember(categoryId, email);
             if (error) throw error;
             if (data) setMembers(prev => [...prev, data as CategoryMember]);
+            await fetchMembers();
         },
-        [categoryId],
+        [categoryId, fetchMembers],
     );
 
     const removeMember = useCallback(
