@@ -75,11 +75,6 @@ export const LoginPage = () => {
                         Entrar
                     </button>
                     <p className="text-center text-sm text-gray-400">
-                        <Link to="/forgot-password" className="text-indigo-300 hover:underline">
-                            ¿Olvidaste tu contraseña?
-                        </Link>
-                    </p>
-                    <p className="text-center text-sm text-gray-400">
                         ¿No tienes cuenta?{' '}
                         <Link to="/register" className="text-indigo-300 hover:underline">
                             Regístrate

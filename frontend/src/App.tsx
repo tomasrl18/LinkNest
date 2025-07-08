@@ -3,8 +3,6 @@ import { Toaster } from 'react-hot-toast';
 import { PrivateRoute } from './components/PrivateRoute'
 import { LoginPage } from './pages/Auth/LoginPage';
 import { RegisterPage } from './pages/Auth/RegisterPage';
-import { ForgotPasswordPage } from './pages/Auth/ForgotPasswordPage';
-import { ResetPasswordPage } from './pages/Auth/ResetPasswordPage';
 import { HomePage } from './pages/HomePage';
 import { Header } from './components/Header';
 import { ListLinkPage } from './pages/Links/ListLinkPage';
@@ -22,8 +20,6 @@ function AnimatedRoutes() {
                 <Route path="/" element={<HomePage />} />
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/register" element={<RegisterPage />} />
-                <Route path="/forgot-password" element={<ForgotPasswordPage />} />
-                <Route path="/reset-password" element={<ResetPasswordPage />} />
 
                 <Route element={<PrivateRoute />}>
                     <Route path="/links" element={<ListLinkPage />} />
