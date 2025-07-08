@@ -18,8 +18,7 @@ export async function addCategoryMember(categoryId: string, email: string) {
     const { error: insertError } = await supabase
         .from('category_members')
         .insert(
-            { category_id: categoryId, user_id: userId },
-            { returning: 'minimal' }
+            { category_id: categoryId, user_id: userId }
         );
 
     if (insertError) return { error: insertError, data: null };
