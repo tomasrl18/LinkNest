@@ -8,23 +8,21 @@ export async function getCategoryMembers(categoryId: string) {
 }
 
 export async function addCategoryMember(categoryId: string, email: string) {
-    const { data: profile, error: profileError } = await supabase
-        .from('profiles')
-        .select('id')
-        .eq('email', email)
-        .maybeSingle();
+    const { data: userId, error: rpcError } = await supabase
+        .rpc('get_profile_id_by_email', { _email: email })
+        .single();
 
-    if (profileError) return { error: profileError, data: null };
-    if (!profile) return { error: 'Usuario no encontrado', data: null };
+    if (rpcError) return { error: rpcError, data: null };
+    if (!userId)   return { error: 'Usuario no encontrado', data: null };
 
     const { error: insertError } = await supabase
         .from('category_members')
         .insert(
-            { category_id: categoryId, user_id: profile.id },
-            { returning: 'minimal' }   // no intentes devolver la fila insertada
+            { category_id: categoryId, user_id: userId },
+            { returning: 'minimal' }
         );
-    
-    if (insertError)  return { error: insertError, data: null };
+
+    if (insertError) return { error: insertError, data: null };
     return { error: null, data: null };
 }
 
