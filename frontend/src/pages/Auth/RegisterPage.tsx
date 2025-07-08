@@ -5,18 +5,27 @@ import { useAuth } from '../../context/AuthProvider';
 import { useNavigate } from 'react-router-dom';
 import { motion } from "framer-motion";
 import { pageVariants, pageTransition } from "../../animations/pageVariants";
-
+import { cn } from "../../lib/utils";
 
 export const RegisterPage = () => {
     const { signUp } = useAuth();
     const navigate = useNavigate();
     const [showPassword, setShowPassword] = useState(false);
+    const [password, setPassword] = useState("");
+
+    const passwordRegex = {
+        minLength: /.{8,}/,
+        lowercase: /[a-z]/,
+        uppercase: /[A-Z]/,
+        number: /\d/,
+        symbol: /[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?`~]/,
+    };
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         const email = e.currentTarget.email.value;
-        const pass  = e.currentTarget.password.value;
+        const pass  = password;
 
         try {
             await signUp(email, pass);
@@ -58,6 +67,8 @@ export const RegisterPage = () => {
                             type={showPassword ? "text" : "password"}
                             required
                             placeholder="Contraseña"
+                            value={password}
+                            onChange={e => setPassword(e.target.value)}
                             className="input input-bordered w-full bg-gray-900/50 text-gray-100 pr-10"
                         />
                         <button
@@ -69,6 +80,13 @@ export const RegisterPage = () => {
                             {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
                         </button>
                     </div>
+                    <ul className="mt-1 text-xs space-y-0.5 text-gray-400 text-center">
+                        <li className={cn(passwordRegex.minLength.test(password) && 'text-green-400')}>Mínimo 8 caracteres</li>
+                        <li className={cn(passwordRegex.lowercase.test(password) && 'text-green-400')}>Una letra minúscula</li>
+                        <li className={cn(passwordRegex.uppercase.test(password) && 'text-green-400')}>Una letra mayúscula</li>
+                        <li className={cn(passwordRegex.number.test(password) && 'text-green-400')}>Un número</li>
+                        <li className={cn(passwordRegex.symbol.test(password) && 'text-green-400')}>Un símbolo</li>
+                    </ul>
 
                     <button type="submit" className="btn btn-primary w-full rounded-xl">
                         Registrarse
