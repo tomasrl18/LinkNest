@@ -42,7 +42,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
         const userId = data.user?.id;
         if (userId) {
-            await supabase.from('profiles').insert({ id: userId, email }).catch(() => undefined);
+            await supabase.from('profiles').insert({ id: userId, email });
         }
 
         if (!data.session) {
