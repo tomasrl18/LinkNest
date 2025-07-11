@@ -58,6 +58,11 @@ Organiza y redescubre tus enlaces favoritos en un mismo lugar. Guarda artículos
 Las contribuciones son bienvenidas. Si encuentras algún problema o tienes una
 propuesta de mejora, no dudes en abrir un *issue* o enviar un *pull request*.
 
+## 📬 Contacto y sugerencias
+
+Para dudas, comentarios o sugerencias sobre LinkNest, puedes escribirnos a
+[`mailslinknest@gmail.com`](mailto:mailslinknest@gmail.com).
+
 ## Licencia
 
 Proyecto disponible bajo licencia [MIT](LICENSE).
