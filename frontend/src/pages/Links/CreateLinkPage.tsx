@@ -3,7 +3,7 @@ import { useLinks } from "../../hooks/useLinks";
 import type { Link } from "../../types/link";
 import { useAuth } from "../../context/AuthProvider";
 import { motion } from "framer-motion";
-import { Bookmark, Loader2, Plus, Link as LinkIcon, Tag } from "lucide-react";
+import { Bookmark, Loader2, Plus, Link as LinkIcon, Tag, X } from "lucide-react";
 import { useCategories } from "../../hooks/useCategories";
 import { CreateCategoryDialog } from "../../components/categories/CreateCategoryDialog";
 import { toast } from "react-hot-toast";
@@ -24,6 +24,13 @@ export function CreateLinkPage() {
     const [tagInput, setTagInput] = useState("");
     const [loading, setLoading] = useState(false);
     const [categoryDialogOpen, setCategoryDialogOpen] = useState(false);
+
+    const removeTag = (index: number) => {
+        setForm(prev => ({
+            ...prev,
+            tags: prev.tags.filter((_, i) => i !== index),
+        }));
+    };
 
     const handleChange = (
         e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
@@ -169,14 +176,14 @@ export function CreateLinkPage() {
                         </div>
                         <div className="flex flex-col sm:flex-row gap-5 items-start sm:items-end">
                             <div className="flex-1 flex flex-col gap-1 relative">
-                                <label htmlFor="tagInput" className="text-sm font-medium pl-1">Tags</label>
+                                <label htmlFor="tagInput" className="text-sm font-medium pl-1">Etiquetas</label>
                                 <div className="flex gap-2">
                                     <input
                                         id="tagInput"
                                         value={tagInput}
                                         onChange={e => setTagInput(e.target.value)}
                                         onKeyDown={e => { if (e.key === 'Enter') { e.preventDefault(); addTag(); } }}
-                                        placeholder="web, ui, inspiración"
+                                        placeholder="comida, programación, boda..."
                                         className="input input-bordered w-full rounded-xl px-2 py-2 text-sm bg-gray-800/80"
                                     />
                                     <button
@@ -189,7 +196,15 @@ export function CreateLinkPage() {
                                 </div>
                                 <div className="flex flex-wrap gap-1 mt-1 min-h-[24px]">
                                     {form.tags.map((tag, i) => (
-                                        <span key={i} className="badge badge-sm badge-info bg-gradient-to-r from-indigo-400 to-pink-400 text-white border-0 opacity-80 px-3">{tag}</span>
+                                        <span
+                                            key={i}
+                                            className="badge badge-sm badge-info bg-gradient-to-r from-indigo-400 to-pink-400 text-white border-0 opacity-80 pl-3 pr-1 flex items-center gap-1"
+                                        >
+                                            {tag}
+                                            <button type="button" onClick={() => removeTag(i)} className="ml-1 focus:outline-none">
+                                                <X className="w-3 h-3" />
+                                            </button>
+                                        </span>
                                     ))}
                                 </div>
                                 <button
