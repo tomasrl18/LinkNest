@@ -8,6 +8,7 @@ export interface Link {
     description: string | null;
     category_id: string | null;
     category?: Category | null;
+    categories?: Category | null;
     tags: string[] | null;
     favorite: boolean;
     created_at: string;
