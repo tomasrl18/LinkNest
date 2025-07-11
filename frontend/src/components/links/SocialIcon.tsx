@@ -5,6 +5,7 @@ import {
     InstagramIcon,
     GoogleIcon,
     GitHubIcon,
+    YoutubeIcon,
 } from "../../assets/links_icons/index.ts";
 
 // ICONS FROM https://simpleicons.org/
@@ -16,6 +17,7 @@ const ICONS: { [key: string]: { domains: string[]; src: string; alt: string } } 
     instagram: { domains: ["instagram.com"], src: InstagramIcon, alt: "Instagram icon" },
     google: { domains: ["google.com"], src: GoogleIcon, alt: "Google icon" },
     github: { domains: ["github.com"], src: GitHubIcon, alt: "GitHub icon" },
+    youtube: { domains: ["youtube.com"], src: YoutubeIcon, alt: "YouTube icon" },
 };
 
 export default function SocialIcon({ url }: { url: string }) {
