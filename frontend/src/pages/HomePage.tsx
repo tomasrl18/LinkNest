@@ -112,6 +112,27 @@ export function HomePage() {
                 ))}
             </motion.section>
 
+            <motion.section
+                variants={container}
+                className="mt-24 w-full container mx-auto text-center bg-gray-900/80 backdrop-blur border border-gray-800 rounded-2xl p-6 shadow-lg"
+            >
+                <motion.h2
+                    variants={child}
+                    className="text-2xl font-bold text-gray-100 mb-2"
+                >
+                    ¿Tienes sugerencias o comentarios?
+                </motion.h2>
+                <motion.p variants={child} className="text-gray-400">
+                    Escríbenos a{' '}
+                    <a
+                        href="mailto:mailslinknest@gmail.com"
+                        className="text-indigo-300 hover:underline"
+                    >
+                        mailslinknest@gmail.com
+                    </a>
+                </motion.p>
+            </motion.section>
+
             <motion.footer variants={child} className="text-sm text-gray-500 mt-24">
                 Hecho con ❤️ y ☕️ por <a href="https://github.com/tomasrl18" target="_blank" rel="noreferrer" className="text-indigo-400 hover:underline">Tomás</a> — © {new Date().getFullYear()} LinkNest
             </motion.footer>
