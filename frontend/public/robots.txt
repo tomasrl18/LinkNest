@@ -1,3 +1,7 @@
 User-agent: *
 Allow: /
+Disallow: /links/
+Disallow: /categories/
+Disallow: /links/new/
+Disallow: /links/*
 Sitemap: https://linknest.example.com/sitemap.xml
