@@ -3,10 +3,13 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { useAuth } from "../context/AuthProvider";
+import { LanguageSwitcher } from "../components/lang/LangSelector";
+import { useTranslation } from "react-i18next";
 
 import { useState } from "react";
 
 export function Header() {
+    const { t } = useTranslation();
     const { user, signOut } = useAuth();
     const navigate = useNavigate();
     const [menuOpen, setMenuOpen] = useState(false);
@@ -28,6 +31,8 @@ export function Header() {
                 <Link
                     to="/"
                     className="text-xl md:text-2xl font-extrabold tracking-tight bg-gradient-to-r from-indigo-300 to-fuchsia-300 bg-clip-text text-transparent"
+                    aria-label={t('app.name')}
+                    title={t('app.name')}
                 >
                     Link<span className="text-indigo-200">Nest</span>
                 </Link>
@@ -43,7 +48,7 @@ export function Header() {
                                         : "text-gray-300 hover:text-indigo-200 transition-colors"
                                 }
                             >
-                                Mis enlaces
+                                {t('nav.links')}
                             </NavLink>
 
                             <NavLink
@@ -54,7 +59,7 @@ export function Header() {
                                         : "text-gray-300 hover:text-indigo-200 transition-colors"
                                 }
                             >
-                                Mis categorías
+                                {t('nav.categories')}
                             </NavLink>
 
                             <NavLink
@@ -65,17 +70,19 @@ export function Header() {
                                         : "text-gray-300 hover:text-indigo-200 transition-colors"
                                 }
                             >
-                                Añadir enlace
+                                {t('nav.addLink')}
                             </NavLink>
                         </nav>
                     )}
                 </nav>
                 <div className="flex items-center gap-2 justify-self-end">
+                    <LanguageSwitcher />
+                    
                     {user && (
                         <button
                             className="sm:hidden p-2 rounded-md text-gray-300 hover:text-indigo-200 transition-colors"
                             onClick={() => setMenuOpen(true)}
-                            aria-label="Abrir menú"
+                            aria-label={t('nav.openMenu')}
                         >
                             <Menu size={20} />
                         </button>
@@ -86,7 +93,7 @@ export function Header() {
                             className="bg-indigo-600 hover:bg-indigo-500 text-white shadow cursor-pointer"
                             onClick={handleLogout}
                         >
-                            Logout
+                            {t('auth.logout')}
                         </Button>
                     ) : (
                         <Button
@@ -94,7 +101,9 @@ export function Header() {
                             size="sm"
                             className="bg-indigo-600 hover:bg-indigo-500 text-white shadow cursor-pointer"
                         >
-                            <Link to="/login">Login</Link>
+                            <Link to="/login">
+                                {t('auth.login')}
+                            </Link>
                         </Button>
                     )}
                 </div>
@@ -123,7 +132,7 @@ export function Header() {
                         <button
                             className="absolute top-4 right-4 p-1 rounded-md text-gray-400 hover:text-white"
                             onClick={() => setMenuOpen(false)}
-                            aria-label="Cerrar menú"
+                            aria-label={t('nav.closeMenu')}
                         >
                             <X size={18} />
                         </button>
@@ -136,7 +145,7 @@ export function Header() {
                                     : 'text-gray-300 hover:text-indigo-200 transition-colors'
                             }
                         >
-                            Mis enlaces
+                            {t('nav.links')}
                         </NavLink>
                         <NavLink
                             to="/categories"
@@ -147,7 +156,7 @@ export function Header() {
                                     : 'text-gray-300 hover:text-indigo-200 transition-colors'
                             }
                         >
-                            Mis categorías
+                            {t('nav.categories')}
                         </NavLink>
                         <NavLink
                             to="/links/new"
@@ -158,7 +167,7 @@ export function Header() {
                                     : 'text-gray-300 hover:text-indigo-200 transition-colors'
                             }
                         >
-                            Añadir enlace
+                            {t('nav.addLink')}
                         </NavLink>
                     </motion.nav>
                 </motion.div>

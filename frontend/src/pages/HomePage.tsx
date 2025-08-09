@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight, Bookmark, Sparkles, Code, Share2 } from "lucide-react";
 import { Button } from "../components/ui/button";
-
+import { useTranslation, Trans } from "react-i18next";
 import type { Variants } from "framer-motion";
 
 const container: Variants = {
@@ -25,6 +25,8 @@ const child: Variants = {
 };
 
 export function HomePage() {
+    const { t } = useTranslation();
+
     return (
         <motion.main
             initial="hidden"
@@ -37,15 +39,16 @@ export function HomePage() {
                     variants={child}
                     className="text-5xl md:text-6xl font-extrabold leading-tight tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-fuchsia-500 drop-shadow-sm"
                 >
-                    Organiza tus enlaces <br className="hidden md:block" /> en un solo lugar
+                    <Trans i18nKey="home.title">
+                        Organiza tus enlaces <br className="hidden md:block" /> en un solo lugar
+                    </Trans>
                 </motion.h1>
 
                 <motion.p
                     variants={child}
                     className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto"
                 >
-                    LinkNest te ayuda a guardar, clasificar y redescubrir cualquier enlace,
-                    desde artículos de referencia hasta vídeos inspiradores, con un solo clic.
+                    {t('home.subtitle')}
                 </motion.p>
 
                 <motion.div variants={child} className="flex flex-col sm:flex-row justify-center gap-4 mt-4">
@@ -54,7 +57,7 @@ export function HomePage() {
                         className="group relative inline-flex items-center gap-2 text-base font-semibold px-8 py-3 rounded-2xl shadow-lg bg-gradient-to-r from-emerald-500 via-lime-500 to-emerald-600 hover:brightness-110 focus:outline-none focus:ring-2 focus:ring-lime-400/80 transition"
                     >
                         <Link to="/register" className="flex items-center gap-2">
-                            Empieza ahora
+                            {t('home.startNow')}
                             <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
                         </Link>
                     </Button>
@@ -70,7 +73,7 @@ export function HomePage() {
                             rel="noreferrer"
                             className="flex items-center gap-2"
                         >
-                            Código fuente
+                            {t('home.code')}
                             <Code size={18} className="transition-transform group-hover:-rotate-6" />
                         </a>
                     </Button>
@@ -84,18 +87,18 @@ export function HomePage() {
                 {[
                     {
                         icon: <Bookmark className="w-6 h-6 text-indigo-400" />,
-                        title: "Guarda al instante",
-                        description: "Añade enlaces con un solo clic y nosotros capturamos título, favicon y meta descriptiva por ti.",
+                        title: t('home.infoSection.instantlySave.title'),
+                        description: t('home.infoSection.instantlySave.subtitle'),
                     },
                     {
                         icon: <Sparkles className="w-6 h-6 text-fuchsia-400" />,
-                        title: "Clasifica y encuentra",
-                        description: "Etiqueta tus enlaces, crea categorías y filtra por favoritos para encontrar lo que buscas en segundos.",
+                        title: t('home.infoSection.sortFind.title'),
+                        description: t('home.infoSection.sortFind.subtitle'),
                     },
                     {
                         icon: <Share2 className="w-6 h-6 text-gray-300" />,
-                        title: "Comparte con quien quieras",
-                        description: "Genera colecciones públicas o privadas para compartir tus mejores recursos con tu equipo o amigos.",
+                        title: t('home.infoSection.share.title'),
+                        description: t('home.infoSection.share.subtitle'),
                     },
                 ].map(({ icon, title, description }) => (
                     <motion.article
@@ -120,10 +123,10 @@ export function HomePage() {
                     variants={child}
                     className="text-2xl font-bold text-gray-100 mb-2"
                 >
-                    ¿Tienes sugerencias o comentarios?
+                    {t('home.suggestions')}
                 </motion.h2>
                 <motion.p variants={child} className="text-gray-400">
-                    Escríbenos a{' '}
+                    {t('home.mail.mailTo')}{' '}
                     <a
                         href="mailto:mailslinknest@gmail.com"
                         className="text-indigo-300 hover:underline"
@@ -134,7 +137,7 @@ export function HomePage() {
             </motion.section>
 
             <motion.footer variants={child} className="text-sm text-gray-500 mt-24">
-                Hecho con ❤️ y ☕️ por <a href="https://github.com/tomasrl18" target="_blank" rel="noreferrer" className="text-indigo-400 hover:underline">Tomás</a> — © {new Date().getFullYear()} LinkNest
+                {t('home.footer')} <a href="https://github.com/tomasrl18" target="_blank" rel="noreferrer" className="text-indigo-400 hover:underline">Tomás</a> — © {new Date().getFullYear()} LinkNest
             </motion.footer>
         </motion.main>
     );

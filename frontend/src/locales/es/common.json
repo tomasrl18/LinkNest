@@ -1,0 +1,55 @@
+{
+    "app": {
+        "name": "LinkNest",
+        "tagline": "Tu nido digital para guardar lo que importa"
+    },
+    "langSelector": {
+        "titleItems": "Idioma",
+        "ariaLabelButton": "Cambiar idioma"
+    },
+    "home": {
+        "title": "Organiza tus enlaces <br/> en un solo lugar",
+        "subtitle": "LinkNest te ayuda a guardar, clasificar y redescubrir cualquier enlace, desde artículos de referencia hasta vídeos inspiradores, con un solo clic.",
+        "startNow": "Empieza ahora",
+        "code": "Código fuente",
+        "infoSection": {
+            "instantlySave": {
+                "title": "Guarda al instante",
+                "subtitle": "Añade enlaces con un solo clic y nosotros capturamos título, favicon y meta descriptiva por ti."
+            },
+            "sortFind": {
+                "title": "Clasifica y encuentra",
+                "subtitle": "Etiqueta tus enlaces, crea categorías y filtra por favoritos para encontrar lo que buscas en segundos."
+            },
+            "share": {
+                "title": "Comparte con quien quieras",
+                "subtitle": "Genera colecciones públicas o privadas para compartir tus mejores recursos con tu equipo o amigos."
+            }
+        },
+        "suggestions": "¿Tienes sugerencias o comentarios?",
+        "mail": {
+            "mailTo": "Escribe a"
+        },
+        "footer": "Hecho con ❤️ y ☕️ por"
+    },
+    "nav": {
+        "links": "Mis enlaces",
+        "categories": "Mis categorías",
+        "addLink": "Añadir enlace",
+        "openMenu": "Abrir menú",
+        "closeMenu": "Cerrar menú"
+    },
+    "actions": {
+        "save": "Guardar",
+        "cancel": "Cancelar",
+        "delete": "Eliminar",
+        "edit": "Editar",
+        "add": "Añadir"
+    },
+    "auth": {
+        "login": "Iniciar sesión",
+        "logout": "Cerrar sesión",
+        "email": "Correo",
+        "password": "Contraseña"
+    }
+}

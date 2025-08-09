@@ -1,0 +1,55 @@
+{
+    "app": {
+        "name": "LinkNest",
+        "tagline": "Your digital nest to keep what matters"
+    },
+    "langSelector": {
+        "titleItems": "Language",
+        "ariaLabelButton": "Change language"
+    },
+    "home": {
+        "title": "Organize your links <br/> in one place",
+        "subtitle": "LinkNest helps you save, categorize, and rediscover any link, from reference articles to inspiring videos, with just one click.",
+        "startNow": "Start now",
+        "code": "Source code",
+        "infoSection": {
+            "instantlySave": {
+                "title": "Save instantly",
+                "subtitle": "Add links with a single click and we'll capture the title, favicon, and meta description for you."
+            },
+            "sortFind": {
+                "title": "Sort and find",
+                "subtitle": "Tag your links, create categories, and filter by favorites to find what you're looking for in seconds."
+            },
+            "share": {
+                "title": "Share with whoever you want",
+                "subtitle": "Create public or private collections to share your best resources with your team or friends."
+            }
+        },
+        "suggestions": "Do you have any suggestions or comments?",
+        "mail": {
+            "mailTo": "Mail to"
+        },
+        "footer": "Done with ❤️ and ☕️ by"
+    },
+    "nav": {
+        "links": "My links",
+        "categories": "My categories",
+        "addLink": "Add link",
+        "openMenu": "Open menu",
+        "closeMenu": "Close menu"
+    },
+    "actions": {
+        "save": "Save",
+        "cancel": "Cancel",
+        "delete": "Delete",
+        "edit": "Edit",
+        "add": "Add"
+    },
+    "auth": {
+        "login": "Log in",
+        "logout": "Log out",
+        "email": "Email",
+        "password": "Password"
+    }
+}
