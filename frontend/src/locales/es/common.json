@@ -56,6 +56,14 @@
         "hidePassword": "Ocultar contraseña",
         "enter": "Entrar",
         "askAccount": "¿No tienes cuenta?",
-        "signUp": "Regístrate"
+        "signUp": "Regístrate",
+        "createAccount": "Crea tu cuenta",
+        "rules": {
+            "chars": "Mínimo 8 caracteres",
+            "lowerLetter": "Una letra minúscula",
+            "capitalLetter": "Una letra mayúscula",
+            "number": "Un número",
+            "symbol": "Un símbolo"
+        }
     }
 }

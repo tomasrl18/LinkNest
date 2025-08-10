@@ -6,8 +6,10 @@ import { useNavigate } from 'react-router-dom';
 import { motion } from "framer-motion";
 import { pageVariants, pageTransition } from "../../animations/pageVariants";
 import { cn } from "../../lib/utils";
+import { useTranslation } from "react-i18next";
 
 export const RegisterPage = () => {
+    const { t } = useTranslation();
     const { signUp } = useAuth();
     const navigate = useNavigate();
     const [showPassword, setShowPassword] = useState(false);
@@ -52,13 +54,13 @@ export const RegisterPage = () => {
                 transition={{ type: "spring", stiffness: 140, damping: 18, delay: 0.15 }}
             >
                 <div className="p-8 space-y-6">
-                    <h2 className="text-center text-2xl font-semibold text-gray-100">Crea tu cuenta</h2>
+                    <h2 className="text-center text-2xl font-semibold text-gray-100">{t('auth.createAccount')}</h2>
 
                     <input
                         name="email"
                         type="email"
                         required
-                        placeholder="Email"
+                        placeholder={t('auth.email')}
                         className="input input-bordered w-full bg-gray-900/50 text-gray-100"
                     />
                     <div className="relative">
@@ -66,7 +68,7 @@ export const RegisterPage = () => {
                             name="password"
                             type={showPassword ? "text" : "password"}
                             required
-                            placeholder="Contraseña"
+                            placeholder={t('auth.password')}
                             value={password}
                             onChange={e => setPassword(e.target.value)}
                             className="input input-bordered w-full bg-gray-900/50 text-gray-100 pr-10"
@@ -75,21 +77,31 @@ export const RegisterPage = () => {
                             type="button"
                             onClick={() => setShowPassword(v => !v)}
                             className="absolute inset-y-0 right-0 z-10 flex items-center px-3 text-gray-400 hover:text-gray-200"
-                            aria-label={showPassword ? "Ocultar contraseña" : "Mostrar contraseña"}
+                            aria-label={showPassword ? t('auth.hidePassword') : t('auth.showPassword')}
                         >
                             {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
                         </button>
                     </div>
                     <ul className="mt-1 text-xs space-y-0.5 text-gray-400 text-center">
-                        <li className={cn(passwordRegex.minLength.test(password) && 'text-green-400')}>Mínimo 8 caracteres</li>
-                        <li className={cn(passwordRegex.lowercase.test(password) && 'text-green-400')}>Una letra minúscula</li>
-                        <li className={cn(passwordRegex.uppercase.test(password) && 'text-green-400')}>Una letra mayúscula</li>
-                        <li className={cn(passwordRegex.number.test(password) && 'text-green-400')}>Un número</li>
-                        <li className={cn(passwordRegex.symbol.test(password) && 'text-green-400')}>Un símbolo</li>
+                        <li className={cn(passwordRegex.minLength.test(password) && 'text-green-400')}>
+                            {t('auth.rules.chars')}
+                        </li>
+                        <li className={cn(passwordRegex.lowercase.test(password) && 'text-green-400')}>
+                            {t('auth.rules.lowerLetter')}
+                        </li>
+                        <li className={cn(passwordRegex.uppercase.test(password) && 'text-green-400')}>
+                            {t('auth.rules.capitalLetter')}
+                        </li>
+                        <li className={cn(passwordRegex.number.test(password) && 'text-green-400')}>
+                            {t('auth.rules.number')}
+                        </li>
+                        <li className={cn(passwordRegex.symbol.test(password) && 'text-green-400')}>
+                            {t('auth.rules.symbol')}
+                        </li>
                     </ul>
 
                     <button type="submit" className="btn btn-primary w-full rounded-xl">
-                        Registrarse
+                        {t('auth.signUp')}
                     </button>
                 </div>
             </motion.form>
