@@ -5,11 +5,13 @@ import { toast } from 'react-hot-toast';
 import { motion } from "framer-motion";
 import { pageVariants, pageTransition } from "../../animations/pageVariants";
 import { useNavigate, Link } from 'react-router-dom';
+import { useTranslation } from "react-i18next";
 
 export const LoginPage = () => {
     const { signIn } = useAuth();
     const navigate = useNavigate();
     const [showPassword, setShowPassword] = useState(false);
+    const { t } = useTranslation();
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -22,7 +24,7 @@ export const LoginPage = () => {
             navigate('/links');
         } catch (err) {
             console.error(err);
-            toast.error('Credenciales incorrectas');
+            toast.error(t('auth.toastError'));
         }
     };
 
@@ -44,13 +46,13 @@ export const LoginPage = () => {
                 transition={{ type: "spring", stiffness: 140, damping: 18, delay: 0.15 }}
             >
                 <div className="p-8 space-y-6">
-                    <h2 className="text-center text-2xl font-semibold text-gray-100">Inicia sesión</h2>
+                    <h2 className="text-center text-2xl font-semibold text-gray-100">{t('auth.login')}</h2>
 
                     <input
                         name="email"
                         type="email"
                         required
-                        placeholder="Email"
+                        placeholder={t('auth.email')}
                         className="input input-bordered w-full bg-gray-900/50 text-gray-100"
                     />
                     <div className="relative">
@@ -58,26 +60,26 @@ export const LoginPage = () => {
                             name="password"
                             type={showPassword ? "text" : "password"}
                             required
-                            placeholder="Contraseña"
+                            placeholder={t('auth.password')}
                             className="input input-bordered w-full bg-gray-900/50 text-gray-100 pr-10"
                         />
                         <button
                             type="button"
                             onClick={() => setShowPassword(v => !v)}
                             className="absolute inset-y-0 right-0 z-10 flex items-center px-3 text-gray-400 hover:text-gray-200"
-                            aria-label={showPassword ? "Ocultar contraseña" : "Mostrar contraseña"}
+                            aria-label={showPassword ? t('auth.hidePassword') : t('auth.showPassword')}
                         >
                             {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
                         </button>
                     </div>
 
                     <button type="submit" className="btn btn-primary w-full rounded-xl">
-                        Entrar
+                        {t('auth.enter')}
                     </button>
                     <p className="text-center text-sm text-gray-400">
-                        ¿No tienes cuenta?{' '}
+                        {t('auth.askAccount')}{' '}
                         <Link to="/register" className="text-indigo-300 hover:underline">
-                            Regístrate
+                            {t('auth.signUp')}
                         </Link>
                     </p>
                 </div>

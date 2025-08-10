@@ -50,6 +50,12 @@
         "login": "Log in",
         "logout": "Log out",
         "email": "Email",
-        "password": "Password"
+        "password": "Password",
+        "toastError": "Wrong credentials",
+        "showPassword": "Show password",
+        "hidePassword": "Hide password",
+        "enter": "Enter",
+        "askAccount": "Don't have an account?",
+        "signUp": "Sign up"
     }
 }

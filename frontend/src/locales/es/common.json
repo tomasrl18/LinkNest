@@ -50,6 +50,12 @@
         "login": "Iniciar sesión",
         "logout": "Cerrar sesión",
         "email": "Correo",
-        "password": "Contraseña"
+        "password": "Contraseña",
+        "toastError": "Credenciales incorrectas",
+        "showPassword": "Mostrar contraseña",
+        "hidePassword": "Ocultar contraseña",
+        "enter": "Entrar",
+        "askAccount": "¿No tienes cuenta?",
+        "signUp": "Regístrate"
     }
 }
