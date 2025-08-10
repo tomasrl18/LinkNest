@@ -7,8 +7,10 @@ import { Sparkles, Search, Star, Trash, Pencil } from "lucide-react";
 import { Link } from "react-router-dom";
 import ConfirmDeleteLinkDialog from "../../components/links/ConfirmDeleteLinkDialog";
 import { toast } from "react-hot-toast";
+import { useTranslation } from "react-i18next";
 
 export function ListLinkPage() {
+    const { t } = useTranslation();
     const { links, updateLink, deleteLink } = useLinks();
     const { categories } = useCategories();
     const [search, setSearch] = useState("");
@@ -42,10 +44,10 @@ export function ListLinkPage() {
         try {
             await deleteLink(deleteModal.id);
             setDeleteModal({ open: false, id: null });
-            toast.success("Enlace eliminado");
+            toast.success(t('links.actions.delete'));
         } catch (err) {
             console.error(err);
-            toast.error("Error al eliminar el enlace");
+            toast.error(t('links.actions.deleteError'));
         }
     };
 
@@ -62,7 +64,7 @@ export function ListLinkPage() {
                         <div className="flex-1 flex items-center gap-2 bg-gray-800/70 rounded-xl px-4 py-2">
                             <Search className="w-4 h-4 text-gray-400" />
                             <input
-                                placeholder="Buscar enlaces..."
+                                placeholder={t('links.search')}
                                 value={search}
                                 onChange={e => setSearch(e.target.value)}
                                 className="w-full bg-transparent outline-none placeholder:text-gray-500 text-sm"
@@ -76,7 +78,7 @@ export function ListLinkPage() {
                                 onChange={e => setCategoryId(e.target.value)}
                                 className="backdrop-blur rounded-xl px-3 py-1 text-sm text-gray-100 shadow-inner transition-all duration-200 outline-none"
                             >
-                                <option value="" className="bg-gray-900 text-gray-300">Todas</option>
+                                <option value="" className="bg-gray-900 text-gray-300">{t('links.allCat')}</option>
                                 {categories.map(c => (
                                     <option key={c.id} value={c.id} className="bg-gray-900 text-gray-200">{c.name}</option>
                                 ))}
@@ -86,10 +88,12 @@ export function ListLinkPage() {
                             type="button"
                             onClick={() => setOnlyFavs(v => !v)}
                             className={`flex items-center gap-2 bg-gray-800/70 rounded-xl px-3 py-1 cursor-pointer select-none transition-colors border border-transparent focus:outline-none ${onlyFavs ? 'border-yellow-400/60 bg-yellow-900/30' : ''}`}
-                            title={onlyFavs ? "Mostrar todos" : "Sólo favoritos"}
+                            title={onlyFavs ? t('links.favs.showAll') : t('links.favs.onlyFavs')}
                         >
                             <Star size={18} className={onlyFavs ? "fill-yellow-400 text-yellow-400 drop-shadow" : "text-gray-400"} />
-                            <span className="text-sm">Favoritos</span>
+                            <span className="text-sm">
+                                {t('links.favs.title')}
+                            </span>
                         </button>
                     </div>
                 </header>
@@ -106,21 +110,21 @@ export function ListLinkPage() {
                                         <Link
                                             to={`/links/${link.id}/edit`}
                                             className="cursor-pointer p-1 shadow opacity-80"
-                                            title="Editar enlace"
+                                            title={t('links.actions.editLink')}
                                         >
                                             <Pencil size={20} className="hover:text-indigo-400 transition-colors" />
                                         </Link>
                                         <button
                                             onClick={() => setDeleteModal({ open: true, id: link.id })}
                                             className="cursor-pointer p-1 shadow opacity-80"
-                                            title="Eliminar enlace"
+                                            title={t('links.actions.deleteLink')}
                                         >
                                             <Trash size={20} className="hover:text-red-500 transition-colors" />
                                         </button>
                                         <button
                                             onClick={() => toggleFav(link.id, link.favorite)}
                                             className="cursor-pointer p-1 shadow opacity-80"
-                                            title={link.favorite ? "Quitar de favoritos" : "Marcar como favorito"}
+                                            title={link.favorite ? t('links.favs.removeFav') : t('links.favs.markFav')}
                                         >
                                             <Star
                                                 size={20}
@@ -140,7 +144,7 @@ export function ListLinkPage() {
                     </ul>
                 ) : (
                     <p className="text-center text-gray-400 flex flex-col items-center gap-1">
-                        <Sparkles size={18} /> No se encontraron enlaces.
+                        <Sparkles size={18} /> {t('links.noLinks')}
                     </p>
                 )}
             </section>

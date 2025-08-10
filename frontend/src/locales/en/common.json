@@ -39,13 +39,6 @@
         "openMenu": "Open menu",
         "closeMenu": "Close menu"
     },
-    "actions": {
-        "save": "Save",
-        "cancel": "Cancel",
-        "delete": "Delete",
-        "edit": "Edit",
-        "add": "Add"
-    },
     "auth": {
         "login": "Log in",
         "logout": "Log out",
@@ -65,5 +58,23 @@
             "number": "One number",
             "symbol": "One symbol"
         }
+    },
+    "links": {
+        "actions": {
+            "delete": "Deleted link",
+            "deleteError": "Error deleting link",
+            "editLink": "Edit link",
+            "deleteLink": "Delete link"
+        },
+        "search": "Search link...",
+        "allCat": "All",
+        "favs": {
+            "title": "Favourites",
+            "showAll": "Show all",
+            "onlyFavs": "Only favourites",
+            "removeFav": "Remove from favorites",
+            "markFav": "Mark as favorite"
+        },
+        "noLinks": "No links were found."
     }
 }
