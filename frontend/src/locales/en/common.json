@@ -96,6 +96,12 @@
             "title": "New link",
             "successCreateLink": "Created link",
             "errorCreateLink": "Error creating link"
+        },
+        "delete": {
+            "title": "Delete link?",
+            "clarification": "This action cannot be undone.",
+            "buttonCancel": "Cancel",
+            "buttonConfirm": "Delete"
         }
     }
 }

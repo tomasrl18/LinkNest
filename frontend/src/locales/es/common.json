@@ -96,6 +96,12 @@
             "title": "Nuevo enlace",
             "successCreateLink": "Enlaces creado",
             "errorCreateLink": "Error al crear el enlace"
+        },
+        "delete": {
+            "title": "¿Eliminar enlace?",
+            "clarification": "Esta acción no se puede deshacer.",
+            "buttonCancel": "Cancelar",
+            "buttonConfirm": "Eliminar"
         }
     }
 }
