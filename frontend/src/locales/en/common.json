@@ -78,6 +78,19 @@
         "noLinks": "No links were found.",
         "linkCard": {
             "titleCat": "Category" 
+        },
+        "edit": {
+            "title": "Edit link",
+            "successEditLink": "Updated link",
+            "errorEditLink": "Error deleting link",
+            "formFields": {
+                "title": "Title",
+                "category": "Category",
+                "noCat": "Without category",
+                "description": "Description",
+                "tags": "Tags",
+                "saveChanges": "Save changes"
+            }
         }
     }
 }

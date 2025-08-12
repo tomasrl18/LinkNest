@@ -8,8 +8,10 @@ import { CreateCategoryDialog } from "../../components/categories/CreateCategory
 import type { Link } from "../../types/link";
 import { useAuth } from "../../context/AuthProvider";
 import { toast } from "react-hot-toast";
+import { useTranslation } from "react-i18next";
 
 export function EditLinkPage() {
+    const { t } = useTranslation();
     const { user } = useAuth();
     const { id } = useParams<{ id: string }>();
     const navigate = useNavigate();
@@ -66,11 +68,11 @@ export function EditLinkPage() {
         try {
             setLoading(true);
             await updateLink(id, payload);
-            toast.success("Enlace actualizado");
+            toast.success(t('links.edit.successEditLink'));
             navigate("/links");
         } catch (err) {
             console.error(err);
-            toast.error("Error al actualizar el enlace");
+            toast.error(t('links.edit.errorEditLink'));
         } finally {
             setLoading(false);
         }
@@ -104,7 +106,9 @@ export function EditLinkPage() {
                         <motion.div initial={{ scale: 0.7, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ delay: 0.2 }}>
                             <Bookmark className="mx-auto text-indigo-400 drop-shadow-lg" size={44} />
                         </motion.div>
-                        <h1 className="text-2xl font-bold tracking-tight bg-gradient-to-r from-indigo-400 via-pink-400 to-fuchsia-400 bg-clip-text text-transparent">Editar enlace</h1>
+                        <h1 className="text-2xl font-bold tracking-tight bg-gradient-to-r from-indigo-400 via-pink-400 to-fuchsia-400 bg-clip-text text-transparent">
+                            {t('links.edit.title')}
+                        </h1>
                     </header>
 
                     <div className="flex flex-col gap-5">
@@ -122,7 +126,9 @@ export function EditLinkPage() {
                         </div>
                         <div className="flex flex-col sm:flex-row gap-5">
                             <div className="flex-1 flex flex-col gap-1">
-                                <label htmlFor="title" className="text-sm font-medium pl-1">Título</label>
+                                <label htmlFor="title" className="text-sm font-medium pl-1">
+                                    {t('links.edit.formFields.title')}
+                                </label>
                                 <input
                                     id="title"
                                     name="title"
@@ -132,7 +138,9 @@ export function EditLinkPage() {
                                 />
                             </div>
                             <div className="flex-1 flex flex-col gap-1">
-                                <label htmlFor="category_id" className="text-sm font-medium pl-1">Categoría</label>
+                                <label htmlFor="category_id" className="text-sm font-medium pl-1">
+                                    {t('links.edit.formFields.category')}
+                                </label>
                                 <div className="flex gap-2 items-center">
                                     <select
                                         id="category_id"
@@ -141,7 +149,9 @@ export function EditLinkPage() {
                                         onChange={e => setForm(prev => ({ ...prev, category_id: e.target.value }))}
                                         className="select select-bordered w-full rounded-xl px-3 py-2 text-sm bg-gray-800/80"
                                     >
-                                        <option value="">Sin categoría</option>
+                                        <option value="">
+                                            {t('links.edit.formFields.noCat')}
+                                        </option>
                                         {categories.map(c => (
                                             <option key={c.id} value={c.id}>{c.name}</option>
                                         ))}
@@ -157,7 +167,9 @@ export function EditLinkPage() {
                             </div>
                         </div>
                         <div className="flex flex-col gap-1">
-                            <label htmlFor="description" className="text-sm font-medium pl-1">Descripción</label>
+                            <label htmlFor="description" className="text-sm font-medium pl-1">
+                                {t('links.edit.formFields.description')}
+                            </label>
                             <textarea
                                 id="description"
                                 name="description"
@@ -171,7 +183,9 @@ export function EditLinkPage() {
                         </div>
                         <div className="flex flex-col sm:flex-row gap-5 items-start sm:items-end">
                             <div className="flex-1 flex flex-col gap-1 relative">
-                                <label htmlFor="tags" className="text-sm font-medium pl-1">Tags</label>
+                                <label htmlFor="tags" className="text-sm font-medium pl-1">
+                                    {t('links.edit.formFields.tags')}
+                                </label>
                                 <input
                                     id="tags"
                                     name="tags"
@@ -220,7 +234,9 @@ export function EditLinkPage() {
                         className="cursor-pointer w-full flex justify-center items-center gap-2 rounded-xl bg-gradient-to-r from-indigo-600 via-pink-500 to-fuchsia-500 hover:from-indigo-700 hover:to-fuchsia-600 py-3 text-base font-semibold shadow-lg transition-all duration-200 disabled:opacity-60 mt-2"
                     >
                         {loading && <Loader2 className="w-5 h-5 animate-spin" />}
-                        <span>Guardar cambios</span>
+                        <span>
+                            {t('links.edit.formFields.saveChanges')}
+                        </span>
                     </motion.button>
                 </motion.form>
             </section>

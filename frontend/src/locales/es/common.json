@@ -78,6 +78,19 @@
         "noLinks": "No se encontraron enlaces.",
         "linkCard": {
             "titleCat": "Categoría" 
+        },
+        "edit": {
+            "title": "Editar enlace",
+            "successEditLink": "Enlace actualizado",
+            "errorEditLink": "Error al actualizar el enlace",
+            "formFields": {
+                "title": "Título",
+                "category": "Categoría",
+                "noCat": "Sin categoría",
+                "description": "Descripción",
+                "tags": "Etiquetas",
+                "saveChanges": "Guardar cambios"
+            }
         }
     }
 }
