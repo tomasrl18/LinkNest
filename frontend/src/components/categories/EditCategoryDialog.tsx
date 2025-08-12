@@ -23,7 +23,7 @@ export function EditCategoryDialog({ open, initialName, onClose, onSave }: EditC
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         if (!name.trim()) {
-            setError(t('categories.actions.edit.form.nameError'));
+            setError(t('categories.actions.nameError'));
             return;
         }
         setError("");
@@ -71,7 +71,7 @@ export function EditCategoryDialog({ open, initialName, onClose, onSave }: EditC
                             <input
                                 type="text"
                                 className="input input-bordered w-full bg-gray-800/80 text-white rounded-xl"
-                                placeholder={t('categories.actions.edit.form.name')}
+                                placeholder={t('categories.actions.name')}
                                 value={name}
                                 onChange={e => setName(e.target.value)}
                                 autoFocus

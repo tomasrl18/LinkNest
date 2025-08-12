@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 interface CreateCategoryDialogProps {
     open: boolean;
@@ -10,6 +11,7 @@ interface CreateCategoryDialogProps {
 }
 
 export function CreateCategoryDialog({ open, onClose, onCreate }: CreateCategoryDialogProps) {
+    const { t } = useTranslation();
     const [name, setName] = useState("");
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
@@ -17,7 +19,7 @@ export function CreateCategoryDialog({ open, onClose, onCreate }: CreateCategory
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         if (!name.trim()) {
-            setError("El nombre es obligatorio");
+            setError(t('categories.actions.nameError'));
             return;
         }
 
@@ -29,7 +31,7 @@ export function CreateCategoryDialog({ open, onClose, onCreate }: CreateCategory
             setName("");
             onClose();
         } catch (err) {
-            setError("Error al crear la categoría");
+            setError(t('categories.actions.create.error'));
         } finally {
             setLoading(false);
         }
@@ -54,19 +56,21 @@ export function CreateCategoryDialog({ open, onClose, onCreate }: CreateCategory
                         <button
                             className="absolute top-2 right-2 btn btn-xs btn-ghost text-gray-400 hover:text-white"
                             onClick={onClose}
-                            aria-label="Cerrar"
+                            aria-label={t('categories.buttons.close')}
                             type="button"
                         >
                             <X size={18} />
                         </button>
                         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
                             <div className="flex items-center justify-center gap-2 mb-2">
-                                <h2 className="text-lg font-semibold text-white">Nueva categoría</h2>
+                                <h2 className="text-lg font-semibold text-white">
+                                    {t('categories.actions.create.title')}
+                                </h2>
                             </div>
                             <input
                                 type="text"
                                 className="input input-bordered w-full bg-gray-800/80 text-white rounded-xl"
-                                placeholder="Nombre de la categoría"
+                                placeholder={t('categories.actions.name')}
                                 value={name}
                                 onChange={e => setName(e.target.value)}
                                 autoFocus
@@ -78,7 +82,7 @@ export function CreateCategoryDialog({ open, onClose, onCreate }: CreateCategory
                                 className="btn btn-primary w-full rounded-xl mt-2"
                                 disabled={loading}
                             >
-                                {loading ? "Creando..." : "Crear categoría"}
+                                {loading ? t('categories.actions.create.form.creating') : t('categories.actions.create.form.create')}
                             </button>
                         </form>
                     </motion.div>

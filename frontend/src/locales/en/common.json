@@ -109,17 +109,22 @@
         "new": "New",
         "noCats": "No categories found.",
         "actions": {
+            "nameError": "The name is required",
+            "name": "Category name",
             "create": {
                 "title": "Created category",
-                "error": "Error creating category"
+                "error": "Error creating category",
+                "form": {
+                    "title": "New category",
+                    "creating": "Creating...",
+                    "create": "Create category"
+                }
             },
             "edit": {
                 "title": "Updated category",
                 "error": "Error updating category",
                 "form": {
-                    "nameError": "The name is required",
                     "title": "Edit category",
-                    "name": "Category name",
                     "saving": "Saving...",
                     "save": "Save"
                 }

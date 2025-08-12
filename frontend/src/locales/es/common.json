@@ -109,17 +109,22 @@
         "new": "Nueva",
         "noCats": "No se encontraron categorías.",
         "actions": {
+            "nameError": "El nombre es obligatorio",
+            "name": "Nombre de la categoría",
             "create": {
                 "title": "Categoría creada",
-                "error": "Error al crear la categoría"
+                "error": "Error al crear la categoría",
+                "form": {
+                    "title": "Nueva categoría",
+                    "creating": "Creando...",
+                    "create": "Crear categoría"
+                }
             },
             "edit": {
                 "title": "Categoría actualizada",
                 "error": "Error al actualizar la categoría",
                 "form": {
-                    "nameError": "El nombre es obligatorio",
                     "title": "Editar categoría",
-                    "name": "Nombre de la categoría",
                     "saving": "Guardando...",
                     "save": "Guardar"
                 }
