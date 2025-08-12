@@ -85,7 +85,13 @@
             "noCat": "Sin categoría",
             "description": "Descripción",
             "tags": "Etiquetas",
-            "saveChanges": "Guardar cambios"
+            "saveChanges": "Guardar cambios",
+            "placeholders": {
+                "url": "https://ejemplo.com/articulo",
+                "title": "Como ser productivo",
+                "description": "Pequeño resumen o notas...",
+                "tags": "Comida, Programación, Boda..."
+            }
         },
         "edit": {
             "title": "Editar enlace",
@@ -95,7 +101,8 @@
         "create": {
             "title": "Nuevo enlace",
             "successCreateLink": "Enlaces creado",
-            "errorCreateLink": "Error al crear el enlace"
+            "errorCreateLink": "Error al crear el enlace",
+            "addLink": "Añadir enlace"
         },
         "delete": {
             "title": "¿Eliminar enlace?",

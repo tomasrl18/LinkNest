@@ -85,7 +85,13 @@
             "noCat": "Without category",
             "description": "Description",
             "tags": "Tags",
-            "saveChanges": "Save changes"
+            "saveChanges": "Save changes",
+            "placeholders": {
+                "url": "https://example.com/article",
+                "title": "How to be productive",
+                "description": "Little description or notes...",
+                "tags": "Food, Programming, Wedding..."
+            }
         },
         "edit": {
             "title": "Edit link",
@@ -95,7 +101,8 @@
         "create": {
             "title": "New link",
             "successCreateLink": "Created link",
-            "errorCreateLink": "Error creating link"
+            "errorCreateLink": "Error creating link",
+            "addLink": "Add link"
         },
         "delete": {
             "title": "Delete link?",

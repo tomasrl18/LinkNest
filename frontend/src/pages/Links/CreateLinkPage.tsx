@@ -123,7 +123,7 @@ export function CreateLinkPage() {
                                 required
                                 value={form.url}
                                 onChange={handleChange}
-                                placeholder="https://ejemplo.com/articulo"
+                                placeholder={t('links.formFields.placeholders.url')}
                                 className="input input-bordered w-full rounded-xl px-3 py-2 text-sm bg-gray-800/80 focus:ring-2 focus:ring-pink-500 outline-none transition-all duration-200"
                             />
                         </div>
@@ -137,7 +137,7 @@ export function CreateLinkPage() {
                                     name="title"
                                     value={form.title}
                                     onChange={handleChange}
-                                    placeholder="Cómo ser productivo"
+                                    placeholder={t('links.formFields.placeholders.title')}
                                     className="input input-bordered w-full rounded-xl px-3 py-2 text-sm bg-gray-800/80"
                                 />
                             </div>
@@ -181,7 +181,7 @@ export function CreateLinkPage() {
                                 maxLength={240}
                                 value={form.description}
                                 onChange={handleChange}
-                                placeholder="Pequeño resumen o notas..."
+                                placeholder={t('links.formFields.placeholders.description')}
                                 className="textarea textarea-bordered w-full rounded-xl px-3 py-2 text-sm bg-gray-800/80 resize-none"
                             />
                             <span className="text-xs text-gray-500 text-right">{form.description.length}/240</span>
@@ -197,7 +197,7 @@ export function CreateLinkPage() {
                                         value={tagInput}
                                         onChange={e => setTagInput(e.target.value)}
                                         onKeyDown={e => { if (e.key === 'Enter') { e.preventDefault(); addTag(); } }}
-                                        placeholder="comida, programación, boda..."
+                                        placeholder={t('links.formFields.placeholders.tags')}
                                         className="input input-bordered w-full rounded-xl px-2 py-2 text-sm bg-gray-800/80"
                                     />
                                     <button
@@ -258,7 +258,9 @@ export function CreateLinkPage() {
                         className="cursor-pointer w-full flex justify-center items-center gap-2 rounded-xl bg-gradient-to-r from-indigo-600 via-pink-500 to-fuchsia-500 hover:from-indigo-700 hover:to-fuchsia-600 py-3 text-base font-semibold shadow-lg transition-all duration-200 disabled:opacity-60 mt-2"
                     >
                         {loading && <Loader2 className="w-5 h-5 animate-spin" />}
-                        <span>Añadir enlace</span>
+                        <span>
+                            {t('links.create.addLink')}
+                        </span>
                     </motion.button>
                 </motion.form>
             </section>
