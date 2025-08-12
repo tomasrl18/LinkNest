@@ -130,8 +130,12 @@
                 }
             },
             "delete": {
-                "title": "Categoría eliminada",
-                "error": "Error al eliminar la categoría"
+                "title": "Deleted category",
+                "error": "Error deleting category",
+                "titleDialog": "¿Eliminar categoría?",
+                "clarification": "Esta acción no se puede deshacer.",
+                "buttonCancel": "Cancel",
+                "buttonConfirm": "Delete"
             }
         },
         "buttons": {

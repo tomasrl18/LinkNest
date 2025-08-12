@@ -131,7 +131,11 @@
             },
             "delete": {
                 "title": "Deleted category",
-                "error": "Error deleting category"
+                "error": "Error deleting category",
+                "titleDialog": "Delete category?",
+                "clarification": "This action cannot be undone.",
+                "buttonCancel": "Cancel",
+                "buttonConfirm": "Delete"
             }
         },
         "buttons": {

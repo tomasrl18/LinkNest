@@ -1,5 +1,6 @@
 import { Trash } from "lucide-react";
 import { useRef, useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 interface ConfirmDeleteCategoryDialogProps {
     open: boolean;
@@ -9,6 +10,7 @@ interface ConfirmDeleteCategoryDialogProps {
 }
 
 export default function ConfirmDeleteCategoryDialog({ open, onCancel, onConfirm, text }: ConfirmDeleteCategoryDialogProps) {
+    const { t } = useTranslation();
     const [show, setShow] = useState(open);
     const [animate, setAnimate] = useState(false);
     const timeoutRef = useRef<number | null>(null);
@@ -50,17 +52,23 @@ export default function ConfirmDeleteCategoryDialog({ open, onCancel, onConfirm,
         >
             <div className={`bg-gray-900 rounded-2xl p-6 shadow-xl border border-gray-800 min-w-[300px] flex flex-col items-center transform transition-all duration-200 ${animate ? 'scale-100 translate-y-0 opacity-100' : 'scale-90 translate-y-8 opacity-0'}`}>
                 <Trash size={32} className="text-red-400 mb-2" />
-                <h2 className="text-lg font-semibold mb-2">¿Eliminar categoría?</h2>
-                <p className="text-gray-400 mb-4 text-center">{text || 'Esta acción no se puede deshacer.'}</p>
+                <h2 className="text-lg font-semibold mb-2">
+                    {t('categories.actions.delete.titleDialog')}
+                </h2>
+                <p className="text-gray-400 mb-4 text-center">{text || t('categories.actions.delete.clarification')}</p>
                 <div className="flex gap-3">
                     <button
                         className="px-4 py-1 rounded-lg bg-gray-700 hover:bg-gray-600 text-gray-200"
                         onClick={onCancel}
-                    >Cancelar</button>
+                    >
+                        {t('categories.actions.delete.buttonCancel')}
+                    </button>
                     <button
                         className="px-4 py-1 rounded-lg bg-red-600 hover:bg-red-700 text-white font-semibold"
                         onClick={onConfirm}
-                    >Eliminar</button>
+                    >
+                        {t('categories.actions.delete.buttonConfirm')}
+                    </button>
                 </div>
             </div>
         </div>
