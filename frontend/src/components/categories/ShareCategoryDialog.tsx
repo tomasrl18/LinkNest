@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { X } from 'lucide-react';
 import { useCategoryMembers } from '../../hooks/useCategoryMembers';
+import { useTranslation } from 'react-i18next';
 
 interface ShareCategoryDialogProps {
     open: boolean;
@@ -10,6 +11,7 @@ interface ShareCategoryDialogProps {
 }
 
 export function ShareCategoryDialog({ open, categoryId, onClose }: ShareCategoryDialogProps) {
+    const { t } = useTranslation();
     const { members, fetchMembers, addMember, removeMember } = useCategoryMembers(categoryId);
     const [email, setEmail] = useState('');
     const [error, setError] = useState('');
@@ -22,7 +24,7 @@ export function ShareCategoryDialog({ open, categoryId, onClose }: ShareCategory
     const handleAdd = async (e: React.FormEvent) => {
         e.preventDefault();
         if (!email.trim()) {
-            setError('El email es obligatorio');
+            setError(t('categories.actions.share.email'));
             return;
         }
         setError('');
@@ -31,7 +33,7 @@ export function ShareCategoryDialog({ open, categoryId, onClose }: ShareCategory
             await addMember(email.trim());
             setEmail('');
         } catch {
-            setError('No se pudo añadir');
+            setError(t('categories.actions.share.error'));
         } finally {
             setLoading(false);
         }
@@ -56,22 +58,26 @@ export function ShareCategoryDialog({ open, categoryId, onClose }: ShareCategory
                         <button
                             className="absolute top-2 right-2 btn btn-xs btn-ghost text-gray-400 hover:text-white"
                             onClick={onClose}
-                            aria-label="Cerrar"
+                            aria-label={t('categories.buttons.close')}
                             type="button"
                         >
                             <X size={18} />
                         </button>
-                        <h2 className="text-lg font-semibold mb-3">Compartir categoría</h2>
+                        <h2 className="text-lg font-semibold mb-3">
+                            {t('categories.actions.share.title')}
+                        </h2>
                         <form onSubmit={handleAdd} className="flex gap-2 mb-4">
                             <input
                                 type="email"
                                 className="input input-bordered flex-1 bg-gray-800/80 rounded-xl"
-                                placeholder="Email del usuario"
+                                placeholder={t('categories.actions.share.emailPlaceholder')}
                                 value={email}
                                 onChange={e => setEmail(e.target.value)}
                                 required
                             />
-                            <button type="submit" className="btn btn-primary" disabled={loading}>Añadir</button>
+                            <button type="submit" className="btn btn-primary" disabled={loading}>
+                                {t('categories.actions.share.add')}
+                            </button>
                         </form>
                         {error && <p className="text-xs text-pink-400 mb-2">{error}</p>}
                         <ul className="space-y-1 max-h-40 overflow-y-auto pr-1">
@@ -82,7 +88,7 @@ export function ShareCategoryDialog({ open, categoryId, onClose }: ShareCategory
                                         onClick={() => removeMember(m.id)}
                                         className="btn btn-xs btn-outline btn-error rounded"
                                     >
-                                        Quitar
+                                        {t('categories.actions.share.remove')}
                                     </button>
                                 </li>
                             ))}

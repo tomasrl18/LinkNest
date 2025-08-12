@@ -136,6 +136,14 @@
                 "clarification": "Esta acción no se puede deshacer.",
                 "buttonCancel": "Cancel",
                 "buttonConfirm": "Delete"
+            },
+            "share": {
+                "email": "El email es obligatorio",
+                "error": "No se pudo añadir",
+                "title": "Compartir categoría",
+                "emailPlaceholder": "Email del usuario",
+                "add": "Añadir",
+                "remove": "Quitar"
             }
         },
         "buttons": {

@@ -136,6 +136,14 @@
                 "clarification": "This action cannot be undone.",
                 "buttonCancel": "Cancel",
                 "buttonConfirm": "Delete"
+            },
+            "share": {
+                "email": "The email is required",
+                "error": "Could not be added",
+                "title": "Share category",
+                "emailPlaceholder": "User email",
+                "add": "Add",
+                "remove": "Remove"
             }
         },
         "buttons": {
