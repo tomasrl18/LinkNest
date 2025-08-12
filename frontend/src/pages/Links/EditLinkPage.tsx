@@ -127,7 +127,7 @@ export function EditLinkPage() {
                         <div className="flex flex-col sm:flex-row gap-5">
                             <div className="flex-1 flex flex-col gap-1">
                                 <label htmlFor="title" className="text-sm font-medium pl-1">
-                                    {t('links.edit.formFields.title')}
+                                    {t('links.formFields.title')}
                                 </label>
                                 <input
                                     id="title"
@@ -139,7 +139,7 @@ export function EditLinkPage() {
                             </div>
                             <div className="flex-1 flex flex-col gap-1">
                                 <label htmlFor="category_id" className="text-sm font-medium pl-1">
-                                    {t('links.edit.formFields.category')}
+                                    {t('links.formFields.category')}
                                 </label>
                                 <div className="flex gap-2 items-center">
                                     <select
@@ -150,7 +150,7 @@ export function EditLinkPage() {
                                         className="select select-bordered w-full rounded-xl px-3 py-2 text-sm bg-gray-800/80"
                                     >
                                         <option value="">
-                                            {t('links.edit.formFields.noCat')}
+                                            {t('links.formFields.noCat')}
                                         </option>
                                         {categories.map(c => (
                                             <option key={c.id} value={c.id}>{c.name}</option>
@@ -168,7 +168,7 @@ export function EditLinkPage() {
                         </div>
                         <div className="flex flex-col gap-1">
                             <label htmlFor="description" className="text-sm font-medium pl-1">
-                                {t('links.edit.formFields.description')}
+                                {t('links.formFields.description')}
                             </label>
                             <textarea
                                 id="description"
@@ -184,7 +184,7 @@ export function EditLinkPage() {
                         <div className="flex flex-col sm:flex-row gap-5 items-start sm:items-end">
                             <div className="flex-1 flex flex-col gap-1 relative">
                                 <label htmlFor="tags" className="text-sm font-medium pl-1">
-                                    {t('links.edit.formFields.tags')}
+                                    {t('links.formFields.tags')}
                                 </label>
                                 <input
                                     id="tags"
@@ -235,7 +235,7 @@ export function EditLinkPage() {
                     >
                         {loading && <Loader2 className="w-5 h-5 animate-spin" />}
                         <span>
-                            {t('links.edit.formFields.saveChanges')}
+                            {t('links.formFields.saveChanges')}
                         </span>
                     </motion.button>
                 </motion.form>

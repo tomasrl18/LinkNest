@@ -79,18 +79,23 @@
         "linkCard": {
             "titleCat": "Category" 
         },
+        "formFields": {
+            "title": "Title",
+            "category": "Category",
+            "noCat": "Without category",
+            "description": "Description",
+            "tags": "Tags",
+            "saveChanges": "Save changes"
+        },
         "edit": {
             "title": "Edit link",
             "successEditLink": "Updated link",
-            "errorEditLink": "Error deleting link",
-            "formFields": {
-                "title": "Title",
-                "category": "Category",
-                "noCat": "Without category",
-                "description": "Description",
-                "tags": "Tags",
-                "saveChanges": "Save changes"
-            }
+            "errorEditLink": "Error updating link"
+        },
+        "create": {
+            "title": "New link",
+            "successCreateLink": "Created link",
+            "errorCreateLink": "Error creating link"
         }
     }
 }

@@ -7,8 +7,10 @@ import { Bookmark, Loader2, Plus, Link as LinkIcon, Tag, X } from "lucide-react"
 import { useCategories } from "../../hooks/useCategories";
 import { CreateCategoryDialog } from "../../components/categories/CreateCategoryDialog";
 import { toast } from "react-hot-toast";
+import { useTranslation } from "react-i18next";
 
 export function CreateLinkPage() {
+    const { t } = useTranslation();
     const { user } = useAuth();
     const { addLink } = useLinks();
     const { categories, createCategory, fetchCategories } = useCategories();
@@ -67,12 +69,12 @@ export function CreateLinkPage() {
         try {
             setLoading(true);
             await addLink(payload);
-            toast.success("Enlace creado");
+            toast.success(t('links.create.successCreateLink'));
             setForm({ url: "", title: "", description: "", category_id: "", tags: [], favorite: false });
             setTagInput("");
         } catch (err) {
             console.error(err);
-            toast.error("Error al crear el enlace");
+            toast.error(t('links.create.errorCreateLink'));
         } finally {
             setLoading(false);
         }
@@ -106,7 +108,9 @@ export function CreateLinkPage() {
                         <motion.div initial={{ scale: 0.7, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ delay: 0.2 }}>
                             <Bookmark className="mx-auto text-indigo-400 drop-shadow-lg" size={44} />
                         </motion.div>
-                        <h1 className="text-2xl font-bold tracking-tight bg-gradient-to-r from-indigo-400 via-pink-400 to-fuchsia-400 bg-clip-text text-transparent">Nuevo enlace</h1>
+                        <h1 className="text-2xl font-bold tracking-tight bg-gradient-to-r from-indigo-400 via-pink-400 to-fuchsia-400 bg-clip-text text-transparent">
+                            {t('links.create.title')}
+                        </h1>
                     </header>
 
                     <div className="flex flex-col gap-5">
@@ -125,7 +129,9 @@ export function CreateLinkPage() {
                         </div>
                         <div className="flex flex-col sm:flex-row gap-5">
                             <div className="flex-1 flex flex-col gap-1">
-                                <label htmlFor="title" className="text-sm font-medium pl-1">Título</label>
+                                <label htmlFor="title" className="text-sm font-medium pl-1">
+                                    {t('links.formFields.title')}
+                                </label>
                                 <input
                                     id="title"
                                     name="title"
@@ -136,7 +142,9 @@ export function CreateLinkPage() {
                                 />
                             </div>
                             <div className="flex-1 flex flex-col gap-1">
-                                <label htmlFor="category_id" className="text-sm font-medium pl-1">Categoría</label>
+                                <label htmlFor="category_id" className="text-sm font-medium pl-1">
+                                    {t('links.formFields.category')}
+                                </label>
                                 <div className="flex gap-2 items-center">
                                     <select
                                         id="category_id"
@@ -145,7 +153,9 @@ export function CreateLinkPage() {
                                         onChange={e => setForm(prev => ({ ...prev, category_id: e.target.value }))}
                                         className="select select-bordered w-full rounded-xl px-3 py-2 text-sm bg-gray-800/80"
                                     >
-                                        <option value="">Sin categoría</option>
+                                        <option value="">
+                                            {t('links.formFields.noCat')}
+                                        </option>
                                         {categories.map(c => (
                                             <option key={c.id} value={c.id}>{c.name}</option>
                                         ))}
@@ -161,7 +171,9 @@ export function CreateLinkPage() {
                             </div>
                         </div>
                         <div className="flex flex-col gap-1">
-                            <label htmlFor="description" className="text-sm font-medium pl-1">Descripción</label>
+                            <label htmlFor="description" className="text-sm font-medium pl-1">
+                                {t('links.formFields.description')}
+                            </label>
                             <textarea
                                 id="description"
                                 name="description"
@@ -176,7 +188,9 @@ export function CreateLinkPage() {
                         </div>
                         <div className="flex flex-col sm:flex-row gap-5 items-start sm:items-end">
                             <div className="flex-1 flex flex-col gap-1 relative">
-                                <label htmlFor="tagInput" className="text-sm font-medium pl-1">Etiquetas</label>
+                                <label htmlFor="tagInput" className="text-sm font-medium pl-1">
+                                    {t('links.formFields.tags')}
+                                </label>
                                 <div className="flex gap-2">
                                     <input
                                         id="tagInput"

@@ -79,18 +79,23 @@
         "linkCard": {
             "titleCat": "Categoría" 
         },
+        "formFields": {
+            "title": "Título",
+            "category": "Categoría",
+            "noCat": "Sin categoría",
+            "description": "Descripción",
+            "tags": "Etiquetas",
+            "saveChanges": "Guardar cambios"
+        },
         "edit": {
             "title": "Editar enlace",
             "successEditLink": "Enlace actualizado",
-            "errorEditLink": "Error al actualizar el enlace",
-            "formFields": {
-                "title": "Título",
-                "category": "Categoría",
-                "noCat": "Sin categoría",
-                "description": "Descripción",
-                "tags": "Etiquetas",
-                "saveChanges": "Guardar cambios"
-            }
+            "errorEditLink": "Error al actualizar el enlace"
+        },
+        "create": {
+            "title": "Nuevo enlace",
+            "successCreateLink": "Enlaces creado",
+            "errorCreateLink": "Error al crear el enlace"
         }
     }
 }
