@@ -115,7 +115,14 @@
             },
             "edit": {
                 "title": "Categoría actualizada",
-                "error": "Error al actualizar la categoría"
+                "error": "Error al actualizar la categoría",
+                "form": {
+                    "nameError": "El nombre es obligatorio",
+                    "title": "Editar categoría",
+                    "name": "Nombre de la categoría",
+                    "saving": "Guardando...",
+                    "save": "Guardar"
+                }
             },
             "delete": {
                 "title": "Categoría eliminada",
@@ -125,7 +132,8 @@
         "buttons": {
             "edit": "Editar",
             "delete": "Eliminar",
-            "share": "Compartir"
+            "share": "Compartir",
+            "close": "Cerrar"
         }
     }
 }

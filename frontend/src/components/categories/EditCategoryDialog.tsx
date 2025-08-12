@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 interface EditCategoryDialogProps {
     open: boolean;
@@ -10,6 +11,7 @@ interface EditCategoryDialogProps {
 }
 
 export function EditCategoryDialog({ open, initialName, onClose, onSave }: EditCategoryDialogProps) {
+    const { t } = useTranslation();
     const [name, setName] = useState(initialName);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
@@ -21,7 +23,7 @@ export function EditCategoryDialog({ open, initialName, onClose, onSave }: EditC
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         if (!name.trim()) {
-            setError("El nombre es obligatorio");
+            setError(t('categories.actions.edit.form.nameError'));
             return;
         }
         setError("");
@@ -30,7 +32,7 @@ export function EditCategoryDialog({ open, initialName, onClose, onSave }: EditC
             await onSave(name.trim());
             onClose();
         } catch {
-            setError("Error al actualizar la categoría");
+            setError(t('categories.actions.edit.error'));
         } finally {
             setLoading(false);
         }
@@ -55,19 +57,21 @@ export function EditCategoryDialog({ open, initialName, onClose, onSave }: EditC
                         <button
                             className="absolute top-2 right-2 btn btn-xs btn-ghost text-gray-400 hover:text-white"
                             onClick={onClose}
-                            aria-label="Cerrar"
+                            aria-label={t('categories.buttons.close')}
                             type="button"
                         >
                             <X size={18} />
                         </button>
                         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
                             <div className="flex items-center justify-center gap-2 mb-2">
-                                <h2 className="text-lg font-semibold text-white">Editar categoría</h2>
+                                <h2 className="text-lg font-semibold text-white">
+                                    {t('categories.actions.edit.form.title')}
+                                </h2>
                             </div>
                             <input
                                 type="text"
                                 className="input input-bordered w-full bg-gray-800/80 text-white rounded-xl"
-                                placeholder="Nombre de la categoría"
+                                placeholder={t('categories.actions.edit.form.name')}
                                 value={name}
                                 onChange={e => setName(e.target.value)}
                                 autoFocus
@@ -79,7 +83,7 @@ export function EditCategoryDialog({ open, initialName, onClose, onSave }: EditC
                                 className="btn btn-primary w-full rounded-xl mt-2"
                                 disabled={loading}
                             >
-                                {loading ? "Guardando..." : "Guardar"}
+                                {loading ? t('categories.actions.edit.form.saving') : t('categories.actions.edit.form.save')}
                             </button>
                         </form>
                     </motion.div>

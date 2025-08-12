@@ -115,7 +115,14 @@
             },
             "edit": {
                 "title": "Updated category",
-                "error": "Error updating category"
+                "error": "Error updating category",
+                "form": {
+                    "nameError": "The name is required",
+                    "title": "Edit category",
+                    "name": "Category name",
+                    "saving": "Saving...",
+                    "save": "Save"
+                }
             },
             "delete": {
                 "title": "Deleted category",
@@ -125,7 +132,8 @@
         "buttons": {
             "edit": "Edit",
             "delete": "Delete",
-            "share": "Share"
+            "share": "Share",
+            "close": "Close"
         }
     }
 }
