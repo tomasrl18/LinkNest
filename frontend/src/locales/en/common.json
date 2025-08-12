@@ -103,5 +103,29 @@
             "buttonCancel": "Cancel",
             "buttonConfirm": "Delete"
         }
+    },
+    "categories": {
+        "title": "Categories",
+        "new": "New",
+        "noCats": "No categories found.",
+        "actions": {
+            "create": {
+                "title": "Created category",
+                "error": "Error creating category"
+            },
+            "edit": {
+                "title": "Updated category",
+                "error": "Error updating category"
+            },
+            "delete": {
+                "title": "Deleted category",
+                "error": "Error deleting category"
+            }
+        },
+        "buttons": {
+            "edit": "Edit",
+            "delete": "Delete",
+            "share": "Share"
+        }
     }
 }

@@ -8,8 +8,10 @@ import ConfirmDeleteCategoryDialog from "../../components/categories/ConfirmDele
 import { ShareCategoryDialog } from "../../components/categories/ShareCategoryDialog";
 import type { Category } from "../../types/category";
 import { toast } from "react-hot-toast";
+import { useTranslation } from "react-i18next";
 
 export function ListCategoryPage() {
+    const { t } = useTranslation();
     const { user } = useAuth();
     const { categories, createCategory, updateCategory, deleteCategory, fetchCategories } = useCategories();
     const [createOpen, setCreateOpen] = useState(false);
@@ -20,11 +22,11 @@ export function ListCategoryPage() {
     const handleCreate = async (name: string) => {
         try {
             await createCategory({ name, user_id: user?.id });
-            toast.success("Categoría creada");
+            toast.success(t('categories.actions.create.title'));
             await fetchCategories();
         } catch (err) {
             console.error(err);
-            toast.error("Error al crear la categoría");
+            toast.error(t('categories.actions.create.error'));
         }
     };
 
@@ -32,11 +34,11 @@ export function ListCategoryPage() {
         if (!editModal.category) return;
         try {
             await updateCategory(editModal.category.id, { name });
-            toast.success("Categoría actualizada");
+            toast.success(t('categories.actions.edit.title'));
             setEditModal({ open: false, category: null });
         } catch (err) {
             console.error(err);
-            toast.error("Error al actualizar la categoría");
+            toast.error(t('categories.actions.edit.error'));
         }
     };
 
@@ -44,11 +46,11 @@ export function ListCategoryPage() {
         if (!deleteModal.id) return;
         try {
             await deleteCategory(deleteModal.id);
-            toast.success("Categoría eliminada");
+            toast.success(t('categories.actions.delete.title'));
             setDeleteModal({ open: false, id: null });
         } catch (err) {
             console.error(err);
-            toast.error("Error al eliminar la categoría");
+            toast.error(t('categories.actions.delete.error'));
         }
     };
 
@@ -77,13 +79,15 @@ export function ListCategoryPage() {
             />
             <section className="container mx-auto px-4 py-10 space-y-6">
                 <header className="flex items-center justify-between bg-gray-900/70 rounded-2xl px-6 py-4 shadow-lg border border-gray-800">
-                    <h1 className="text-xl font-semibold">Categorías</h1>
+                    <h1 className="text-xl font-semibold">
+                        {t('categories.title')}
+                    </h1>
                     <button
                         type="button"
                         onClick={() => setCreateOpen(true)}
                         className="btn btn-sm btn-primary rounded-lg"
                     >
-                        <Plus size={16} /> Nueva
+                        <Plus size={16} /> {t('categories.new')}
                     </button>
                 </header>
                 {categories.length ? (
@@ -95,21 +99,21 @@ export function ListCategoryPage() {
                                     <button
                                         onClick={() => setEditModal({ open: true, category: c })}
                                         className="hover:text-indigo-400 transition-colors cursor-pointer"
-                                        title="Editar"
+                                        title={t('categories.buttons.edit')}
                                     >
                                         <Pencil size={18} />
                                     </button>
                                     <button
                                         onClick={() => setDeleteModal({ open: true, id: c.id })}
                                         className="hover:text-red-500 transition-colors cursor-pointer"
-                                        title="Eliminar"
+                                        title={t('categories.buttons.delete')}
                                     >
                                         <Trash size={18} />
                                     </button>
                                     <button
                                         onClick={() => setShareModal({ open: true, id: c.id })}
                                         className="hover:text-indigo-400 transition-colors cursor-pointer"
-                                        title="Compartir"
+                                        title={t('categories.buttons.share')}
                                     >
                                         <Share2 size={18} />
                                     </button>
@@ -119,7 +123,7 @@ export function ListCategoryPage() {
                     </ul>
                 ) : (
                     <p className="text-center text-gray-400 flex flex-col items-center gap-1">
-                        <Sparkles size={18} /> No se encontraron categorías.
+                        <Sparkles size={18} /> {t('categories.noCats')}
                     </p>
                 )}
             </section>
