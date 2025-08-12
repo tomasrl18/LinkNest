@@ -75,6 +75,9 @@
             "removeFav": "Remove from favorites",
             "markFav": "Mark as favorite"
         },
-        "noLinks": "No links were found."
+        "noLinks": "No links were found.",
+        "linkCard": {
+            "titleCat": "Category" 
+        }
     }
 }
