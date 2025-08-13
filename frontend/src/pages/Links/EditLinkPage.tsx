@@ -98,7 +98,7 @@ export function EditLinkPage() {
     };
 
     return (
-        <main className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-950 text-white flex flex-col items-center relative overflow-hidden">
+        <main className="min-h-[calc(100dvh-80px)] bg-gradient-to-br from-gray-900 via-gray-800 to-gray-950 text-white flex flex-col items-center relative overflow-hidden">
             <CreateCategoryDialog
                 open={categoryDialogOpen}
                 onClose={() => setCategoryDialogOpen(false)}

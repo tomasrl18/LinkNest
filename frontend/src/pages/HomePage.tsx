@@ -32,7 +32,7 @@ export function HomePage() {
             initial="hidden"
             animate="show"
             variants={container}
-            className="min-h-screen flex flex-col items-center justify-between bg-gradient-to-br from-gray-900 via-gray-800 to-gray-950 overflow-x-hidden py-16 px-4"
+            className="min-h-[calc(100dvh-80px)] flex flex-col items-center justify-between bg-gradient-to-br from-gray-900 via-gray-800 to-gray-950 overflow-x-hidden py-16 px-4"
         >
             <section className="container mx-auto text-center space-y-6">
                 <motion.h1

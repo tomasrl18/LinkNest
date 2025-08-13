@@ -55,7 +55,7 @@ export function ListCategoryPage() {
     };
 
     return (
-        <main className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-950 text-white flex flex-col items-center">
+        <main className="min-h-[calc(100dvh-80px)] bg-gradient-to-br from-gray-900 via-gray-800 to-gray-950 text-white flex flex-col items-center">
             <CreateCategoryDialog
                 open={createOpen}
                 onClose={() => setCreateOpen(false)}

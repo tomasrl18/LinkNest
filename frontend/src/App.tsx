@@ -37,9 +37,13 @@ function AnimatedRoutes() {
 function App() {
     return (
         <BrowserRouter>
-            <Header />
-            <Toaster position="top-right" />
-            <AnimatedRoutes />
+            <div className="min-h-screen flex flex-col">
+                <Header />
+                <Toaster position="top-right" />
+                <div className="flex-1 flex flex-col">
+                    <AnimatedRoutes />
+                </div>
+            </div>
         </BrowserRouter>
     );
 }
