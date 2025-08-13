@@ -119,6 +119,15 @@ export function HomePage() {
                 variants={container}
                 className="mt-24 w-full container mx-auto text-center bg-gray-900/80 backdrop-blur border border-gray-800 rounded-2xl p-6 shadow-lg hover:scale-[1.02] transition-transform"
             >
+                <motion.p variants={child} className="text-gray-400">
+                    {t('home.infoSection.extensionSoon.title')}
+                </motion.p>
+            </motion.section>
+
+            <motion.section
+                variants={container}
+                className="mt-24 w-full container mx-auto text-center bg-gray-900/80 backdrop-blur border border-gray-800 rounded-2xl p-6 shadow-lg hover:scale-[1.02] transition-transform"
+            >
                 <motion.h2
                     variants={child}
                     className="text-2xl font-bold text-gray-100 mb-2"
