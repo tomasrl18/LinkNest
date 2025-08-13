@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight, Bookmark, Sparkles, Code, Share2 } from "lucide-react";
+import { ArrowRight, Bookmark, Sparkles, Code, Share2, Puzzle } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { useTranslation, Trans } from "react-i18next";
 import type { Variants } from "framer-motion";
@@ -113,6 +113,20 @@ export function HomePage() {
                         <p className="text-gray-400 text-sm leading-relaxed">{description}</p>
                     </motion.article>
                 ))}
+            </motion.section>
+
+            <motion.section variants={container} className="mt-24 w-full container mx-auto">
+                <motion.div
+                    variants={child}
+                    className="relative rounded-2xl p-[1px] bg-gradient-to-r from-indigo-500 via-fuchsia-500 to-pink-500 shadow-lg"
+                >
+                    <div className="flex items-center gap-4 p-6 bg-gray-900/90 rounded-2xl justify-center">
+                        <Puzzle className="w-10 h-10 text-indigo-300" />
+                        <p className="text-lg text-gray-100 text-left">
+                            {t('home.infoSection.extensionSoon.title')}
+                        </p>
+                    </div>
+                </motion.div>
             </motion.section>
 
             <motion.section
