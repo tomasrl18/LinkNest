@@ -10,6 +10,8 @@ import { CreateLinkPage } from './pages/Links/CreateLinkPage';
 import EditLinkPage from './pages/Links/EditLinkPage';
 import ListCategoryPage from './pages/Categories/ListCategoryPage';
 import { AnimatePresence } from "framer-motion";
+import { PrivacyPolicyPage } from './pages/PrivacyPolicyPage';
+import { Footer } from './components/Footer.tsx';
 
 function AnimatedRoutes() {
     const location = useLocation();
@@ -20,6 +22,7 @@ function AnimatedRoutes() {
                 <Route path="/" element={<HomePage />} />
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/register" element={<RegisterPage />} />
+                <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
 
                 <Route element={<PrivateRoute />}>
                     <Route path="/links" element={<ListLinkPage />} />
@@ -43,6 +46,7 @@ function App() {
                 <div className="flex-1 flex flex-col">
                     <AnimatedRoutes />
                 </div>
+                <Footer />
             </div>
         </BrowserRouter>
     );

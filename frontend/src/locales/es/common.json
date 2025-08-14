@@ -162,5 +162,16 @@
             "share": "Compartir",
             "close": "Cerrar"
         }
+    },
+    "privacy": {
+        "title": "Política de privacidad",
+        "paragraphs": [
+            "LinkNest solo utiliza los datos necesarios para ofrecer el servicio.",
+            "No compartimos tu información con terceros sin tu consentimiento.",
+            "Los datos de uso se recopilan de forma anónima para mejorar la aplicación.",
+            "Usamos cookies únicamente para la autenticación y almacenar tus preferencias.",
+            "Puedes solicitar la eliminación de tus datos en cualquier momento contactándonos.",
+            "Si tienes preguntas sobre cómo manejamos tu información, escríbenos a mailslinknest@gmail.com."
+        ]
     }
 }

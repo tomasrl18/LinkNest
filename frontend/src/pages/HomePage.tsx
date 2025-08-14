@@ -149,10 +149,6 @@ export function HomePage() {
                     </a>
                 </motion.p>
             </motion.section>
-
-            <motion.footer variants={child} className="text-sm text-gray-500 mt-24">
-                {t('home.footer')} <a href="https://github.com/tomasrl18" target="_blank" rel="noreferrer" className="text-indigo-400 hover:underline">Tomás</a> — © {new Date().getFullYear()} LinkNest
-            </motion.footer>
         </motion.main>
     );
 }
