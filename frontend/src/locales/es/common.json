@@ -25,8 +25,9 @@
                 "title": "Comparte con quien quieras",
                 "subtitle": "Genera colecciones públicas o privadas para compartir tus mejores recursos con tu equipo o amigos."
             },
-            "extensionSoon": {
-                "title": "Próximamente estará disponible la extensión oficial de LinkNest para que añadir enlaces sea mucho más cómodo"
+            "extensionAvailable": {
+                "title": "¡La extensión oficial de LinkNest ya está aquí! Añade enlaces más rápido de lo que se enfría tu café.",
+                "cta": "Consíguela en la Chrome Web Store."
             }
         },
         "suggestions": "¿Tienes sugerencias o comentarios?",

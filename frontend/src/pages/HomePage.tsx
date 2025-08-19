@@ -123,7 +123,15 @@ export function HomePage() {
                     <div className="flex items-center gap-4 p-6 bg-gray-900/90 rounded-2xl justify-center">
                         <Puzzle className="w-10 h-10 text-indigo-300" />
                         <p className="text-lg text-gray-100 text-left">
-                            {t('home.infoSection.extensionSoon.title')}
+                            {t('home.infoSection.extensionAvailable.title')}&nbsp;
+                            <a
+                                href="https://chromewebstore.google.com/detail/linknest-%E2%80%93-save-to-linkne/inhbpecnljglajkelbkgipjnokmmnkgc?hl=es"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-indigo-300 hover:underline"
+                            >
+                                {t('home.infoSection.extensionAvailable.cta')}
+                            </a>
                         </p>
                     </div>
                 </motion.div>

@@ -25,8 +25,9 @@
                 "title": "Share with whoever you want",
                 "subtitle": "Create public or private collections to share your best resources with your team or friends."
             },
-            "extensionSoon": {
-                "title": "The official LinkNest extension will be available soon to make adding links much easier"
+            "extensionAvailable": {
+                "title": "The official LinkNest extension is live! Add links faster than your coffee cools.",
+                "cta": "Get it on the Chrome Web Store."
             }
         },
         "suggestions": "Do you have any suggestions or comments?",
