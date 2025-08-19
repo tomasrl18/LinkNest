@@ -30,6 +30,10 @@
                 "cta": "Get it on the Chrome Web Store."
             }
         },
+        "telegram": {
+            "description": "Share your feedback and stay updated by joining our",
+            "cta": "Telegram channel"
+        },
         "suggestions": "Do you have any suggestions or comments?",
         "mail": {
             "mailTo": "Mail to"
@@ -81,7 +85,7 @@
         },
         "noLinks": "No links were found.",
         "linkCard": {
-            "titleCat": "Category" 
+            "titleCat": "Category"
         },
         "formFields": {
             "title": "Title",

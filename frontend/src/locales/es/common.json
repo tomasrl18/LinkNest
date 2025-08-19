@@ -30,6 +30,10 @@
                 "cta": "Consíguela en la Chrome Web Store."
             }
         },
+        "telegram": {
+            "description": "Comparte tus opiniones y recibe novedades uniéndote a nuestro",
+            "cta": "canal de Telegram"
+        },
         "suggestions": "¿Tienes sugerencias o comentarios?",
         "mail": {
             "mailTo": "Escribe a"
@@ -81,7 +85,7 @@
         },
         "noLinks": "No se encontraron enlaces.",
         "linkCard": {
-            "titleCat": "Categoría" 
+            "titleCat": "Categoría"
         },
         "formFields": {
             "title": "Título",

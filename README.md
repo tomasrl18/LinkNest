@@ -63,6 +63,9 @@ propuesta de mejora, no dudes en abrir un *issue* o enviar un *pull request*.
 Para dudas, comentarios o sugerencias sobre LinkNest, puedes escribirnos a
 [`mailslinknest@gmail.com`](mailto:mailslinknest@gmail.com).
 
+También puedes unirte a nuestro [canal de Telegram](https://t.me/+g1KnAhMu7xFjMjdk)
+para compartir tu opinión y estar al tanto de las novedades.
+
 ## Licencia
 
 Proyecto disponible bajo licencia [MIT](LICENSE).

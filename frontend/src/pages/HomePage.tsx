@@ -139,7 +139,7 @@ export function HomePage() {
 
             <motion.section
                 variants={container}
-                className="mt-24 w-full container mx-auto text-center bg-gray-900/80 backdrop-blur border border-gray-800 rounded-2xl p-6 shadow-lg hover:scale-[1.02] transition-transform"
+                className="mt-20 w-full container mx-auto text-center bg-gray-900/80 backdrop-blur border border-gray-800 rounded-2xl p-6 shadow-lg hover:scale-[1.02] transition-transform"
             >
                 <motion.h2
                     variants={child}
@@ -154,6 +154,17 @@ export function HomePage() {
                         className="text-indigo-300 hover:underline"
                     >
                         mailslinknest@gmail.com
+                    </a>
+                </motion.p>
+                <motion.p variants={child} className="text-gray-400">
+                    {t('home.telegram.description')}{' '}
+                    <a
+                        href="https://t.me/+g1KnAhMu7xFjMjdk"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-indigo-300 hover:underline"
+                    >
+                        {t('home.telegram.cta')}
                     </a>
                 </motion.p>
             </motion.section>
