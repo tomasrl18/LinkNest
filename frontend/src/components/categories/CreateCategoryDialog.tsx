@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X } from "lucide-react";
+import { X, Loader2 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
 interface CreateCategoryDialogProps {
@@ -79,10 +79,13 @@ export function CreateCategoryDialog({ open, onClose, onCreate }: CreateCategory
                             {error && <span className="text-xs text-pink-400 pl-1">{error}</span>}
                             <button
                                 type="submit"
-                                className="btn btn-primary w-full rounded-xl mt-2"
+                                className="btn btn-primary w-full rounded-xl mt-2 flex items-center justify-center gap-2"
                                 disabled={loading}
                             >
-                                {loading ? t('categories.actions.create.form.creating') : t('categories.actions.create.form.create')}
+                                {loading && <Loader2 className="h-4 w-4 animate-spin" />}
+                                <span>
+                                    {loading ? t('categories.actions.create.form.creating') : t('categories.actions.create.form.create')}
+                                </span>
                             </button>
                         </form>
                     </motion.div>
