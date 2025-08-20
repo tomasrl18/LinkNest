@@ -82,7 +82,7 @@ export function HomePage() {
 
             <motion.section
                 variants={container}
-                className="grid md:grid-cols-3 gap-6 mt-24 w-full container mx-auto"
+                className="grid md:grid-cols-2 gap-6 mt-24 w-full container mx-auto justify-center"
             >
                 {[
                     {
@@ -99,6 +99,11 @@ export function HomePage() {
                         icon: <Share2 className="w-6 h-6 text-gray-300" />,
                         title: t('home.infoSection.share.title'),
                         description: t('home.infoSection.share.subtitle'),
+                    },
+                    {
+                        icon: <Upload className="w-6 h-6 text-gray-300" />,
+                        title: t('home.infoSection.importBookmarks.title'),
+                        description: t('home.infoSection.importBookmarks.subtitle'),
                     },
                 ].map(({ icon, title, description }) => (
                     <motion.article
@@ -132,20 +137,6 @@ export function HomePage() {
                             >
                                 {t('home.infoSection.extensionAvailable.cta')}
                             </a>
-                        </p>
-                    </div>
-                </motion.div>
-            </motion.section>
-
-            <motion.section variants={container} className="mt-10 w-full container mx-auto">
-                <motion.div
-                    variants={child}
-                    className="relative rounded-2xl p-[1px] bg-gradient-to-r from-indigo-500 via-fuchsia-500 to-pink-500 shadow-lg"
-                >
-                    <div className="flex items-center gap-4 p-6 bg-gray-900/90 rounded-2xl justify-center">
-                        <Upload className="w-10 h-10 text-indigo-300" />
-                        <p className="text-lg text-gray-100 text-left">
-                            {t('home.infoSection.importBookmarks.title')}
                         </p>
                     </div>
                 </motion.div>

@@ -30,7 +30,8 @@
                 "cta": "Consíguela en la Chrome Web Store."
             },
             "importBookmarks": {
-                "title": "¿Ya usas marcadores? También puedes importarlos a LinkNest."
+                "title": "Importa tus marcadores",
+                "subtitle": "Importa rápidamente tus marcadores de tu navegador dentro de LinkNest."
             }
         },
         "telegram": {
