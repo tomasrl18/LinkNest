@@ -117,6 +117,15 @@
             "clarification": "This action cannot be undone.",
             "buttonCancel": "Cancel",
             "buttonConfirm": "Delete"
+        },
+        "import": {
+            "button": "Import bookmarks",
+            "title": "Import bookmarks",
+            "howTo": "Export your bookmarks as an HTML file and select it to import them.",
+            "tooltip": "In Chrome: open the bookmark manager, click the three dots, and choose Export bookmarks.",
+            "close": "Close",
+            "success": "Imported {{count}} links",
+            "error": "Error importing bookmarks"
         }
     },
     "categories": {

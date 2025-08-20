@@ -117,6 +117,15 @@
             "clarification": "Esta acción no se puede deshacer.",
             "buttonCancel": "Cancelar",
             "buttonConfirm": "Eliminar"
+        },
+        "import": {
+            "button": "Importar marcadores",
+            "title": "Importar marcadores",
+            "howTo": "Exporta tus marcadores como un archivo HTML y selecciónalo para importarlos.",
+            "tooltip": "En Chrome: abre el administrador de marcadores, haz clic en los tres puntos y elige Exportar marcadores.",
+            "close": "Cerrar",
+            "success": "{{count}} enlaces importados",
+            "error": "Error al importar marcadores"
         }
     },
     "categories": {

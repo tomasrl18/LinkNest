@@ -3,9 +3,10 @@ import { useMemo, useState } from "react";
 import { useLinks } from "../../hooks/useLinks";
 import { useCategories } from "../../hooks/useCategories";
 import LinkCard from "../../components/links/LinkCard";
-import { Sparkles, Search, Star, Trash, Pencil } from "lucide-react";
+import { Sparkles, Search, Star, Trash, Pencil, Upload } from "lucide-react";
 import { Link } from "react-router-dom";
 import ConfirmDeleteLinkDialog from "../../components/links/ConfirmDeleteLinkDialog";
+import ImportBookmarksDialog from "../../components/links/ImportBookmarksDialog";
 import { toast } from "react-hot-toast";
 import { useTranslation } from "react-i18next";
 
@@ -17,6 +18,7 @@ export function ListLinkPage() {
     const [onlyFavs, setOnlyFavs] = useState(false);
     const [categoryId, setCategoryId] = useState("");
     const [deleteModal, setDeleteModal] = useState<{ open: boolean; id: string | null }>({ open: false, id: null });
+    const [importModalOpen, setImportModalOpen] = useState(false);
 
     const filtered = useMemo(() => {
         return links.filter(l => {
@@ -58,6 +60,10 @@ export function ListLinkPage() {
                 onCancel={() => setDeleteModal({ open: false, id: null })}
                 onConfirm={handleDelete}
             />
+            <ImportBookmarksDialog
+                open={importModalOpen}
+                onClose={() => setImportModalOpen(false)}
+            />
             <section className="container mx-auto px-4 py-10 space-y-8">
                 <header className="flex flex-col gap-4 sm:flex-row sm:items-end w-full bg-gray-900/70 rounded-2xl px-6 py-4 shadow-lg border border-gray-800 mb-4">
                     <div className="flex-1 flex flex-col gap-2 sm:flex-row sm:items-center">
@@ -93,6 +99,16 @@ export function ListLinkPage() {
                             <Star size={18} className={onlyFavs ? "fill-yellow-400 text-yellow-400 drop-shadow" : "text-gray-400"} />
                             <span className="text-sm">
                                 {t('links.favs.title')}
+                            </span>
+                        </button>
+                        <button
+                            type="button"
+                            onClick={() => setImportModalOpen(true)}
+                            className="flex items-center gap-2 bg-gray-800/70 rounded-xl px-3 py-1 cursor-pointer select-none transition-colors border border-transparent focus:outline-none"
+                        >
+                            <Upload size={18} className="text-gray-400" />
+                            <span className="text-sm">
+                                {t('links.import.button')}
                             </span>
                         </button>
                     </div>
