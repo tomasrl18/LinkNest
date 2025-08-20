@@ -9,8 +9,12 @@ Organiza y redescubre tus enlaces favoritos en un mismo lugar. Guarda artículos
 - 🔑 **Autenticación** con Supabase Auth
 - ➕ **Añade enlaces** con título, descripción, categoría, etiquetas y favoritos
 - 🏷️ **Gestiona categorías y etiquetas**
+- 📤 **Importa marcadores** desde tu navegador (HTML)
 - ✏️ **Edita** y 🗑️ **elimina** fácilmente
+- 🌍 **Interfaz multilingüe** (español e inglés)
 - 🔍 **Filtra y busca** por texto, categoría o favoritos
+- 🧩 **Extensión oficial** para Chrome en la [Chrome Web Store](https://chromewebstore.google.com/detail/linknest-%E2%80%93-save-to-linkne/inhbpecnljglajkelbkgipjnokmmnkgc)
+- 🔗 **Comparte categorías** con otras personas
 - ⚡ **Interfaz moderna** gracias a Tailwind CSS, DaisyUI y Framer Motion
 - 📱 **Responsive** en escritorio y móvil
 
