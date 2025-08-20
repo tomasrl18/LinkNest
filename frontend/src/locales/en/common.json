@@ -28,6 +28,9 @@
             "extensionAvailable": {
                 "title": "The official LinkNest extension is live! Add links faster than your coffee cools.",
                 "cta": "Get it on the Chrome Web Store."
+            },
+            "importBookmarks": {
+                "title": "Already have bookmarks? Import them easily into LinkNest."
             }
         },
         "telegram": {
