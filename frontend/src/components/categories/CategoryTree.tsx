@@ -25,7 +25,7 @@ interface TreeProps {
     onReorder(parentId: string | null, orderedIds: string[]): void;
 }
 
-export function CategoryTree({ tree, onCreate, onRename, onDelete, onMove, onReorder }: TreeProps) {
+export function CategoryTree({ tree, onCreate, onRename, onDelete, onReorder }: TreeProps) {
     const sensors = useSensors(useSensor(PointerSensor));
 
     const handleDragEnd = (event: DragEndEvent) => {
