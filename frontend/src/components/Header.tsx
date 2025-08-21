@@ -63,6 +63,17 @@ export function Header() {
                             </NavLink>
 
                             <NavLink
+                                to="/usage"
+                                className={({ isActive }) =>
+                                    isActive
+                                        ? "font-semibold text-indigo-300"
+                                        : "text-gray-300 hover:text-indigo-200 transition-colors"
+                                }
+                            >
+                                {t('nav.usage')}
+                            </NavLink>
+
+                            <NavLink
                                 to="/links/new"
                                 className={({ isActive }) =>
                                     isActive
@@ -157,6 +168,17 @@ export function Header() {
                             }
                         >
                             {t('nav.categories')}
+                        </NavLink>
+                        <NavLink
+                            to="/usage"
+                            onClick={() => setMenuOpen(false)}
+                            className={({ isActive }) =>
+                                isActive
+                                    ? 'font-semibold text-indigo-300'
+                                    : 'text-gray-300 hover:text-indigo-200 transition-colors'
+                            }
+                        >
+                            {t('nav.usage')}
                         </NavLink>
                         <NavLink
                             to="/links/new"

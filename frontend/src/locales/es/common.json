@@ -48,6 +48,7 @@
         "links": "Mis enlaces",
         "categories": "Mis categorías",
         "addLink": "Añadir enlace",
+        "usage": "Uso",
         "openMenu": "Abrir menú",
         "closeMenu": "Cerrar menú"
     },
@@ -194,5 +195,17 @@
             "Puedes solicitar la eliminación de tus datos en cualquier momento contactándonos.",
             "Si tienes preguntas sobre cómo manejamos tu información, escríbenos a mailslinknest@gmail.com."
         ]
+    },
+    "usage": {
+        "total": "Total de enlaces",
+        "top": "Más visitados",
+        "never": "Nunca abiertos",
+        "filter": {
+            "range": "Rango de fechas",
+            "today": "Hoy",
+            "7d": "7 días",
+            "30d": "30 días",
+            "custom": "Personalizado"
+        }
     }
 }

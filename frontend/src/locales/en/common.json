@@ -48,6 +48,7 @@
         "links": "My links",
         "categories": "My categories",
         "addLink": "Add link",
+        "usage": "Usage",
         "openMenu": "Open menu",
         "closeMenu": "Close menu"
     },
@@ -194,5 +195,18 @@
             "You can request the deletion of your data at any time by contacting us.",
             "If you have questions about how we handle your information, please write to mailslinknest@gmail.com."
         ]
+    }
+    ,
+    "usage": {
+        "total": "Total links",
+        "top": "Top visited",
+        "never": "Never opened",
+        "filter": {
+            "range": "Date range",
+            "today": "Today",
+            "7d": "Last 7 days",
+            "30d": "Last 30 days",
+            "custom": "Custom"
+        }
     }
 }

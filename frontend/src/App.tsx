@@ -9,6 +9,7 @@ import { ListLinkPage } from './pages/Links/ListLinkPage';
 import { CreateLinkPage } from './pages/Links/CreateLinkPage';
 import EditLinkPage from './pages/Links/EditLinkPage';
 import ListCategoryPage from './pages/Categories/ListCategoryPage';
+import { UsagePage } from './pages/UsagePage';
 import { AnimatePresence } from "framer-motion";
 import { PrivacyPolicyPage } from './pages/PrivacyPolicyPage';
 import { Footer } from './components/Footer.tsx';
@@ -29,6 +30,7 @@ function AnimatedRoutes() {
                     <Route path="/links/new" element={<CreateLinkPage />} />
                     <Route path="/links/:id/edit" element={<EditLinkPage />} />
                     <Route path="/categories" element={<ListCategoryPage />} />
+                    <Route path="/usage" element={<UsagePage />} />
                 </Route>
 
                 <Route path="*" element={<Navigate to="/" replace />} />

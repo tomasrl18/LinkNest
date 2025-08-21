@@ -3,12 +3,13 @@ import { useMemo } from "react";
 import { gradientColors } from "../../constants/gradientColors";
 import SocialIcon from "./SocialIcon";
 import { useTranslation } from "react-i18next";
+import { trackOpen } from "../../lib/analytics.service";
 
 function getRandomGradient() {
     return gradientColors[Math.floor(Math.random() * gradientColors.length)];
 }
 
-function LinkCard({ link }: { link: Link }) {
+function LinkCard({ link, onOpen }: { link: Link; onOpen?: () => void }) {
     const { t } = useTranslation();
     
     const tagGradients = useMemo(
@@ -20,7 +21,16 @@ function LinkCard({ link }: { link: Link }) {
         <article className="flex items-start gap-3 p-4 rounded-xl shadow-sm">
             <SocialIcon url={link.url} />
             <div className="flex-1">
-                <a href={link.url} target="_blank" rel="noreferrer" className="font-semibold">
+                <a
+                    href={link.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="font-semibold"
+                    onClick={() => {
+                        trackOpen(link.id).catch(console.error);
+                        onOpen?.();
+                    }}
+                >
                     {link.title ? link.title : link.url}
                 </a>
                 <p className="text-sm text-gray-500">{link.description}</p>
