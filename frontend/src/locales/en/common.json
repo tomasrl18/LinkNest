@@ -138,6 +138,7 @@
         "title": "Categories",
         "new": "New",
         "noCats": "No categories found.",
+        "search": "Search category...",
         "actions": {
             "nameError": "The name is required",
             "name": "Category name",

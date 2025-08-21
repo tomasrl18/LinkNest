@@ -14,7 +14,7 @@ import {
 } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import type { CategoryNode } from '../../lib/categoryTree';
-import { Plus, MoreVertical, Trash, Pencil } from 'lucide-react';
+import { Plus, MoreVertical, Trash, Pencil, ChevronDown, ChevronRight } from 'lucide-react';
 
 interface TreeProps {
     tree: CategoryNode[];
@@ -53,9 +53,16 @@ export function CategoryTree({ tree, onCreate, onRename, onDelete, onReorder }: 
     return (
         <DndContext sensors={sensors} onDragEnd={handleDragEnd}>
             <SortableContext items={tree.map(n => n.id)} strategy={verticalListSortingStrategy}>
-                <ul className="space-y-1">
+                <ul className="space-y-2">
                     {tree.map(node => (
-                        <TreeNode key={node.id} node={node} depth={0} onCreate={onCreate} onRename={onRename} onDelete={onDelete} />
+                        <TreeNode
+                            key={node.id}
+                            node={node}
+                            depth={0}
+                            onCreate={onCreate}
+                            onRename={onRename}
+                            onDelete={onDelete}
+                        />
                     ))}
                 </ul>
             </SortableContext>
@@ -79,30 +86,32 @@ function TreeNode({ node, depth, onCreate, onRename, onDelete }: NodeProps) {
         transition,
     };
     return (
-        <li ref={setNodeRef} style={{ ...style, paddingLeft: depth * 16 }}>
-            <div className="flex items-center gap-1">
-                <button aria-label="drag" {...listeners} {...attributes} className="cursor-move p-1">
+        <li ref={setNodeRef} style={style} className="list-none">
+            <div className="group flex items-center gap-1 rounded-xl px-2 py-1 bg-gray-900/50 border border-gray-800 transition-all hover:border-pink-600">
+                <button aria-label="drag" {...listeners} {...attributes} className="cursor-move p-1 text-gray-400 group-hover:text-gray-200">
                     <MoreVertical size={14} />
                 </button>
                 {node.children.length > 0 && (
-                    <button onClick={() => setExpanded(e => !e)} aria-label="toggle" className="p-1">
-                        {expanded ? '-' : '+'}
+                    <button onClick={() => setExpanded(e => !e)} aria-label="toggle" className="p-1 text-gray-400 group-hover:text-gray-200">
+                        {expanded ? <ChevronDown size={14} /> : <ChevronRight size={14} />}
                     </button>
                 )}
-                <span className="flex-1">{node.name}</span>
-                <button onClick={() => onCreate(node.id)} aria-label="add" className="p-1">
-                    <Plus size={14} />
-                </button>
-                <button onClick={() => onRename(node.id)} aria-label="rename" className="p-1">
-                    <Pencil size={14} />
-                </button>
-                <button onClick={() => onDelete(node.id)} aria-label="delete" className="p-1 text-red-500">
-                    <Trash size={14} />
-                </button>
+                <span className="flex-1 truncate text-sm">{node.name}</span>
+                <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <button onClick={() => onCreate(node.id)} aria-label="add" className="p-1 hover:text-green-400">
+                        <Plus size={14} />
+                    </button>
+                    <button onClick={() => onRename(node.id)} aria-label="rename" className="p-1 hover:text-indigo-400">
+                        <Pencil size={14} />
+                    </button>
+                    <button onClick={() => onDelete(node.id)} aria-label="delete" className="p-1 hover:text-red-500">
+                        <Trash size={14} />
+                    </button>
+                </div>
             </div>
             {expanded && node.children.length > 0 && (
                 <SortableContext items={node.children.map(c => c.id)} strategy={verticalListSortingStrategy}>
-                    <ul className="pl-4">
+                    <ul className="mt-1 space-y-2">
                         {node.children.map(child => (
                             <TreeNode key={child.id} node={child} depth={depth + 1} onCreate={onCreate} onRename={onRename} onDelete={onDelete} />
                         ))}

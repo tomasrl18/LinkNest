@@ -138,6 +138,7 @@
         "title": "Categorías",
         "new": "Nueva",
         "noCats": "No se encontraron categorías.",
+        "search": "Buscar categoría...",
         "actions": {
             "nameError": "El nombre es obligatorio",
             "name": "Nombre de la categoría",

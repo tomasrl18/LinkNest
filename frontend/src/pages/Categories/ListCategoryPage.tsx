@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Plus, Sparkles } from "lucide-react";
+import { useMemo, useState } from "react";
+import { Plus, Search, Sparkles } from "lucide-react";
 import { useCategoryTree } from "../../hooks/useCategoryTree";
 import { useAuth } from "../../context/AuthProvider";
 import { CreateCategoryDialog } from "../../components/categories/CreateCategoryDialog";
@@ -19,10 +19,19 @@ function findCategory(nodes: CategoryNode[], id: string): CategoryNode | null {
     return null;
 }
 
+function filterTree(nodes: CategoryNode[], query: string): CategoryNode[] {
+    if (!query) return nodes;
+    const q = query.toLowerCase();
+    return nodes
+        .map(n => ({ ...n, children: filterTree(n.children, query) }))
+        .filter(n => n.name.toLowerCase().includes(q) || n.children.length);
+}
+
 export function ListCategoryPage() {
     const { t } = useTranslation();
     const { user } = useAuth();
     const { tree, create, rename, remove, reorder } = useCategoryTree();
+    const [search, setSearch] = useState("");
     const [createModal, setCreateModal] = useState<{ open: boolean; parentId: string | null }>({ open: false, parentId: null });
     const [renameModal, setRenameModal] = useState<{ open: boolean; id: string | null }>({ open: false, id: null });
     const [deleteModal, setDeleteModal] = useState<{ open: boolean; id: string | null }>({ open: false, id: null });
@@ -61,8 +70,10 @@ export function ListCategoryPage() {
 
     const renameName = renameModal.id ? findCategory(tree, renameModal.id)?.name || "" : "";
 
+    const filtered = useMemo(() => filterTree(tree, search), [tree, search]);
+
     return (
-        <main className="min-h-[calc(100dvh-80px)] bg-gradient-to-br from-gray-900 via-gray-800 to-gray-950 text-white flex flex-col items-center">
+        <main className="min-h-[calc(100dvh-80px)] bg-gradient-to-br from-gray-900 via-gray-800 to-gray-950 text-white flex flex-col items-center overflow-x-hidden">
             <CreateCategoryDialog
                 open={createModal.open}
                 onClose={() => setCreateModal({ open: false, parentId: null })}
@@ -79,27 +90,39 @@ export function ListCategoryPage() {
                 onCancel={() => setDeleteModal({ open: false, id: null })}
                 onConfirm={handleDelete}
             />
-            <section className="container mx-auto px-4 py-10 space-y-6">
-                <header className="flex items-center justify-between bg-gray-900/70 rounded-2xl px-6 py-4 shadow-lg border border-gray-800">
-                    <h1 className="text-xl font-semibold">
-                        {t('categories.title')}
-                    </h1>
+            <section className="container mx-auto px-4 py-10 space-y-8">
+                <header className="flex flex-col gap-4 sm:flex-row sm:items-center w-full bg-gray-900/70 rounded-2xl px-6 py-4 shadow-lg border border-gray-800">
+                    <div className="flex-1 flex flex-col sm:flex-row sm:items-center gap-2">
+                        <h1 className="text-xl font-semibold">{t('categories.title')}</h1>
+                        <div className="flex-1 flex items-center gap-2 bg-gray-800/70 rounded-xl px-4 py-2">
+                            <Search className="w-4 h-4 text-gray-400" />
+                            <input
+                                placeholder={t('categories.search')}
+                                value={search}
+                                onChange={e => setSearch(e.target.value)}
+                                className="w-full bg-transparent outline-none placeholder:text-gray-500 text-sm"
+                            />
+                        </div>
+                    </div>
                     <button
                         type="button"
                         onClick={() => setCreateModal({ open: true, parentId: null })}
-                        className="btn btn-sm btn-primary rounded-lg"
+                        className="flex items-center gap-2 bg-gray-800/70 rounded-xl px-3 py-1 cursor-pointer select-none transition-colors border border-transparent focus:outline-none mt-4 sm:mt-0"
                     >
-                        <Plus size={16} /> {t('categories.new')}
+                        <Plus size={16} className="text-gray-400" />
+                        <span className="text-sm">{t('categories.new')}</span>
                     </button>
                 </header>
-                {tree.length ? (
-                    <CategoryTree
-                        tree={tree}
-                        onCreate={parentId => setCreateModal({ open: true, parentId })}
-                        onRename={id => setRenameModal({ open: true, id })}
-                        onDelete={id => setDeleteModal({ open: true, id })}
-                        onReorder={(parent, ids) => reorder(parent, ids)}
-                    />
+                {filtered.length ? (
+                    <div className="bg-gray-900/70 rounded-2xl px-6 py-4 shadow-lg border border-gray-800">
+                        <CategoryTree
+                            tree={filtered}
+                            onCreate={parentId => setCreateModal({ open: true, parentId })}
+                            onRename={id => setRenameModal({ open: true, id })}
+                            onDelete={id => setDeleteModal({ open: true, id })}
+                            onReorder={(parent, ids) => reorder(parent, ids)}
+                        />
+                    </div>
                 ) : (
                     <p className="text-center text-gray-400 flex flex-col items-center gap-1">
                         <Sparkles size={18} /> {t('categories.noCats')}
