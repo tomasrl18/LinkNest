@@ -5,16 +5,23 @@ import SocialIcon from "./SocialIcon";
 import { useTranslation } from "react-i18next";
 import { trackOpen } from "../../lib/analytics.service";
 
+type LinkInput = Pick<Link, "id" | "url"> & Partial<Link>;
+
 function getRandomGradient() {
     return gradientColors[Math.floor(Math.random() * gradientColors.length)];
 }
 
-function LinkCard({ link, onOpen }: { link: Link; onOpen?: () => void }) {
+function LinkCard({ link, onOpen }: { link: LinkInput; onOpen?: () => void }) {
     const { t } = useTranslation();
-    
+
+    const title = link.title ?? link.url ?? "";
+    const description = link.description ?? "";
+    const categoryName = link.category?.name || (link as any).categories?.name || t?.("links.formFields.noCat") || "Sin categoría";
+    const tags = Array.isArray(link.tags) ? link.tags : [];
+
     const tagGradients = useMemo(
-        () => (Array.isArray(link.tags) ? link.tags.map(() => getRandomGradient()) : []),
-        [link.tags]
+        () => tags.map(() => getRandomGradient()),
+        [tags]
     );
 
     return (
@@ -31,17 +38,17 @@ function LinkCard({ link, onOpen }: { link: Link; onOpen?: () => void }) {
                         onOpen?.();
                     }}
                 >
-                    {link.title ? link.title : link.url}
+                    {title}
                 </a>
-                <p className="text-sm text-gray-500">{link.description}</p>
+                {description && <p className="text-sm text-gray-500">{description}</p>}
                 <p className="text-xs text-gray-400 mt-1">
-                    {t('links.linkCard.titleCat')}: {link.category?.name || link.categories?.name || 'Sin categoría'}
+                    {t("links.linkCard.titleCat")}: {categoryName}
                 </p>
-                {Array.isArray(link.tags) && link.tags.length > 0 && (
+                {tags.length > 0 && (
                     <ul className="flex gap-1 mt-2 flex-wrap">
-                        {link.tags.map((t, i) => (
+                        {tags.map((t, i) => (
                             <li
-                                key={t}
+                                key={`${t}-${i}`}
                                 className={`text-xs bg-gradient-to-br ${tagGradients[i]} px-1.5 py-0.5 rounded-xl font-bold`}
                             >
                                 {t}

@@ -1,56 +1,71 @@
-import { useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import LinkCard from '../components/links/LinkCard';
-import { getUsageSummary } from '../lib/analytics.service';
-import { getPresetRange, Preset } from '../lib/dateRange';
+import { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
+import LinkCard from '../components/links/LinkCard'
+import { getUsageSummary } from '../lib/analytics.service'
+import { getPresetRange } from '../lib/dateRange'
+import type { Preset } from '../lib/dateRange'
 
 interface Summary {
-    total_links: number;
-    top_links: { id: string; title: string; url: string; open_count: number }[];
-    never_opened: { id: string; title: string; url: string }[];
+    total_links: number
+    top_links: { id: string; title: string; url: string; open_count: number }[]
+    never_opened: { id: string; title: string; url: string }[]
 }
 
 export function UsagePage() {
-    const { t } = useTranslation();
-    const [preset, setPreset] = useState<Preset | 'custom'>('7d');
-    const [range, setRange] = useState(() => getPresetRange('7d'));
-    const [customFrom, setCustomFrom] = useState('');
-    const [customTo, setCustomTo] = useState('');
-    const [summary, setSummary] = useState<Summary | null>(null);
+    const { t } = useTranslation()
+    const [preset, setPreset] = useState<Preset | 'custom'>('7d')
+    const [range, setRange] = useState(() => getPresetRange('7d'))
+    const [customFrom, setCustomFrom] = useState('')
+    const [customTo, setCustomTo] = useState('')
+    const [summary, setSummary] = useState<Summary | null>(null)
+    const [loading, setLoading] = useState(false)
+    const [error, setError] = useState<string | null>(null)
 
     useEffect(() => {
+        let ignore = false
         const load = async () => {
-            const { data } = await getUsageSummary({ from: range.from.toISOString(), to: range.to.toISOString() });
-            setSummary(data);
-        };
-        load();
-    }, [range]);
+            setLoading(true)
+            setError(null)
+            const { data, error } = await getUsageSummary({
+                from: range.from.toISOString(),
+                to: range.to.toISOString(),
+            })
+            if (ignore) return
+            if (error) setError(error.message ?? 'Error')
+            setSummary(data)
+            setLoading(false)
+        }
+        load()
+        return () => {
+            ignore = true
+        }
+    }, [range])
 
     const handlePreset = (p: Preset | 'custom') => {
-        setPreset(p);
-        if (p === 'custom') return;
-        const r = getPresetRange(p);
-        setRange(r);
-    };
+        setPreset(p)
+        if (p === 'custom') return
+        const r = getPresetRange(p)
+        setRange(r)
+    }
 
     const handleCustomChange = (f: string, t: string) => {
-        setCustomFrom(f);
-        setCustomTo(t);
+        setCustomFrom(f)
+        setCustomTo(t)
         if (f && t) {
-            setRange({ from: new Date(f), to: new Date(t) });
+            setRange({ from: new Date(f), to: new Date(t) })
         }
-    };
+    }
 
     const handleOpened = (id: string) => {
         setSummary(s =>
             s
                 ? {
-                      ...s,
-                      never_opened: s.never_opened.filter(l => l.id !== id),
-                  }
+                    ...s,
+                    never_opened: (s.never_opened ?? []).filter(l => l.id !== id),
+                }
                 : s
-        );
-    };
+        )
+    }
 
     return (
         <main className="p-4 text-white">
@@ -84,36 +99,38 @@ export function UsagePage() {
                 )}
             </section>
 
-            {summary && (
+            {error && <p className="text-red-400">{error}</p>}
+
+            {summary && !loading && (
                 <section className="space-y-6">
                     <div>
                         <h2 className="text-xl font-bold">{t('usage.total')}</h2>
-                        <p>{summary.total_links}</p>
+                        <p>{summary.total_links ?? 0}</p>
                     </div>
+
                     <div>
                         <h2 className="text-xl font-bold">{t('usage.top')}</h2>
                         <ul className="space-y-2">
-                            {summary.top_links.map(l => (
+                            {(summary.top_links ?? []).map(l => (
                                 <li key={l.id} className="border p-2 rounded">
-                                    <a
-                                        href={l.url}
-                                        target="_blank"
-                                        rel="noreferrer"
-                                        className="underline"
-                                    >
+                                    <a href={l.url} target="_blank" rel="noreferrer" className="underline">
                                         {l.title}
-                                    </a>
-                                    {' '}- {l.open_count}
+                                    </a>{' '}
+                                    - {l.open_count}
                                 </li>
                             ))}
                         </ul>
                     </div>
+
                     <div>
                         <h2 className="text-xl font-bold">{t('usage.never')}</h2>
                         <ul className="space-y-2">
-                            {summary.never_opened.map(l => (
+                            {(summary.never_opened ?? []).map(l => (
                                 <li key={l.id} className="border p-2 rounded">
-                                    <LinkCard link={{ id: l.id, url: l.url, title: l.title }} onOpen={() => handleOpened(l.id)} />
+                                    <LinkCard
+                                        link={{ id: l.id, url: l.url, title: l.title }}
+                                        onOpen={() => handleOpened(l.id)}
+                                    />
                                 </li>
                             ))}
                         </ul>
@@ -121,7 +138,7 @@ export function UsagePage() {
                 </section>
             )}
         </main>
-    );
+    )
 }
 
-export default UsagePage;
+export default UsagePage
