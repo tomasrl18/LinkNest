@@ -44,7 +44,7 @@ export const RegisterPage = () => {
             animate="animate"
             exit="exit"
             transition={pageTransition}
-            className='h-[calc(100dvh-80px)] flex items-start justify-center pt-24 px-4 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-950'
+            className='flex-1 flex items-center justify-center px-4 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-950'
         >
             <motion.form
                 onSubmit={handleSubmit}

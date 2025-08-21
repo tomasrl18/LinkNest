@@ -73,7 +73,7 @@ export function ListCategoryPage() {
     const filtered = useMemo(() => filterTree(tree, search), [tree, search]);
 
     return (
-        <main className="min-h-[calc(100dvh-80px)] bg-gradient-to-br from-gray-900 via-gray-800 to-gray-950 text-white flex flex-col items-center overflow-x-hidden">
+        <main className="flex-1 w-full bg-gradient-to-br from-gray-900 via-gray-800 to-gray-950 text-white flex flex-col items-center overflow-x-hidden">
             <CreateCategoryDialog
                 open={createModal.open}
                 onClose={() => setCreateModal({ open: false, parentId: null })}
