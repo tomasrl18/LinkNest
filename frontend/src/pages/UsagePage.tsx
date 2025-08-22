@@ -34,7 +34,13 @@ export function UsagePage() {
                 to: range.to.toISOString(),
             })
             if (ignore) return
-            if (error) setError(error.message ?? 'Error')
+            if (error) {
+                if (typeof error === 'object' && error !== null && 'message' in error && typeof (error as { message?: unknown }).message === 'string') {
+                    setError((error as { message: string }).message)
+                } else {
+                    setError('Error')
+                }
+            }
             setSummary(data)
             setLoading(false)
         }
