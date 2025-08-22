@@ -14,18 +14,19 @@ import {
 } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import type { CategoryNode } from '../../lib/categoryTree';
-import { Plus, MoreVertical, Trash, Pencil, ChevronDown, ChevronRight } from 'lucide-react';
+import { Plus, MoreVertical, Trash, Pencil, ChevronDown, ChevronRight, Share2 } from 'lucide-react';
 
 interface TreeProps {
     tree: CategoryNode[];
     onCreate(parent: string | null): void;
     onRename(id: string): void;
     onDelete(id: string): void;
+    onShare(id: string): void;
     onMove?(id: string, parentId: string | null, position: number): void;
     onReorder(parentId: string | null, orderedIds: string[]): void;
 }
 
-export function CategoryTree({ tree, onCreate, onRename, onDelete, onReorder }: TreeProps) {
+export function CategoryTree({ tree, onCreate, onRename, onDelete, onShare, onReorder }: TreeProps) {
     const sensors = useSensors(useSensor(PointerSensor));
 
     const handleDragEnd = (event: DragEndEvent) => {
@@ -62,6 +63,7 @@ export function CategoryTree({ tree, onCreate, onRename, onDelete, onReorder }: 
                             onCreate={onCreate}
                             onRename={onRename}
                             onDelete={onDelete}
+                            onShare={onShare}
                         />
                     ))}
                 </ul>
@@ -76,9 +78,10 @@ interface NodeProps {
     onCreate(parent: string | null): void;
     onRename(id: string): void;
     onDelete(id: string): void;
+    onShare(id: string): void;
 }
 
-function TreeNode({ node, depth, onCreate, onRename, onDelete }: NodeProps) {
+function TreeNode({ node, depth, onCreate, onRename, onDelete, onShare }: NodeProps) {
     const [expanded, setExpanded] = useState(true);
     const { attributes, listeners, setNodeRef, transform, transition } = useSortable({ id: node.id });
     const style = {
@@ -104,6 +107,9 @@ function TreeNode({ node, depth, onCreate, onRename, onDelete }: NodeProps) {
                     <button onClick={() => onRename(node.id)} aria-label="rename" className="p-1 hover:text-indigo-400">
                         <Pencil size={14} />
                     </button>
+                    <button onClick={() => onShare(node.id)} aria-label="share" className="p-1 hover:text-blue-400">
+                        <Share2 size={14} />
+                    </button>
                     <button onClick={() => onDelete(node.id)} aria-label="delete" className="p-1 hover:text-red-500">
                         <Trash size={14} />
                     </button>
@@ -113,7 +119,15 @@ function TreeNode({ node, depth, onCreate, onRename, onDelete }: NodeProps) {
                 <SortableContext items={node.children.map(c => c.id)} strategy={verticalListSortingStrategy}>
                     <ul className="mt-1 space-y-2">
                         {node.children.map(child => (
-                            <TreeNode key={child.id} node={child} depth={depth + 1} onCreate={onCreate} onRename={onRename} onDelete={onDelete} />
+                            <TreeNode
+                                key={child.id}
+                                node={child}
+                                depth={depth + 1}
+                                onCreate={onCreate}
+                                onRename={onRename}
+                                onDelete={onDelete}
+                                onShare={onShare}
+                            />
                         ))}
                     </ul>
                 </SortableContext>

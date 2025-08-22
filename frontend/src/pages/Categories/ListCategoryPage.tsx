@@ -5,6 +5,7 @@ import { useAuth } from "../../context/AuthProvider";
 import { CreateCategoryDialog } from "../../components/categories/CreateCategoryDialog";
 import { EditCategoryDialog } from "../../components/categories/EditCategoryDialog";
 import ConfirmDeleteCategoryDialog from "../../components/categories/ConfirmDeleteCategoryDialog";
+import { ShareCategoryDialog } from "../../components/categories/ShareCategoryDialog";
 import { CategoryTree } from "../../components/categories/CategoryTree";
 import type { CategoryNode } from "../../lib/categoryTree";
 import { toast } from "react-hot-toast";
@@ -35,6 +36,7 @@ export function ListCategoryPage() {
     const [createModal, setCreateModal] = useState<{ open: boolean; parentId: string | null }>({ open: false, parentId: null });
     const [renameModal, setRenameModal] = useState<{ open: boolean; id: string | null }>({ open: false, id: null });
     const [deleteModal, setDeleteModal] = useState<{ open: boolean; id: string | null }>({ open: false, id: null });
+    const [shareModal, setShareModal] = useState<{ open: boolean; id: string | null }>({ open: false, id: null });
 
     const handleCreate = async (name: string) => {
         try {
@@ -90,6 +92,11 @@ export function ListCategoryPage() {
                 onCancel={() => setDeleteModal({ open: false, id: null })}
                 onConfirm={handleDelete}
             />
+            <ShareCategoryDialog
+                open={shareModal.open}
+                categoryId={shareModal.id || ""}
+                onClose={() => setShareModal({ open: false, id: null })}
+            />
             <section className="container mx-auto px-4 py-10 space-y-8">
                 <header className="flex flex-col gap-4 sm:flex-row sm:items-center w-full bg-gray-900/70 rounded-2xl px-6 py-4 shadow-lg border border-gray-800">
                     <div className="flex-1 flex flex-col sm:flex-row sm:items-center gap-2">
@@ -120,6 +127,7 @@ export function ListCategoryPage() {
                             onCreate={parentId => setCreateModal({ open: true, parentId })}
                             onRename={id => setRenameModal({ open: true, id })}
                             onDelete={id => setDeleteModal({ open: true, id })}
+                            onShare={id => setShareModal({ open: true, id })}
                             onReorder={(parent, ids) => reorder(parent, ids)}
                         />
                     </div>
