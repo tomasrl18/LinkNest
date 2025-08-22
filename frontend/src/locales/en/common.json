@@ -49,6 +49,7 @@
         "categories": "My categories",
         "addLink": "Add link",
         "usage": "Usage",
+        "profile": "Profile",
         "openMenu": "Open menu",
         "closeMenu": "Close menu"
     },
@@ -207,6 +208,28 @@
             "7d": "Last 7 days",
             "30d": "Last 30 days",
             "custom": "Custom"
+        }
+    },
+    "profile": {
+        "title": "Profile",
+        "password": {
+            "title": "Change password",
+            "current": "Current password",
+            "new": "New password",
+            "confirm": "Confirm new password",
+            "closeOthers": "Log out other sessions",
+            "save": "Save",
+            "saving": "Saving...",
+            "success": "Password updated",
+            "currentIncorrect": "Current password incorrect",
+            "mismatch": "Passwords do not match",
+            "required": "This field is required",
+            "invalid": "Must be at least 8 characters and include uppercase, lowercase, number and symbol",
+            "strength": {
+                "weak": "Strength: weak",
+                "medium": "Strength: medium",
+                "strong": "Strength: strong"
+            }
         }
     }
 }

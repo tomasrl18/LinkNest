@@ -13,6 +13,7 @@ import { UsagePage } from './pages/UsagePage';
 import { AnimatePresence } from "framer-motion";
 import { PrivacyPolicyPage } from './pages/PrivacyPolicyPage';
 import { Footer } from './components/Footer.tsx';
+import { ProfilePage } from './pages/ProfilePage.tsx';
 
 function AnimatedRoutes() {
     const location = useLocation();
@@ -31,6 +32,7 @@ function AnimatedRoutes() {
                     <Route path="/links/:id/edit" element={<EditLinkPage />} />
                     <Route path="/categories" element={<ListCategoryPage />} />
                     <Route path="/usage" element={<UsagePage />} />
+                    <Route path="/profile" element={<ProfilePage />} />
                 </Route>
 
                 <Route path="*" element={<Navigate to="/" replace />} />

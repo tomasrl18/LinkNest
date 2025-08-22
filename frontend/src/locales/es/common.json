@@ -15,7 +15,7 @@
         "infoSection": {
             "instantlySave": {
                 "title": "Guarda al instante",
-                "subtitle": "Añade enlaces con un solo clic y nosotros capturamos título, favicon y meta descriptiva por ti."
+                "subtitle": "Añade enlaces con un solo clic y nosotros capturamos título, favicon y meta descripción por ti."
             },
             "sortFind": {
                 "title": "Clasifica y encuentra",
@@ -49,6 +49,7 @@
         "categories": "Mis categorías",
         "addLink": "Añadir enlace",
         "usage": "Uso",
+        "profile": "Perfil",
         "openMenu": "Abrir menú",
         "closeMenu": "Cerrar menú"
     },
@@ -206,6 +207,28 @@
             "7d": "7 días",
             "30d": "30 días",
             "custom": "Personalizado"
+        }
+    },
+    "profile": {
+        "title": "Perfil",
+        "password": {
+            "title": "Cambiar contraseña",
+            "current": "Contraseña actual",
+            "new": "Nueva contraseña",
+            "confirm": "Confirmar nueva contraseña",
+            "closeOthers": "Cerrar otras sesiones",
+            "save": "Guardar",
+            "saving": "Guardando...",
+            "success": "Contraseña actualizada",
+            "currentIncorrect": "Contraseña actual incorrecta",
+            "mismatch": "Las contraseñas no coinciden",
+            "required": "Este campo es obligatorio",
+            "invalid": "Debe tener al menos 8 caracteres e incluir mayúscula, minúscula, número y símbolo",
+            "strength": {
+                "weak": "Fortaleza: débil",
+                "medium": "Fortaleza: media",
+                "strong": "Fortaleza: fuerte"
+            }
         }
     }
 }

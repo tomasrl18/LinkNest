@@ -16,8 +16,8 @@ function LinkCard({ link, onOpen }: { link: LinkInput; onOpen?: () => void }) {
 
     const title = link.title ?? link.url ?? "";
     const description = link.description ?? "";
-    const categoryName = link.category?.name || (link as any).categories?.name || t?.("links.formFields.noCat") || "Sin categoría";
-    const tags = Array.isArray(link.tags) ? link.tags : [];
+    const categoryName = link.category?.name || link.categories?.name || t?.("links.formFields.noCat") || "Sin categoría";
+    const tags = useMemo(() => Array.isArray(link.tags) ? link.tags : [], [link.tags]);
 
     const tagGradients = useMemo(
         () => tags.map(() => getRandomGradient()),
