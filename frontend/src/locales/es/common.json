@@ -188,15 +188,72 @@
     },
     "privacy": {
         "title": "Política de privacidad",
-        "paragraphs": [
-            "En LinkNest tratamos tus datos personales con transparencia y de acuerdo con el Reglamento (UE) 2016/679 (RGPD) y la legislación local aplicable.",
-            "Recogemos únicamente la información necesaria para crear tu cuenta y prestar el servicio, como tu correo electrónico, enlaces guardados, etiquetas, notas y preferencias.",
-            "Utilizamos estos datos para gestionar tu espacio de enlaces, sincronizar tus contenidos entre dispositivos, mejorar el producto y responder a tus solicitudes de soporte.",
-            "No vendemos tus datos ni los compartimos con terceros para fines comerciales; solo trabajamos con proveedores que nos ayudan a operar la plataforma (alojamiento, analítica agregada, autenticación) y que actúan siguiendo nuestras instrucciones y compromisos de confidencialidad.",
-            "Conservamos tu información mientras mantienes activa la cuenta; puedes solicitar la eliminación o portabilidad de tus datos en cualquier momento y eliminaremos también las copias de seguridad en los plazos técnicos razonables.",
-            "Las cookies y tecnologías similares se usan exclusivamente para iniciar sesión de forma segura, recordar tus preferencias y analizar de forma agregada cómo se utiliza LinkNest, sin rastrearte fuera del servicio.",
-            "Si necesitas más información o ejercer tus derechos de acceso, rectificación, cancelación u oposición, escríbenos a mailslinknest@gmail.com y atenderemos tu consulta."
-        ]
+        "badge": "Tus datos siempre son tuyos",
+        "lastUpdated": "Última actualización: 5 de febrero de 2025",
+        "intro": "Creamos LinkNest como un espacio tranquilo y privado para guardar lo que aprendes. Cumplimos con el RGPD y la normativa local aplicable y explicamos con claridad cómo usamos tu información.",
+        "cards": [
+            {
+                "icon": "shield",
+                "title": "Transparencia por defecto",
+                "description": "Seguimos principios estrictos de privacidad, documentamos cada proceso y te mantenemos informado sobre lo que ocurre con tus datos personales."
+            },
+            {
+                "icon": "lock",
+                "title": "Infraestructura segura",
+                "description": "Todas las conexiones están cifradas, el acceso se limita al personal autorizado y nuestros proveedores firman compromisos de confidencialidad."
+            },
+            {
+                "icon": "database",
+                "title": "Retención mínima",
+                "description": "Conservamos la información solo mientras tu cuenta está activa y depuramos las copias de seguridad de forma periódica."
+            }
+        ],
+        "sections": [
+            {
+                "title": "Datos que recopilamos",
+                "description": "Solo solicitamos lo imprescindible para que LinkNest funcione:",
+                "items": [
+                    "Correo electrónico para identificar tu cuenta y enviarte comunicaciones importantes.",
+                    "Enlaces guardados, etiquetas, notas y preferencias personales que añades dentro del producto.",
+                    "Registros técnicos que nos ayudan a proteger las sesiones, prevenir abusos y resolver incidencias."
+                ]
+            },
+            {
+                "title": "Cómo los utilizamos",
+                "description": "Tu información hace posible la experiencia que esperas:",
+                "items": [
+                    "Organizar y sincronizar tus colecciones entre dispositivos en tiempo real.",
+                    "Mejorar las funcionalidades existentes y crear otras nuevas a partir de métricas agregadas.",
+                    "Atender tus solicitudes de soporte y mantenerte al tanto de cambios relevantes.",
+                    "Las cookies y tecnologías similares recuerdan tus preferencias, protegen la cuenta y miden tendencias de uso anónimas."
+                ]
+            },
+            {
+                "title": "Cuándo compartimos información",
+                "description": "Solo colaboramos con proveedores de confianza que nos ayudan a mantener LinkNest disponible:",
+                "items": [
+                    "Servicios de infraestructura, almacenamiento y correo que procesan datos únicamente siguiendo nuestras instrucciones.",
+                    "Socios de analítica que entregan información anonimizada y tienen prohibido vender o reutilizar tus datos personales.",
+                    "Requerimientos legales o de cumplimiento cuando la ley nos obliga y tras verificar la solicitud."
+                ]
+            }
+        ],
+        "rights": {
+            "title": "Siempre tienes el control",
+            "description": "En cualquier momento puedes ejercer tus derechos de protección de datos:",
+            "items": [
+                "Acceder y solicitar una copia de la información que almacenamos sobre ti.",
+                "Rectificar datos inexactos o actualizar tu perfil cuando lo necesites.",
+                "Solicitar la eliminación o portabilidad y eliminaremos los sistemas activos y las copias de seguridad dentro de los límites técnicos.",
+                "Oponerte a determinados tratamientos, como comunicaciones directas o analíticas."
+            ]
+        },
+        "contact": {
+            "title": "¿Necesitas hablar con nosotros?",
+            "description": "Respondemos las consultas de privacidad en menos de 72 horas. Cuéntanos cómo podemos ayudarte y lo haremos contigo.",
+            "cta": "Escríbenos al equipo de privacidad",
+            "email": "mailslinknest@gmail.com"
+        }
     },
     "usage": {
         "total": "Total de enlaces",

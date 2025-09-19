@@ -188,17 +188,73 @@
     },
     "privacy": {
         "title": "Privacy Policy",
-        "paragraphs": [
-            "At LinkNest we handle your personal data transparently and in accordance with Regulation (EU) 2016/679 (GDPR) and applicable local laws.",
-            "We only collect the information needed to create your account and deliver the service, such as your email address, saved links, tags, notes, and preferences.",
-            "We use this data to manage your link space, sync your content across devices, improve the product, and respond to support requests.",
-            "We do not sell your data or share it with third parties for commercial purposes; we only work with service providers that help us run the platform (hosting, aggregated analytics, authentication) under confidentiality obligations.",
-            "We retain your information while your account remains active; you can request deletion or portability of your data at any time, and we will also purge backups within reasonable technical timelines.",
-            "Cookies and similar technologies are used solely to secure your sessions, remember your preferences, and analyze how LinkNest is used in aggregate, without tracking you outside the service.",
-            "If you need more details or wish to exercise your access, rectification, erasure, or objection rights, contact us at mailslinknest@gmail.com and we will assist you."
-        ]
-    }
-    ,
+        "badge": "Your data, always yours",
+        "lastUpdated": "Last updated: 5 February 2025",
+        "intro": "We designed LinkNest to be a calm and private space for your saved knowledge. We comply with the GDPR and applicable local regulations and explain in plain language how your information is used.",
+        "cards": [
+            {
+                "icon": "shield",
+                "title": "Transparent by default",
+                "description": "We follow strict privacy principles, document every process and keep you informed about what happens with your personal data."
+            },
+            {
+                "icon": "lock",
+                "title": "Security-first infrastructure",
+                "description": "All connections are encrypted, access is limited to authorised staff, and our partners sign confidentiality agreements."
+            },
+            {
+                "icon": "database",
+                "title": "Minimal retention",
+                "description": "We only keep information while you have an active account and remove backups on a rolling technical schedule."
+            }
+        ],
+        "sections": [
+            {
+                "title": "Data we collect",
+                "description": "We only ask for the essentials to run LinkNest smoothly:",
+                "items": [
+                    "Email address to identify your account and send important communications.",
+                    "Saved links, tags, notes and personal preferences you add inside the product.",
+                    "Technical logs that help us secure sessions, prevent abuse and troubleshoot issues."
+                ]
+            },
+            {
+                "title": "How we use it",
+                "description": "Your information powers the product experience you expect:",
+                "items": [
+                    "Organise and synchronise your collections across devices in real time.",
+                    "Improve existing features and build new ones using aggregated usage metrics.",
+                    "Provide responsive support whenever you contact us and keep you informed about relevant changes.",
+                    "Cookies and similar technologies remember your preferences, secure the account and measure anonymous usage trends."
+                ]
+            },
+            {
+                "title": "When we share information",
+                "description": "We only collaborate with trusted vendors that help us keep LinkNest available:",
+                "items": [
+                    "Infrastructure, storage and email providers that process data strictly under our instructions.",
+                    "Analytics partners that deliver anonymised insights and are prohibited from selling or repurposing your personal data.",
+                    "Legal or compliance disclosures when we are required to do so by law, after verifying the request."
+                ]
+            }
+        ],
+        "rights": {
+            "title": "You are always in control",
+            "description": "At any moment you can exercise your data protection rights:",
+            "items": [
+                "Access and request a copy of the information we store about you.",
+                "Rectify inaccurate details or update your profile whenever you need.",
+                "Request deletion or portability and we will wipe active systems and backups within technical limits.",
+                "Object to certain processing activities such as direct communications or analytics."
+            ]
+        },
+        "contact": {
+            "title": "Need to talk to us?",
+            "description": "We respond to privacy queries within 72 hours. Tell us how we can help and we will work with you closely.",
+            "cta": "Email the privacy team",
+            "email": "mailslinknest@gmail.com"
+        }
+    },
     "usage": {
         "total": "Total links",
         "top": "Top visited",
