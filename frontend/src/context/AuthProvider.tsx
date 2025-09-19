@@ -1,6 +1,7 @@
 
 import { createContext, useContext, useEffect, useState } from 'react';
 import { supabase } from '../lib/supabase';
+import { deriveSupabasePassword } from '../lib/password';
 import type { Session, User } from '@supabase/supabase-js';
 
 type AuthContextType = {
@@ -32,12 +33,14 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const user = session?.user ?? null;
 
     const signIn = async (email: string, password: string) => {
-        const { error } = await supabase.auth.signInWithPassword({ email, password });
+        const derivedPassword = await deriveSupabasePassword(password);
+        const { error } = await supabase.auth.signInWithPassword({ email, password: derivedPassword });
         if (error) throw error;
     };
 
     const signUp = async (email: string, password: string) => {
-        const { data, error } = await supabase.auth.signUp({ email, password });
+        const derivedPassword = await deriveSupabasePassword(password);
+        const { data, error } = await supabase.auth.signUp({ email, password: derivedPassword });
         if (error) throw error;
 
         const userId = data.user?.id;
@@ -46,7 +49,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         }
 
         if (!data.session) {
-            const { error: signInError } = await supabase.auth.signInWithPassword({ email, password });
+            const { error: signInError } = await supabase.auth.signInWithPassword({ email, password: derivedPassword });
             if (signInError) throw signInError;
         }
     };

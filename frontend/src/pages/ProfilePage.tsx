@@ -3,6 +3,7 @@ import { Eye, EyeOff, Loader2 } from "lucide-react"
 import { useTranslation } from "react-i18next"
 import { useAuth } from "../context/AuthProvider"
 import { supabase } from "../lib/supabase"
+import { deriveSupabasePassword } from "../lib/password"
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "../components/ui/card"
 import { Label } from "../components/ui/label"
 import { Input } from "../components/ui/input"
@@ -64,13 +65,15 @@ export function ProfilePage() {
 
         try {
             setLoading(true)
-            const { error: signInError } = await supabase.auth.signInWithPassword({ email, password: currentPassword })
+            const derivedCurrent = await deriveSupabasePassword(currentPassword)
+            const { error: signInError } = await supabase.auth.signInWithPassword({ email, password: derivedCurrent })
             if (signInError) {
                 setErrors({ currentPassword: t('profile.password.currentIncorrect') })
                 return
             }
 
-            const { error: updateError } = await supabase.auth.updateUser({ password: newPassword })
+            const derivedNew = await deriveSupabasePassword(newPassword)
+            const { error: updateError } = await supabase.auth.updateUser({ password: derivedNew })
             if (updateError) {
                 setErrors({ global: updateError.message })
                 return
