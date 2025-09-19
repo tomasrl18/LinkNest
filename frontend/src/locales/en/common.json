@@ -189,12 +189,13 @@
     "privacy": {
         "title": "Privacy Policy",
         "paragraphs": [
-            "LinkNest only uses the data necessary to provide the service.",
-            "We do not share your information with third parties without your consent.",
-            "Usage data is collected anonymously to improve the application.",
-            "Cookies are used only for authentication and storing your preferences.",
-            "You can request the deletion of your data at any time by contacting us.",
-            "If you have questions about how we handle your information, please write to mailslinknest@gmail.com."
+            "At LinkNest we handle your personal data transparently and in accordance with Regulation (EU) 2016/679 (GDPR) and applicable local laws.",
+            "We only collect the information needed to create your account and deliver the service, such as your email address, saved links, tags, notes, and preferences.",
+            "We use this data to manage your link space, sync your content across devices, improve the product, and respond to support requests.",
+            "We do not sell your data or share it with third parties for commercial purposes; we only work with service providers that help us run the platform (hosting, aggregated analytics, authentication) under confidentiality obligations.",
+            "We retain your information while your account remains active; you can request deletion or portability of your data at any time, and we will also purge backups within reasonable technical timelines.",
+            "Cookies and similar technologies are used solely to secure your sessions, remember your preferences, and analyze how LinkNest is used in aggregate, without tracking you outside the service.",
+            "If you need more details or wish to exercise your access, rectification, erasure, or objection rights, contact us at mailslinknest@gmail.com and we will assist you."
         ]
     }
     ,

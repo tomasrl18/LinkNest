@@ -189,12 +189,13 @@
     "privacy": {
         "title": "Política de privacidad",
         "paragraphs": [
-            "LinkNest solo utiliza los datos necesarios para ofrecer el servicio.",
-            "No compartimos tu información con terceros sin tu consentimiento.",
-            "Los datos de uso se recopilan de forma anónima para mejorar la aplicación.",
-            "Usamos cookies únicamente para la autenticación y almacenar tus preferencias.",
-            "Puedes solicitar la eliminación de tus datos en cualquier momento contactándonos.",
-            "Si tienes preguntas sobre cómo manejamos tu información, escríbenos a mailslinknest@gmail.com."
+            "En LinkNest tratamos tus datos personales con transparencia y de acuerdo con el Reglamento (UE) 2016/679 (RGPD) y la legislación local aplicable.",
+            "Recogemos únicamente la información necesaria para crear tu cuenta y prestar el servicio, como tu correo electrónico, enlaces guardados, etiquetas, notas y preferencias.",
+            "Utilizamos estos datos para gestionar tu espacio de enlaces, sincronizar tus contenidos entre dispositivos, mejorar el producto y responder a tus solicitudes de soporte.",
+            "No vendemos tus datos ni los compartimos con terceros para fines comerciales; solo trabajamos con proveedores que nos ayudan a operar la plataforma (alojamiento, analítica agregada, autenticación) y que actúan siguiendo nuestras instrucciones y compromisos de confidencialidad.",
+            "Conservamos tu información mientras mantienes activa la cuenta; puedes solicitar la eliminación o portabilidad de tus datos en cualquier momento y eliminaremos también las copias de seguridad en los plazos técnicos razonables.",
+            "Las cookies y tecnologías similares se usan exclusivamente para iniciar sesión de forma segura, recordar tus preferencias y analizar de forma agregada cómo se utiliza LinkNest, sin rastrearte fuera del servicio.",
+            "Si necesitas más información o ejercer tus derechos de acceso, rectificación, cancelación u oposición, escríbenos a mailslinknest@gmail.com y atenderemos tu consulta."
         ]
     },
     "usage": {
