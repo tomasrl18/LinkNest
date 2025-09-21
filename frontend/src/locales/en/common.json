@@ -267,6 +267,84 @@
             "email": "mailslinknest@gmail.com"
         }
     },
+    "terms": {
+        "title": "Terms of Service",
+        "badge": "Use LinkNest with confidence",
+        "lastUpdated": "Last updated: 5 February 2025",
+        "intro": "These Terms form a binding agreement between you and LinkNest. By creating an account or browsing our public pages you accept them and agree to follow the rules below.",
+        "cards": [
+            {
+                "icon": "scroll",
+                "title": "Clear agreement",
+                "description": "These Terms explain the conditions that apply to every LinkNest account so you always know what to expect."
+            },
+            {
+                "icon": "handshake",
+                "title": "Transparent collaboration",
+                "description": "We outline your rights, our responsibilities and the process we will follow when we update the service."
+            },
+            {
+                "icon": "shield",
+                "title": "Responsible safeguards",
+                "description": "We protect the platform, monitor abuse and may take action when behaviour threatens the safety of other users."
+            }
+        ],
+        "sections": [
+            {
+                "title": "Eligibility and account information",
+                "description": "To keep LinkNest safe you agree to:",
+                "items": [
+                    "Be at least 16 years old or the minimum legal age in your jurisdiction.",
+                    "Provide accurate contact details and keep your credentials confidential.",
+                    "Notify us immediately if you suspect unauthorised access to your account."
+                ]
+            },
+            {
+                "title": "Permitted use",
+                "description": "You may use LinkNest to organise personal or professional resources as long as you:",
+                "items": [
+                    "Do not upload content that infringes the law, third-party rights or contains malicious software.",
+                    "Respect our technical limits and avoid reverse engineering, scraping or automated attacks.",
+                    "Refrain from actions that interfere with the service, other users or our security controls."
+                ]
+            },
+            {
+                "title": "Content ownership",
+                "description": "You always remain the owner of the links, notes and metadata you store. When you save or share them you:",
+                "items": [
+                    "Grant us permission to host, process and display the content within LinkNest.",
+                    "Confirm you have the necessary rights to share or publish what you upload.",
+                    "Understand that deleting data removes it from active systems while backups persist for a limited time."
+                ]
+            }
+        ],
+        "commitments": {
+            "platform": {
+                "title": "Our commitments",
+                "description": "We provide a reliable platform and will:",
+                "items": [
+                    "Maintain LinkNest with reasonable uptime and safeguard your data with industry-standard practices.",
+                    "Communicate material changes to these Terms at least 15 days in advance whenever feasible.",
+                    "Offer export tools so you can retrieve your information before closing your account."
+                ]
+            },
+            "user": {
+                "title": "Your commitments",
+                "description": "To use LinkNest responsibly you agree to:",
+                "items": [
+                    "Comply with these Terms, our policies and applicable laws.",
+                    "Pay any applicable fees described in future paid plans or add-ons.",
+                    "Accept that we may suspend or terminate accounts that violate these rules or harm the community."
+                ]
+            }
+        },
+        "contact": {
+            "title": "Need clarification?",
+            "description": "Our team can help you interpret these Terms or report potential violations. We reply within 72 hours.",
+            "cta": "Contact support",
+            "email": "mailslinknest@gmail.com"
+        }
+    },
     "usage": {
         "total": "Total links",
         "top": "Top visited",

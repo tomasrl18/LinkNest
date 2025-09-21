@@ -6,11 +6,16 @@ export function Footer() {
     const { t } = useTranslation();
     return (
         <footer className="bg-gray-900/80 backdrop-blur border-t border-gray-800 text-gray-500 text-sm">
-            <div className="container mx-auto flex flex-col sm:flex-row items-center justify-center gap-4 px-4 py-6">
-                <Button asChild variant="link" className="text-indigo-300 p-0 h-auto">
-                    <Link to="/privacy-policy">{t('privacy.title')}</Link>
-                </Button>
-                <span>
+            <div className="container mx-auto flex w-full flex-col items-center gap-4 px-4 py-6 sm:flex-row sm:justify-between">
+                <div className="flex flex-wrap items-center justify-center gap-3 sm:justify-start">
+                    <Button asChild variant="link" className="h-auto p-0 text-indigo-300">
+                        <Link to="/privacy-policy">{t('privacy.title')}</Link>
+                    </Button>
+                    <Button asChild variant="link" className="h-auto p-0 text-indigo-300">
+                        <Link to="/terms-of-service">{t('terms.title')}</Link>
+                    </Button>
+                </div>
+                <span className="text-center sm:text-right">
                     {t('home.footer')}{' '}
                     <a href="https://github.com/tomasrl18" target="_blank" rel="noreferrer" className="text-indigo-400 hover:underline">
                         Tomás

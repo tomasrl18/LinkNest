@@ -12,6 +12,7 @@ import ListCategoryPage from './pages/Categories/ListCategoryPage';
 import { UsagePage } from './pages/UsagePage';
 import { AnimatePresence } from "framer-motion";
 import { PrivacyPolicyPage } from './pages/PrivacyPolicyPage';
+import { TermsOfServicePage } from './pages/TermsOfServicePage';
 import { Footer } from './components/Footer.tsx';
 import { ProfilePage } from './pages/ProfilePage.tsx';
 
@@ -25,6 +26,7 @@ function AnimatedRoutes() {
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/register" element={<RegisterPage />} />
                 <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+                <Route path="/terms-of-service" element={<TermsOfServicePage />} />
 
                 <Route element={<PrivateRoute />}>
                     <Route path="/links" element={<ListLinkPage />} />

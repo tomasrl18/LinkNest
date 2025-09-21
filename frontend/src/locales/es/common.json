@@ -267,6 +267,84 @@
             "email": "mailslinknest@gmail.com"
         }
     },
+    "terms": {
+        "title": "Condiciones del Servicio",
+        "badge": "Usa LinkNest con confianza",
+        "lastUpdated": "Última actualización: 5 de febrero de 2025",
+        "intro": "Estas Condiciones regulan el uso de LinkNest. Al crear una cuenta o navegar por nuestras páginas públicas las aceptas y te comprometes a seguir las reglas que indicamos a continuación.",
+        "cards": [
+            {
+                "icon": "scroll",
+                "title": "Acuerdo claro",
+                "description": "Estas Condiciones explican las normas que aplican a cada cuenta de LinkNest para que siempre sepas qué esperar."
+            },
+            {
+                "icon": "handshake",
+                "title": "Colaboración transparente",
+                "description": "Detallamos tus derechos, nuestras responsabilidades y el proceso que seguiremos al actualizar el servicio."
+            },
+            {
+                "icon": "shield",
+                "title": "Salvaguardas responsables",
+                "description": "Protegemos la plataforma, monitorizamos abusos y podemos actuar cuando un comportamiento pone en riesgo a otras personas usuarias."
+            }
+        ],
+        "sections": [
+            {
+                "title": "Elegibilidad e información de la cuenta",
+                "description": "Para mantener LinkNest seguro aceptas:",
+                "items": [
+                    "Ser mayor de 16 años o la edad mínima legal en tu jurisdicción.",
+                    "Proporcionar datos de contacto veraces y mantener tus credenciales protegidas.",
+                    "Avisarnos de inmediato si detectas uso no autorizado de tu cuenta."
+                ]
+            },
+            {
+                "title": "Uso permitido",
+                "description": "Puedes utilizar LinkNest para organizar recursos personales o profesionales siempre que:",
+                "items": [
+                    "No subas contenido que infrinja la ley, derechos de terceros o incluya software malicioso.",
+                    "Respetes nuestros límites técnicos y evites la ingeniería inversa, el scraping o ataques automatizados.",
+                    "Te abstengas de acciones que interfieran con el servicio, otras personas usuarias o nuestros controles de seguridad."
+                ]
+            },
+            {
+                "title": "Titularidad del contenido",
+                "description": "Eres dueño de los enlaces, notas y metadatos que almacenas. Al guardarlos o compartirlos:",
+                "items": [
+                    "Nos otorgas permiso para alojar, procesar y mostrar el contenido dentro de LinkNest.",
+                    "Garantizas que tienes los derechos necesarios para compartir o publicar lo que subes.",
+                    "Comprendes que al eliminar datos los quitaremos de los sistemas activos, aunque algunas copias de seguridad puedan persistir temporalmente."
+                ]
+            }
+        ],
+        "commitments": {
+            "platform": {
+                "title": "Nuestros compromisos",
+                "description": "Proporcionamos una plataforma fiable y nos comprometemos a:",
+                "items": [
+                    "Mantener LinkNest con un tiempo de actividad razonable y proteger tus datos con prácticas reconocidas por la industria.",
+                    "Avisarte de cambios relevantes en estas Condiciones con al menos 15 días de antelación siempre que sea posible.",
+                    "Ofrecer herramientas de exportación para que puedas recuperar tu información antes de cerrar la cuenta."
+                ]
+            },
+            "user": {
+                "title": "Tus compromisos",
+                "description": "Para utilizar LinkNest de forma responsable aceptas:",
+                "items": [
+                    "Cumplir estas Condiciones, nuestras políticas y la legislación aplicable.",
+                    "Abonar las tarifas que puedan aplicarse en futuros planes de pago o complementos.",
+                    "Aceptar que podemos suspender o cancelar cuentas que incumplan estas reglas o perjudiquen a la comunidad."
+                ]
+            }
+        },
+        "contact": {
+            "title": "¿Necesitas ayuda?",
+            "description": "Estamos disponibles para resolver dudas sobre estas Condiciones o recibir reportes de incumplimiento. Respondemos en un máximo de 72 horas.",
+            "cta": "Contactar con soporte",
+            "email": "mailslinknest@gmail.com"
+        }
+    },
     "usage": {
         "total": "Total de enlaces",
         "top": "Más visitados",
