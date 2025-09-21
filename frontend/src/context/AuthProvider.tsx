@@ -9,6 +9,7 @@ type AuthContextType = {
     signIn: (email: string, password: string) => Promise<void>;
     signUp: (email: string, password: string) => Promise<void>;
     signOut: () => Promise<void>;
+    signInWithGoogle: () => Promise<void>;
 };
 
 
@@ -16,20 +17,23 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const [session, setSession] = useState<Session | null | undefined>(undefined);
+    const [user, setUser] = useState<User | null>(null);
 
     useEffect(() => {
         supabase.auth.getSession().then(({ data: { session } }) => {
             setSession(session);
+            setUser(session?.user ?? null);
         });
 
         const { data: listener } = supabase.auth.onAuthStateChange(
-            (_event, session) => setSession(session)
+            (_event, session) => {
+                setSession(session);
+                setUser(session?.user ?? null);
+            }
         );
 
         return () => listener.subscription.unsubscribe();
     }, []);
-
-    const user = session?.user ?? null;
 
     const signIn = async (email: string, password: string) => {
         const { error } = await supabase.auth.signInWithPassword({ email, password });
@@ -57,12 +61,24 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         if (error) throw error;
     };
 
+    const signInWithGoogle = async () => {
+        const { error } = await supabase.auth.signInWithOAuth({
+            provider: 'google',
+            options: {
+                redirectTo: `${window.location.origin}/links`,
+            },
+        });
+
+        if (error) throw error;
+    };
+
     const value = {
         session,
         user,
         signIn,
         signUp,
         signOut,
+        signInWithGoogle,
     };
 
     return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
