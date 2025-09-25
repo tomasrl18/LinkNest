@@ -171,7 +171,8 @@ export const RegisterPage = () => {
                         type="button"
                         onClick={handleGoogleSignIn}
                         className="btn w-full rounded-xl bg-white text-gray-900 hover:bg-gray-200 flex items-center justify-center gap-3"
-                        disabled={isSubmitting}
+                        // disabled={isSubmitting}
+                        disabled={true} // Temporarily disable OAuth login
                     >
                         {oauthLoading ? (
                             <Loader2 className="h-4 w-4 animate-spin" />
