@@ -1,18 +1,20 @@
 import { Link, useNavigate, NavLink } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Download } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { useAuth } from "../context/AuthProvider";
 import { LanguageSwitcher } from "../components/lang/LangSelector";
 import { useTranslation } from "react-i18next";
 
 import { useState } from "react";
+import { usePwaInstall } from "../hooks/usePwaInstall";
 
 export function Header() {
     const { t } = useTranslation();
     const { user, signOut } = useAuth();
     const navigate = useNavigate();
     const [menuOpen, setMenuOpen] = useState(false);
+    const { isInstallable, promptInstall } = usePwaInstall();
 
     const handleLogout = async () => {
         await signOut();
@@ -98,8 +100,19 @@ export function Header() {
                     )}
                 </nav>
                 <div className="flex items-center gap-2 justify-self-end">
+                    {isInstallable && (
+                        <Button
+                            size="sm"
+                            variant="outline"
+                            className="hidden text-sky-200 border-sky-500/40 hover:bg-sky-500/10 sm:inline-flex"
+                            onClick={() => void promptInstall()}
+                        >
+                            <Download size={16} />
+                            {t('pwa.install')}
+                        </Button>
+                    )}
                     <LanguageSwitcher />
-                    
+
                     {user && (
                         <button
                             className="sm:hidden p-2 rounded-md text-gray-300 hover:text-indigo-200 transition-colors"
@@ -158,6 +171,19 @@ export function Header() {
                         >
                             <X size={18} />
                         </button>
+                        {isInstallable && (
+                            <Button
+                                variant="outline"
+                                className="justify-start"
+                                onClick={() => {
+                                    void promptInstall();
+                                    setMenuOpen(false);
+                                }}
+                            >
+                                <Download size={16} />
+                                {t('pwa.install')}
+                            </Button>
+                        )}
                         <NavLink
                             to="/links"
                             onClick={() => setMenuOpen(false)}

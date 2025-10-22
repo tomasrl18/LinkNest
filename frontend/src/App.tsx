@@ -15,6 +15,7 @@ import { PrivacyPolicyPage } from './pages/PrivacyPolicyPage';
 import { TermsOfServicePage } from './pages/TermsOfServicePage';
 import { Footer } from './components/Footer.tsx';
 import { ProfilePage } from './pages/ProfilePage.tsx';
+import { OfflinePage } from './pages/OfflinePage.tsx';
 
 function AnimatedRoutes() {
     const location = useLocation();
@@ -27,6 +28,7 @@ function AnimatedRoutes() {
                 <Route path="/register" element={<RegisterPage />} />
                 <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
                 <Route path="/terms-of-service" element={<TermsOfServicePage />} />
+                <Route path="/offline" element={<OfflinePage />} />
 
                 <Route element={<PrivateRoute />}>
                     <Route path="/links" element={<ListLinkPage />} />

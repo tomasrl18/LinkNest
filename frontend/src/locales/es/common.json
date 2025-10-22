@@ -7,6 +7,14 @@
         "titleItems": "Idioma",
         "ariaLabelButton": "Cambiar idioma"
     },
+    "pwa": {
+        "install": "Instalar app",
+        "offlineTitle": "Sin conexión",
+        "offlineDescription": "LinkNest no puede conectarse ahora mismo. Puedes seguir consultando el contenido guardado y sincronizaremos los cambios cuando vuelvas a estar en línea.",
+        "offlineHint": "Vuelve a conectarte para continuar o navega por las secciones en caché.",
+        "goHome": "Volver al inicio",
+        "retry": "Reintentar"
+    },
     "home": {
         "title": "Organiza tus enlaces <br/> en un solo lugar",
         "subtitle": "LinkNest te ayuda a guardar, clasificar y redescubrir cualquier enlace, desde artículos de referencia hasta vídeos inspiradores, con un solo clic.",

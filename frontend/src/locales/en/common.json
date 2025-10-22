@@ -7,6 +7,14 @@
         "titleItems": "Language",
         "ariaLabelButton": "Change language"
     },
+    "pwa": {
+        "install": "Install app",
+        "offlineTitle": "You're offline",
+        "offlineDescription": "LinkNest can't reach the network right now. You can keep browsing cached content and we'll sync once you're back online.",
+        "offlineHint": "Reconnect to continue or use the sections that work without updates.",
+        "goHome": "Back to home",
+        "retry": "Try again"
+    },
     "home": {
         "title": "Organize your links <br/> in one place",
         "subtitle": "LinkNest helps you save, categorize, and rediscover any link, from reference articles to inspiring videos, with just one click.",
