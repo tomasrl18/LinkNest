@@ -13,7 +13,15 @@
         "offlineDescription": "LinkNest can't reach the network right now. You can keep browsing cached content and we'll sync once you're back online.",
         "offlineHint": "Reconnect to continue or use the sections that work without updates.",
         "goHome": "Back to home",
-        "retry": "Try again"
+        "retry": "Try again",
+        "manualInstallTitle": "Install LinkNest on iOS",
+        "manualInstallSubtitle": "Add LinkNest to your Home Screen to keep it handy and continue working offline.",
+        "manualInstallSteps": [
+            "Tap the share button in Safari.",
+            "Scroll and choose \"Add to Home Screen\".",
+            "Confirm by tapping \"Add\"."
+        ],
+        "manualInstallDismiss": "Got it"
     },
     "home": {
         "title": "Organize your links <br/> in one place",

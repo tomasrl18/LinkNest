@@ -6,7 +6,7 @@ import { useAuth } from "../context/AuthProvider";
 import { LanguageSwitcher } from "../components/lang/LangSelector";
 import { useTranslation } from "react-i18next";
 
-import { useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { usePwaInstall } from "../hooks/usePwaInstall";
 
 export function Header() {
@@ -14,12 +14,29 @@ export function Header() {
     const { user, signOut } = useAuth();
     const navigate = useNavigate();
     const [menuOpen, setMenuOpen] = useState(false);
-    const { isInstallable, promptInstall } = usePwaInstall();
+    const [showInstallHelp, setShowInstallHelp] = useState(false);
+    const { isInstallable, promptInstall, requiresManualInstall } = usePwaInstall();
+
+    const iosInstallSteps = useMemo(() => {
+        if (!showInstallHelp) return [] as string[];
+        return t('pwa.manualInstallSteps', { returnObjects: true }) as string[];
+    }, [showInstallHelp, t]);
+
+    const installTitleId = 'ios-install-title';
+    const installDescriptionId = 'ios-install-description';
 
     const handleLogout = async () => {
         await signOut();
         setTimeout(() => navigate("/login"), 150);
     };
+
+    const handleInstallClick = useCallback(async () => {
+        const outcome = await promptInstall();
+        if (outcome === 'manual') {
+            setShowInstallHelp(true);
+        }
+        return outcome;
+    }, [promptInstall]);
 
     return (
         <>
@@ -105,7 +122,10 @@ export function Header() {
                             size="sm"
                             variant="outline"
                             className="hidden text-sky-200 border-sky-500/40 hover:bg-sky-500/10 sm:inline-flex"
-                            onClick={() => void promptInstall()}
+                            onClick={() => void handleInstallClick()}
+                            aria-label={
+                                requiresManualInstall ? t('pwa.manualInstallTitle') : t('pwa.install')
+                            }
                         >
                             <Download size={16} />
                             {t('pwa.install')}
@@ -148,6 +168,7 @@ export function Header() {
         <AnimatePresence>
             {menuOpen && user && (
                 <motion.div
+                    key="mobile-menu"
                     className="fixed inset-0 z-50 flex sm:hidden"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
@@ -176,8 +197,7 @@ export function Header() {
                                 variant="outline"
                                 className="justify-start"
                                 onClick={() => {
-                                    void promptInstall();
-                                    setMenuOpen(false);
+                                    void handleInstallClick().finally(() => setMenuOpen(false));
                                 }}
                             >
                                 <Download size={16} />
@@ -240,6 +260,63 @@ export function Header() {
                             {t('nav.addLink')}
                         </NavLink>
                     </motion.nav>
+                </motion.div>
+            )}
+            {showInstallHelp && (
+                <motion.div
+                    key="ios-install"
+                    className="fixed inset-0 z-[60] flex items-center justify-center px-4 py-6"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                >
+                    <div
+                        className="absolute inset-0 bg-black/70 backdrop-blur-sm"
+                        onClick={() => setShowInstallHelp(false)}
+                    />
+                    <motion.div
+                        role="dialog"
+                        aria-modal="true"
+                        aria-labelledby={installTitleId}
+                        aria-describedby={installDescriptionId}
+                        initial={{ scale: 0.96, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        exit={{ scale: 0.94, opacity: 0 }}
+                        transition={{ type: 'spring', stiffness: 240, damping: 22 }}
+                        className="relative w-full max-w-md rounded-2xl border border-slate-700 bg-slate-900/95 p-6 text-slate-100 shadow-2xl"
+                    >
+                        <button
+                            type="button"
+                            className="absolute right-4 top-4 rounded-full p-1 text-slate-400 hover:text-slate-200"
+                            onClick={() => setShowInstallHelp(false)}
+                            aria-label={t('nav.closeMenu')}
+                        >
+                            <X size={16} />
+                        </button>
+                        <h2 id={installTitleId} className="text-lg font-semibold text-sky-200">
+                            {t('pwa.manualInstallTitle')}
+                        </h2>
+                        <p id={installDescriptionId} className="mt-2 text-sm text-slate-200/80">
+                            {t('pwa.manualInstallSubtitle')}
+                        </p>
+                        <ol className="mt-4 space-y-3 text-left text-sm">
+                            {iosInstallSteps.map((step, index) => (
+                                <li key={index} className="flex items-start gap-3">
+                                    <span className="mt-0.5 flex h-7 w-7 items-center justify-center rounded-full bg-sky-500/20 text-sm font-semibold text-sky-200">
+                                        {index + 1}
+                                    </span>
+                                    <span className="flex-1 text-slate-100">{step}</span>
+                                </li>
+                            ))}
+                        </ol>
+                        <Button
+                            type="button"
+                            className="mt-6 w-full bg-indigo-600 text-white hover:bg-indigo-500"
+                            onClick={() => setShowInstallHelp(false)}
+                        >
+                            {t('pwa.manualInstallDismiss')}
+                        </Button>
+                    </motion.div>
                 </motion.div>
             )}
         </AnimatePresence>

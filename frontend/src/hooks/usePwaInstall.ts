@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 
 interface BeforeInstallPromptEvent extends Event {
     readonly platforms: string[];
@@ -14,9 +14,33 @@ function isStandalone() {
     );
 }
 
+function isIosDevice() {
+    if (typeof window === 'undefined') return false;
+    const navigatorInfo = window.navigator as { userAgent: string; platform?: string; maxTouchPoints?: number };
+    const userAgent = navigatorInfo.userAgent.toLowerCase();
+    const platform = navigatorInfo.platform?.toLowerCase() ?? '';
+    const isAppleMobile = /iphone|ipad|ipod/.test(userAgent);
+    const touchPoints = navigatorInfo.maxTouchPoints ?? 0;
+    const isTouchMac = platform === 'macintel' && touchPoints > 1;
+    return isAppleMobile || isTouchMac;
+}
+
+function isSafariBrowser() {
+    if (typeof window === 'undefined') return false;
+    const userAgent = window.navigator.userAgent;
+    return /Safari/i.test(userAgent) && !/Chrome|CriOS|FxiOS|EdgiOS|OPiOS/i.test(userAgent);
+}
+
+type InstallPromptResult = 'accepted' | 'dismissed' | 'manual' | 'unavailable';
+
 export function usePwaInstall() {
     const [promptEvent, setPromptEvent] = useState<BeforeInstallPromptEvent | null>(null);
     const [installed, setInstalled] = useState<boolean>(isStandalone());
+
+    const requiresManualInstall = useMemo(() => {
+        if (installed) return false;
+        return isIosDevice() && isSafariBrowser() && !isStandalone();
+    }, [installed]);
 
     useEffect(() => {
         if (typeof window === 'undefined') return;
@@ -40,27 +64,34 @@ export function usePwaInstall() {
         };
     }, []);
 
-    const promptInstall = useCallback(async () => {
-        if (!promptEvent) return false;
+    const promptInstall = useCallback(async (): Promise<InstallPromptResult> => {
+        if (requiresManualInstall) {
+            return 'manual';
+        }
+
+        if (!promptEvent) {
+            return 'unavailable';
+        }
         try {
             await promptEvent.prompt();
             const choice = await promptEvent.userChoice;
             if (choice.outcome === 'accepted') {
                 setInstalled(true);
             }
-            return choice.outcome === 'accepted';
+            return choice.outcome;
         } catch (error) {
             console.warn('Install prompt failed', error);
-            return false;
+            return 'dismissed';
         } finally {
             setPromptEvent(null);
         }
-    }, [promptEvent]);
+    }, [promptEvent, requiresManualInstall]);
 
-    const isInstallable = !!promptEvent && !installed;
+    const isInstallable = !installed && (requiresManualInstall || !!promptEvent);
 
     return {
         isInstallable,
         promptInstall,
+        requiresManualInstall,
     };
 }

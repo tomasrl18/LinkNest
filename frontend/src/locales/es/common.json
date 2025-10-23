@@ -13,7 +13,15 @@
         "offlineDescription": "LinkNest no puede conectarse ahora mismo. Puedes seguir consultando el contenido guardado y sincronizaremos los cambios cuando vuelvas a estar en línea.",
         "offlineHint": "Vuelve a conectarte para continuar o navega por las secciones en caché.",
         "goHome": "Volver al inicio",
-        "retry": "Reintentar"
+        "retry": "Reintentar",
+        "manualInstallTitle": "Instala LinkNest en iOS",
+        "manualInstallSubtitle": "Añade LinkNest a tu pantalla de inicio para tenerla siempre a mano y seguir trabajando sin conexión.",
+        "manualInstallSteps": [
+            "Pulsa el botón compartir de Safari.",
+            "Desplázate y elige \"Añadir a pantalla de inicio\".",
+            "Confirma tocando \"Añadir\"."
+        ],
+        "manualInstallDismiss": "Entendido"
     },
     "home": {
         "title": "Organiza tus enlaces <br/> en un solo lugar",
