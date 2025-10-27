@@ -1,8 +1,10 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight, Bookmark, Sparkles, Code, Share2, Puzzle, Upload } from "lucide-react";
+import { ArrowRight, Bookmark, Sparkles, Code, Share2, Puzzle, Upload, Download } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { useTranslation, Trans } from "react-i18next";
+import { useCallback, useMemo, useState } from "react";
+import { usePwaInstall } from "../hooks/usePwaInstall";
 import type { Variants } from "framer-motion";
 
 const container: Variants = {
@@ -26,6 +28,21 @@ const child: Variants = {
 
 export function HomePage() {
     const { t } = useTranslation();
+    const { isInstallable, promptInstall, requiresManualInstall } = usePwaInstall();
+    const [showInstallHelp, setShowInstallHelp] = useState(false);
+
+    const iosInstallSteps = useMemo(() => {
+        if (!showInstallHelp) return [] as string[];
+        return t("pwa.manualInstallSteps", { returnObjects: true }) as string[];
+    }, [showInstallHelp, t]);
+
+    const handleInstallClick = useCallback(async () => {
+        const outcome = await promptInstall();
+        if (outcome === "manual") {
+            setShowInstallHelp(true);
+        }
+        return outcome;
+    }, [promptInstall]);
 
     return (
         <motion.main
@@ -77,6 +94,60 @@ export function HomePage() {
                             <Code size={18} className="transition-transform group-hover:-rotate-6" />
                         </a>
                     </Button>
+                </motion.div>
+
+                <motion.div variants={child} className="max-w-3xl mx-auto w-full mt-10">
+                    <div className="relative rounded-2xl p-[1px] bg-gradient-to-r from-sky-500 via-indigo-500 to-fuchsia-500 shadow-xl">
+                        <div className="flex flex-col gap-4 rounded-2xl bg-gray-900/95 px-6 py-5 sm:flex-row sm:items-center sm:justify-between">
+                            <div className="flex items-start gap-4 text-left">
+                                <div className="rounded-full bg-sky-500/15 p-3 text-sky-300">
+                                    <Download className="h-6 w-6" />
+                                </div>
+                                <div className="space-y-2">
+                                    <h2 className="text-xl font-semibold text-gray-100">
+                                        {t("home.pwaAnnouncement.title")}
+                                    </h2>
+                                    <p className="text-sm text-gray-300">
+                                        {t("home.pwaAnnouncement.description")}
+                                    </p>
+                                    {showInstallHelp && iosInstallSteps.length > 0 && (
+                                        <div className="space-y-2 text-sm">
+                                            <p className="font-medium text-gray-100">
+                                                {t("pwa.manualInstallTitle")}
+                                            </p>
+                                            <ol className="list-decimal list-inside space-y-1 text-gray-300">
+                                                {iosInstallSteps.map((step, index) => (
+                                                    <li key={`ios-install-${index}`}>{step}</li>
+                                                ))}
+                                            </ol>
+                                            <Button
+                                                variant="ghost"
+                                                className="px-0 text-indigo-300 hover:text-indigo-100"
+                                                onClick={() => setShowInstallHelp(false)}
+                                            >
+                                                {t("pwa.manualInstallDismiss")}
+                                            </Button>
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+                            {isInstallable ? (
+                                <Button
+                                    className="shrink-0 bg-sky-600 text-white shadow hover:bg-sky-500"
+                                    onClick={() => void handleInstallClick()}
+                                    aria-label={
+                                        requiresManualInstall ? t("pwa.manualInstallTitle") : t("home.pwaAnnouncement.cta")
+                                    }
+                                >
+                                    {requiresManualInstall ? t("pwa.manualInstallTitle") : t("home.pwaAnnouncement.cta")}
+                                </Button>
+                            ) : (
+                                <span className="text-sm font-medium text-sky-200">
+                                    {t("home.pwaAnnouncement.available")}
+                                </span>
+                            )}
+                        </div>
+                    </div>
                 </motion.div>
             </section>
 

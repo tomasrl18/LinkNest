@@ -28,6 +28,12 @@
         "subtitle": "LinkNest helps you save, categorize, and rediscover any link, from reference articles to inspiring videos, with just one click.",
         "startNow": "Start now",
         "code": "Source code",
+        "pwaAnnouncement": {
+            "title": "LinkNest is now available as a PWA!",
+            "description": "Install it on your device for quicker access and keep organizing your links even when you're offline.",
+            "cta": "Install LinkNest",
+            "available": "Ready to install from your compatible browser"
+        },
         "infoSection": {
             "instantlySave": {
                 "title": "Save instantly",

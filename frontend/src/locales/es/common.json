@@ -28,6 +28,12 @@
         "subtitle": "LinkNest te ayuda a guardar, clasificar y redescubrir cualquier enlace, desde artículos de referencia hasta vídeos inspiradores, con un solo clic.",
         "startNow": "Empieza ahora",
         "code": "Código fuente",
+        "pwaAnnouncement": {
+            "title": "¡LinkNest ya está disponible como aplicación PWA!",
+            "description": "Instálala en tu dispositivo para entrar más rápido y seguir organizando tus enlaces incluso sin conexión.",
+            "cta": "Instalar LinkNest",
+            "available": "Disponible para instalar desde tu navegador compatible"
+        },
         "infoSection": {
             "instantlySave": {
                 "title": "Guarda al instante",
