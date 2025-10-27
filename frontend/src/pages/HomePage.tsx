@@ -161,17 +161,6 @@ export function HomePage() {
                         mailslinknest@gmail.com
                     </a>
                 </motion.p>
-                <motion.p variants={child} className="text-gray-400">
-                    {t('home.telegram.description')}{' '}
-                    <a
-                        href="https://t.me/+g1KnAhMu7xFjMjdk"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-indigo-300 hover:underline"
-                    >
-                        {t('home.telegram.cta')}
-                    </a>
-                </motion.p>
             </motion.section>
         </motion.main>
     );
