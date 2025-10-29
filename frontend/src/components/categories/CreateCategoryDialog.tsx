@@ -47,7 +47,7 @@ export function CreateCategoryDialog({ open, onClose, onCreate }: CreateCategory
                     exit={{ opacity: 0 }}
                 >
                     <motion.div
-                        className="bg-gray-900/90 border border-gray-700/40 rounded-2xl shadow-2xl p-6 w-full max-w-xs relative"
+                        className="rounded-2xl shadow-2xl p-6 w-full max-w-xs relative border bg-white border-gray-200 dark:bg-gray-900/90 dark:border-gray-700/40 transition-colors"
                         initial={{ scale: 0.9, y: 40, opacity: 0 }}
                         animate={{ scale: 1, y: 0, opacity: 1 }}
                         exit={{ scale: 0.9, y: 40, opacity: 0 }}
@@ -63,13 +63,13 @@ export function CreateCategoryDialog({ open, onClose, onCreate }: CreateCategory
                         </button>
                         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
                             <div className="flex items-center justify-center gap-2 mb-2">
-                                <h2 className="text-lg font-semibold text-white">
+                                <h2 className="text-lg font-semibold text-gray-900 dark:text-white">
                                     {t('categories.actions.create.title')}
                                 </h2>
                             </div>
                             <input
                                 type="text"
-                                className="input input-bordered w-full bg-gray-800/80 text-white rounded-xl"
+                                className="input input-bordered w-full rounded-xl bg-white text-gray-900 dark:bg-gray-800/80 dark:text-white transition-colors"
                                 placeholder={t('categories.actions.name')}
                                 value={name}
                                 onChange={e => setName(e.target.value)}

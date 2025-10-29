@@ -49,7 +49,7 @@ export function ShareCategoryDialog({ open, categoryId, onClose }: ShareCategory
                     exit={{ opacity: 0 }}
                 >
                     <motion.div
-                        className="bg-gray-900/90 border border-gray-700/40 rounded-2xl shadow-2xl p-6 w-full max-w-sm relative"
+                        className="rounded-2xl shadow-2xl p-6 w-full max-w-sm relative border bg-white border-gray-200 dark:bg-gray-900/90 dark:border-gray-700/40 transition-colors"
                         initial={{ scale: 0.9, y: 40, opacity: 0 }}
                         animate={{ scale: 1, y: 0, opacity: 1 }}
                         exit={{ scale: 0.9, y: 40, opacity: 0 }}
@@ -63,13 +63,13 @@ export function ShareCategoryDialog({ open, categoryId, onClose }: ShareCategory
                         >
                             <X size={18} />
                         </button>
-                        <h2 className="text-lg font-semibold mb-3">
+                        <h2 className="text-lg font-semibold mb-3 text-gray-900 dark:text-white">
                             {t('categories.actions.share.title')}
                         </h2>
                         <form onSubmit={handleAdd} className="flex gap-2 mb-4">
                             <input
                                 type="email"
-                                className="input input-bordered flex-1 bg-gray-800/80 rounded-xl"
+                                className="input input-bordered flex-1 rounded-xl bg-white text-gray-900 dark:bg-gray-800/80 dark:text-white transition-colors"
                                 placeholder={t('categories.actions.share.emailPlaceholder')}
                                 value={email}
                                 onChange={e => setEmail(e.target.value)}
@@ -82,7 +82,7 @@ export function ShareCategoryDialog({ open, categoryId, onClose }: ShareCategory
                         {error && <p className="text-xs text-pink-400 mb-2">{error}</p>}
                         <ul className="space-y-1 max-h-40 overflow-y-auto pr-1">
                             {members.map(m => (
-                                <li key={m.id} className="flex justify-between items-center bg-gray-800/50 px-3 py-1 rounded-lg">
+                                <li key={m.id} className="flex justify-between items-center px-3 py-1 rounded-lg bg-gray-100 dark:bg-gray-800/50 transition-colors">
                                     <span className="text-sm">{m.profile?.email || m.user_id}</span>
                                     <button
                                         onClick={() => removeMember(m.id)}

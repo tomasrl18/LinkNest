@@ -54,7 +54,7 @@ export function ListLinkPage() {
     };
 
     return (
-        <main className="min-h-[calc(100dvh-80px)] bg-gradient-to-br from-gray-900 via-gray-800 to-gray-950 text-white flex flex-col items-center">
+        <main className="min-h-[calc(100dvh-80px)] flex flex-col items-center bg-gradient-to-br from-gray-100 via-gray-50 to-gray-200 text-gray-900 dark:from-gray-900 dark:via-gray-800 dark:to-gray-950 dark:text-white transition-colors">
             <ConfirmDeleteLinkDialog
                 open={deleteModal.open}
                 onCancel={() => setDeleteModal({ open: false, id: null })}
@@ -65,38 +65,38 @@ export function ListLinkPage() {
                 onClose={() => setImportModalOpen(false)}
             />
             <section className="container mx-auto px-4 py-10 space-y-8">
-                <header className="flex flex-col gap-4 sm:flex-row sm:items-end w-full bg-gray-900/70 rounded-2xl px-6 py-4 shadow-lg border border-gray-800 mb-4">
+                <header className="flex flex-col gap-4 sm:flex-row sm:items-end w-full rounded-2xl px-6 py-4 shadow-lg border bg-white/90 border-gray-200 dark:bg-gray-900/70 dark:border-gray-800 mb-4 transition-colors">
                     <div className="flex-1 flex flex-col gap-2 sm:flex-row sm:items-center">
-                        <div className="flex-1 flex items-center gap-2 bg-gray-800/70 rounded-xl px-4 py-2">
-                            <Search className="w-4 h-4 text-gray-400" />
+                        <div className="flex-1 flex items-center gap-2 rounded-xl px-4 py-2 bg-gray-100 dark:bg-gray-800/70 transition-colors">
+                            <Search className="w-4 h-4 text-gray-500 dark:text-gray-400" />
                             <input
                                 placeholder={t('links.search')}
                                 value={search}
                                 onChange={e => setSearch(e.target.value)}
-                                className="w-full bg-transparent outline-none placeholder:text-gray-500 text-sm"
+                                className="w-full bg-transparent outline-none placeholder:text-gray-500 text-sm text-gray-900 dark:text-gray-100"
                             />
                         </div>
                     </div>
                     <div className="flex flex-col sm:flex-row gap-2 sm:items-center">
-                        <div className="flex items-center gap-2 bg-gray-800/70 rounded-xl px-3 py-1">
+                        <div className="flex items-center gap-2 rounded-xl px-3 py-1 bg-gray-100 dark:bg-gray-800/70 transition-colors">
                             <select
                                 value={categoryId}
                                 onChange={e => setCategoryId(e.target.value)}
-                                className="backdrop-blur rounded-xl px-3 py-1 text-sm text-gray-100 shadow-inner transition-all duration-200 outline-none"
+                                className="backdrop-blur rounded-xl px-3 py-1 text-sm text-gray-900 shadow-inner transition-all duration-200 outline-none dark:text-gray-100"
                             >
-                                <option value="" className="bg-gray-900 text-gray-300">{t('links.allCat')}</option>
+                                <option value="" className="bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-300">{t('links.allCat')}</option>
                                 {categories.map(c => (
-                                    <option key={c.id} value={c.id} className="bg-gray-900 text-gray-200">{c.name}</option>
+                                    <option key={c.id} value={c.id} className="bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-200">{c.name}</option>
                                 ))}
                             </select>
                         </div>
                         <button
                             type="button"
                             onClick={() => setOnlyFavs(v => !v)}
-                            className={`flex items-center gap-2 bg-gray-800/70 rounded-xl px-3 py-1 cursor-pointer select-none transition-colors border border-transparent focus:outline-none ${onlyFavs ? 'border-yellow-400/60 bg-yellow-900/30' : ''}`}
+                            className={`flex items-center gap-2 rounded-xl px-3 py-1 cursor-pointer select-none transition-colors border focus:outline-none bg-gray-100 border-gray-200 hover:border-yellow-400/60 dark:bg-gray-800/70 dark:border-transparent ${onlyFavs ? 'border-yellow-400/60 bg-yellow-100/60 dark:bg-yellow-900/30' : ''}`}
                             title={onlyFavs ? t('links.favs.showAll') : t('links.favs.onlyFavs')}
                         >
-                            <Star size={18} className={onlyFavs ? "fill-yellow-400 text-yellow-400 drop-shadow" : "text-gray-400"} />
+                            <Star size={18} className={onlyFavs ? "fill-yellow-400 text-yellow-400 drop-shadow" : "text-gray-500 dark:text-gray-400"} />
                             <span className="text-sm">
                                 {t('links.favs.title')}
                             </span>
@@ -104,9 +104,9 @@ export function ListLinkPage() {
                         <button
                             type="button"
                             onClick={() => setImportModalOpen(true)}
-                            className="flex items-center gap-2 bg-gray-800/70 rounded-xl px-3 py-1 cursor-pointer select-none transition-colors border border-transparent focus:outline-none"
+                            className="flex items-center gap-2 rounded-xl px-3 py-1 cursor-pointer select-none transition-colors border focus:outline-none bg-gray-100 border-gray-200 hover:border-indigo-400 dark:bg-gray-800/70 dark:border-transparent"
                         >
-                            <Upload size={18} className="text-gray-400" />
+                            <Upload size={18} className="text-gray-600 dark:text-gray-400" />
                             <span className="text-sm">
                                 {t('links.import.button')}
                             </span>
@@ -119,7 +119,7 @@ export function ListLinkPage() {
                         {filtered.map(link => (
                             <li key={link.id} className="group relative">
                                 <div
-                                    className="transition-all duration-200 bg-gray-900/70 border border-gray-800 rounded-2xl shadow-lg hover:shadow-2xl hover:border-pink-600 hover:scale-[1.025] flex flex-col sm:flex-row items-stretch relative"
+                                    className="transition-all duration-200 rounded-2xl shadow-lg hover:shadow-2xl hover:border-pink-600 hover:scale-[1.025] flex flex-col sm:flex-row items-stretch relative bg-white/90 border border-gray-200 dark:bg-gray-900/70 dark:border-gray-800"
                                 >
                                     <LinkCard link={link} />
                                     <div className="flex gap-2 mt-2 sm:mt-0 sm:absolute sm:top-3 sm:right-4 sm:flex-row self-end">
@@ -159,7 +159,7 @@ export function ListLinkPage() {
                         ))}
                     </ul>
                 ) : (
-                    <p className="text-center text-gray-400 flex flex-col items-center gap-1">
+                    <p className="text-center text-gray-600 dark:text-gray-400 flex flex-col items-center gap-1">
                         <Sparkles size={18} /> {t('links.noLinks')}
                     </p>
                 )}

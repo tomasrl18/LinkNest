@@ -1,6 +1,7 @@
 import { StrictMode, useCallback, useEffect, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import { AuthProvider } from './context/AuthProvider.tsx';
+import { ThemeProvider } from './context/ThemeProvider.tsx';
 import './index.css'
 import App from './App.tsx'
 import './i18n';
@@ -52,7 +53,9 @@ export function usePwaUpdate() {
 createRoot(document.getElementById('root')!).render(
     <StrictMode>
         <AuthProvider>
-            <App />
+            <ThemeProvider>
+                <App />
+            </ThemeProvider>
         </AuthProvider>
     </StrictMode>
 )

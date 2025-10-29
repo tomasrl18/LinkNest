@@ -53,15 +53,15 @@ const ConfirmDeleteModal: React.FC<ConfirmDeleteModalProps> = ({ open, onCancel,
             onClick={handleBackdropClick}
             className={`fixed inset-0 z-50 flex items-center justify-center bg-black/60 transition-opacity duration-200 ${animate ? 'opacity-100' : 'opacity-0'}`}
         >
-            <div className={`bg-gray-900 rounded-2xl p-6 shadow-xl border border-gray-800 min-w-[300px] flex flex-col items-center transform transition-all duration-200 ${animate ? 'scale-100 translate-y-0 opacity-100' : 'scale-90 translate-y-8 opacity-0'}`}>
+            <div className={`rounded-2xl p-6 shadow-xl border min-w-[300px] flex flex-col items-center transform transition-all duration-200 bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-800 ${animate ? 'scale-100 translate-y-0 opacity-100' : 'scale-90 translate-y-8 opacity-0'}`}>
                 <Trash size={32} className="text-red-400 mb-2" />
                 <h2 className="text-lg font-semibold mb-2">
                     {t('links.delete.title')}
                 </h2>
-                <p className="text-gray-400 mb-4 text-center">{text || t('links.delete.clarification')}</p>
+                <p className="text-gray-700 dark:text-gray-400 mb-4 text-center">{text || t('links.delete.clarification')}</p>
                 <div className="flex gap-3">
                     <button
-                        className="px-4 py-1 rounded-lg bg-gray-700 hover:bg-gray-600 text-gray-200"
+                        className="px-4 py-1 rounded-lg bg-gray-200 hover:bg-gray-300 text-gray-900 dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-gray-200 transition-colors"
                         onClick={onCancel}
                     >
                         {t('links.delete.buttonCancel')}

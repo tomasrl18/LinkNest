@@ -79,25 +79,24 @@ export const LoginPage = () => {
             animate="animate"
             exit="exit"
             transition={pageTransition}
-            className='flex-1 flex items-center justify-center px-4 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-950'
+            className='flex-1 flex items-center justify-center px-4 bg-gradient-to-br from-gray-100 via-gray-50 to-gray-200 dark:from-gray-900 dark:via-gray-800 dark:to-gray-950 transition-colors'
         >
             <motion.form
                 onSubmit={handleSubmit}
-                className="w-full max-w-xs sm:max-w-sm md:max-w-md rounded-2xl bg-gray-800/70 backdrop-blur
-                   ring-1 ring-white/10 shadow-xl"
+                className="w-full max-w-xs sm:max-w-sm md:max-w-md rounded-2xl backdrop-blur ring-1 shadow-xl bg-white/90 ring-black/5 dark:bg-gray-800/70 dark:ring-white/10 transition-colors"
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ type: "spring", stiffness: 140, damping: 18, delay: 0.15 }}
             >
                 <div className="p-8 space-y-6">
-                    <h2 className="text-center text-2xl font-semibold text-gray-100">{t('auth.login')}</h2>
+                    <h2 className="text-center text-2xl font-semibold text-gray-900 dark:text-gray-100">{t('auth.login')}</h2>
 
                     <input
                         name="email"
                         type="email"
                         required
                         placeholder={t('auth.email')}
-                        className="input input-bordered w-full bg-gray-900/50 text-gray-100"
+                        className="input input-bordered w-full bg-white text-gray-900 dark:bg-gray-900/50 dark:text-gray-100"
                         disabled={isSubmitting}
                     />
                     <div className="relative">
@@ -106,13 +105,13 @@ export const LoginPage = () => {
                             type={showPassword ? "text" : "password"}
                             required
                             placeholder={t('auth.password')}
-                            className="input input-bordered w-full bg-gray-900/50 text-gray-100 pr-10"
+                            className="input input-bordered w-full bg-white text-gray-900 pr-10 dark:bg-gray-900/50 dark:text-gray-100"
                             disabled={isSubmitting}
                         />
                         <button
                             type="button"
                             onClick={() => setShowPassword(v => !v)}
-                            className="absolute inset-y-0 right-0 z-10 flex items-center px-3 text-gray-400 hover:text-gray-200"
+                            className="absolute inset-y-0 right-0 z-10 flex items-center px-3 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
                             aria-label={showPassword ? t('auth.hidePassword') : t('auth.showPassword')}
                             disabled={isSubmitting}
                         >
@@ -129,10 +128,10 @@ export const LoginPage = () => {
                         {loading ? t('auth.loggingIn') : t('auth.enter')}
                     </button>
 
-                    <div className="flex items-center gap-3 text-gray-400 text-xs uppercase">
-                        <span className="flex-1 h-px bg-gray-700" aria-hidden="true" />
+                    <div className="flex items-center gap-3 text-gray-500 dark:text-gray-400 text-xs uppercase">
+                        <span className="flex-1 h-px bg-gray-300 dark:bg-gray-700" aria-hidden="true" />
                         <span>{t('auth.or')}</span>
-                        <span className="flex-1 h-px bg-gray-700" aria-hidden="true" />
+                        <span className="flex-1 h-px bg-gray-300 dark:bg-gray-700" aria-hidden="true" />
                     </div>
 
                     <button
@@ -163,9 +162,9 @@ export const LoginPage = () => {
                         </p>
                     )}
 
-                    <p className="text-center text-sm text-gray-400">
+                    <p className="text-center text-sm text-gray-600 dark:text-gray-400">
                         {t('auth.askAccount')}{' '}
-                        <Link to="/register" className="text-indigo-300 hover:underline">
+                        <Link to="/register" className="text-indigo-700 dark:text-indigo-300 hover:underline">
                             {t('auth.signUp')}
                         </Link>
                     </p>

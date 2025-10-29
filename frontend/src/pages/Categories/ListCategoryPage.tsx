@@ -75,7 +75,7 @@ export function ListCategoryPage() {
     const filtered = useMemo(() => filterTree(tree, search), [tree, search]);
 
     return (
-        <main className="flex-1 w-full bg-gradient-to-br from-gray-900 via-gray-800 to-gray-950 text-white flex flex-col items-center overflow-x-hidden">
+        <main className="flex-1 w-full flex flex-col items-center overflow-x-hidden bg-gradient-to-br from-gray-100 via-gray-50 to-gray-200 text-gray-900 dark:from-gray-900 dark:via-gray-800 dark:to-gray-950 dark:text-white transition-colors">
             <CreateCategoryDialog
                 open={createModal.open}
                 onClose={() => setCreateModal({ open: false, parentId: null })}
@@ -98,30 +98,30 @@ export function ListCategoryPage() {
                 onClose={() => setShareModal({ open: false, id: null })}
             />
             <section className="container mx-auto px-4 py-10 space-y-8">
-                <header className="flex flex-col gap-4 sm:flex-row sm:items-center w-full bg-gray-900/70 rounded-2xl px-6 py-4 shadow-lg border border-gray-800">
+                <header className="flex flex-col gap-4 sm:flex-row sm:items-center w-full rounded-2xl px-6 py-4 shadow-lg border bg-white/90 border-gray-200 dark:bg-gray-900/70 dark:border-gray-800 transition-colors">
                     <div className="flex-1 flex flex-col sm:flex-row sm:items-center gap-2">
                         <h1 className="text-xl font-semibold">{t('categories.title')}</h1>
-                        <div className="flex-1 flex items-center gap-2 bg-gray-800/70 rounded-xl px-4 py-2">
-                            <Search className="w-4 h-4 text-gray-400" />
+                        <div className="flex-1 flex items-center gap-2 rounded-xl px-4 py-2 bg-gray-100 dark:bg-gray-800/70 transition-colors">
+                            <Search className="w-4 h-4 text-gray-500 dark:text-gray-400" />
                             <input
                                 placeholder={t('categories.search')}
                                 value={search}
                                 onChange={e => setSearch(e.target.value)}
-                                className="w-full bg-transparent outline-none placeholder:text-gray-500 text-sm"
+                                className="w-full bg-transparent outline-none placeholder:text-gray-500 text-sm text-gray-900 dark:text-gray-100"
                             />
                         </div>
                     </div>
                     <button
                         type="button"
                         onClick={() => setCreateModal({ open: true, parentId: null })}
-                        className="flex items-center gap-2 bg-gray-800/70 rounded-xl px-3 py-1 cursor-pointer select-none transition-colors border border-transparent focus:outline-none mt-4 sm:mt-0"
+                        className="flex items-center gap-2 rounded-xl px-3 py-1 cursor-pointer select-none transition-colors border focus:outline-none mt-4 sm:mt-0 bg-gray-100 border-gray-200 hover:border-indigo-400 dark:bg-gray-800/70 dark:border-transparent"
                     >
-                        <Plus size={16} className="text-gray-400" />
+                        <Plus size={16} className="text-gray-600 dark:text-gray-400" />
                         <span className="text-sm">{t('categories.new')}</span>
                     </button>
                 </header>
                 {filtered.length ? (
-                    <div className="bg-gray-900/70 rounded-2xl px-6 py-4 shadow-lg border border-gray-800">
+                    <div className="rounded-2xl px-6 py-4 shadow-lg border bg-white/90 border-gray-200 dark:bg-gray-900/70 dark:border-gray-800 transition-colors">
                         <CategoryTree
                             tree={filtered}
                             onCreate={parentId => setCreateModal({ open: true, parentId })}
@@ -132,7 +132,7 @@ export function ListCategoryPage() {
                         />
                     </div>
                 ) : (
-                    <p className="text-center text-gray-400 flex flex-col items-center gap-1">
+                    <p className="text-center text-gray-600 dark:text-gray-400 flex flex-col items-center gap-1">
                         <Sparkles size={18} /> {t('categories.noCats')}
                     </p>
                 )}

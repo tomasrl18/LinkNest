@@ -8,6 +8,7 @@ import { useTranslation } from "react-i18next";
 
 import { useCallback, useMemo, useState } from "react";
 import { usePwaInstall } from "../hooks/usePwaInstall";
+import { ThemeToggle } from "./ThemeToggle";
 
 export function Header() {
     const { t } = useTranslation();
@@ -44,12 +45,12 @@ export function Header() {
             initial={{ y: -40, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ type: "spring", stiffness: 120, damping: 14 }}
-            className="sticky top-0 inset-x-0 z-50 bg-gray-900/80 backdrop-blur border-b border-gray-800"
+            className="sticky top-0 inset-x-0 z-50 backdrop-blur border-b transition-colors duration-300 bg-white/80 border-gray-200 dark:bg-gray-900/80 dark:border-gray-800"
         >
             <div className="container mx-auto grid grid-cols-[auto_1fr_auto] items-center px-4 py-3">
                 <Link
                     to="/"
-                    className="text-xl md:text-2xl font-extrabold tracking-tight bg-gradient-to-r from-indigo-300 to-fuchsia-300 bg-clip-text text-transparent"
+                    className="text-xl md:text-2xl font-extrabold tracking-tight bg-gradient-to-r from-indigo-600 to-fuchsia-600 dark:from-indigo-300 dark:to-fuchsia-300 bg-clip-text text-transparent"
                     aria-label={t('app.name')}
                     title={t('app.name')}
                 >
@@ -63,8 +64,8 @@ export function Header() {
                                 to="/links"
                                 className={({ isActive }) =>
                                     isActive
-                                        ? "font-semibold text-indigo-300"
-                                        : "text-gray-300 hover:text-indigo-200 transition-colors"
+                                        ? "font-semibold text-indigo-700 dark:text-indigo-300"
+                                        : "text-gray-700 hover:text-indigo-700 dark:text-gray-300 dark:hover:text-indigo-200 transition-colors"
                                 }
                             >
                                 {t('nav.links')}
@@ -74,8 +75,8 @@ export function Header() {
                                 to="/categories"
                                 className={({ isActive }) =>
                                     isActive
-                                        ? "font-semibold text-indigo-300"
-                                        : "text-gray-300 hover:text-indigo-200 transition-colors"
+                                        ? "font-semibold text-indigo-700 dark:text-indigo-300"
+                                        : "text-gray-700 hover:text-indigo-700 dark:text-gray-300 dark:hover:text-indigo-200 transition-colors"
                                 }
                             >
                                 {t('nav.categories')}
@@ -85,8 +86,8 @@ export function Header() {
                                 to="/usage"
                                 className={({ isActive }) =>
                                     isActive
-                                        ? "font-semibold text-indigo-300"
-                                        : "text-gray-300 hover:text-indigo-200 transition-colors"
+                                        ? "font-semibold text-indigo-700 dark:text-indigo-300"
+                                        : "text-gray-700 hover:text-indigo-700 dark:text-gray-300 dark:hover:text-indigo-200 transition-colors"
                                 }
                             >
                                 {t('nav.usage')}
@@ -96,8 +97,8 @@ export function Header() {
                                 to="/profile"
                                 className={({ isActive }) =>
                                     isActive
-                                        ? "font-semibold text-indigo-300"
-                                        : "text-gray-300 hover:text-indigo-200 transition-colors"
+                                        ? "font-semibold text-indigo-700 dark:text-indigo-300"
+                                        : "text-gray-700 hover:text-indigo-700 dark:text-gray-300 dark:hover:text-indigo-200 transition-colors"
                                 }
                             >
                                 {t('nav.profile')}
@@ -107,8 +108,8 @@ export function Header() {
                                 to="/links/new"
                                 className={({ isActive }) =>
                                     isActive
-                                        ? "font-semibold text-indigo-300"
-                                        : "text-gray-300 hover:text-indigo-200 transition-colors"
+                                        ? "font-semibold text-indigo-700 dark:text-indigo-300"
+                                        : "text-gray-700 hover:text-indigo-700 dark:text-gray-300 dark:hover:text-indigo-200 transition-colors"
                                 }
                             >
                                 {t('nav.addLink')}
@@ -117,11 +118,12 @@ export function Header() {
                     )}
                 </nav>
                 <div className="flex items-center gap-2 justify-self-end">
+                    <ThemeToggle />
                     {isInstallable && (
                         <Button
                             size="sm"
                             variant="outline"
-                            className="hidden text-sky-200 border-sky-500/40 hover:bg-sky-500/10 sm:inline-flex"
+                            className="hidden sm:inline-flex text-sky-700 border-sky-500/40 hover:bg-sky-500/10 dark:text-sky-200 transition-colors"
                             onClick={() => void handleInstallClick()}
                             aria-label={
                                 requiresManualInstall ? t('pwa.manualInstallTitle') : t('pwa.install')
@@ -135,7 +137,7 @@ export function Header() {
 
                     {user && (
                         <button
-                            className="sm:hidden p-2 rounded-md text-gray-300 hover:text-indigo-200 transition-colors"
+                            className="sm:hidden p-2 rounded-md text-gray-700 hover:text-indigo-700 dark:text-gray-300 dark:hover:text-indigo-200 transition-colors"
                             onClick={() => setMenuOpen(true)}
                             aria-label={t('nav.openMenu')}
                         >
@@ -183,10 +185,10 @@ export function Header() {
                         animate={{ x: 0 }}
                         exit={{ x: -260 }}
                         transition={{ type: 'spring', stiffness: 260, damping: 20 }}
-                        className="relative w-64 bg-gray-900 border-r border-gray-800 p-6 flex flex-col gap-4 text-sm"
+                        className="relative w-64 p-6 flex flex-col gap-4 text-sm bg-white border-r border-gray-200 dark:bg-gray-900 dark:border-gray-800 transition-colors"
                     >
                         <button
-                            className="absolute top-4 right-4 p-1 rounded-md text-gray-400 hover:text-white"
+                            className="absolute top-4 right-4 p-1 rounded-md text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
                             onClick={() => setMenuOpen(false)}
                             aria-label={t('nav.closeMenu')}
                         >
@@ -209,8 +211,8 @@ export function Header() {
                             onClick={() => setMenuOpen(false)}
                             className={({ isActive }) =>
                                 isActive
-                                    ? 'font-semibold text-indigo-300'
-                                    : 'text-gray-300 hover:text-indigo-200 transition-colors'
+                                    ? 'font-semibold text-indigo-700 dark:text-indigo-300'
+                                    : 'text-gray-700 hover:text-indigo-700 dark:text-gray-300 dark:hover:text-indigo-200 transition-colors'
                             }
                         >
                             {t('nav.links')}
@@ -220,8 +222,8 @@ export function Header() {
                             onClick={() => setMenuOpen(false)}
                             className={({ isActive }) =>
                                 isActive
-                                    ? 'font-semibold text-indigo-300'
-                                    : 'text-gray-300 hover:text-indigo-200 transition-colors'
+                                    ? 'font-semibold text-indigo-700 dark:text-indigo-300'
+                                    : 'text-gray-700 hover:text-indigo-700 dark:text-gray-300 dark:hover:text-indigo-200 transition-colors'
                             }
                         >
                             {t('nav.categories')}
@@ -231,8 +233,8 @@ export function Header() {
                             onClick={() => setMenuOpen(false)}
                             className={({ isActive }) =>
                                 isActive
-                                    ? 'font-semibold text-indigo-300'
-                                    : 'text-gray-300 hover:text-indigo-200 transition-colors'
+                                    ? 'font-semibold text-indigo-700 dark:text-indigo-300'
+                                    : 'text-gray-700 hover:text-indigo-700 dark:text-gray-300 dark:hover:text-indigo-200 transition-colors'
                             }
                         >
                             {t('nav.usage')}
@@ -242,8 +244,8 @@ export function Header() {
                             onClick={() => setMenuOpen(false)}
                             className={({ isActive }) =>
                                 isActive
-                                    ? 'font-semibold text-indigo-300'
-                                    : 'text-gray-300 hover:text-indigo-200 transition-colors'
+                                    ? 'font-semibold text-indigo-700 dark:text-indigo-300'
+                                    : 'text-gray-700 hover:text-indigo-700 dark:text-gray-300 dark:hover:text-indigo-200 transition-colors'
                             }
                         >
                             {t('nav.profile')}
@@ -253,8 +255,8 @@ export function Header() {
                             onClick={() => setMenuOpen(false)}
                             className={({ isActive }) =>
                                 isActive
-                                    ? 'font-semibold text-indigo-300'
-                                    : 'text-gray-300 hover:text-indigo-200 transition-colors'
+                                    ? 'font-semibold text-indigo-700 dark:text-indigo-300'
+                                    : 'text-gray-700 hover:text-indigo-700 dark:text-gray-300 dark:hover:text-indigo-200 transition-colors'
                             }
                         >
                             {t('nav.addLink')}
@@ -283,29 +285,29 @@ export function Header() {
                         animate={{ scale: 1, opacity: 1 }}
                         exit={{ scale: 0.94, opacity: 0 }}
                         transition={{ type: 'spring', stiffness: 240, damping: 22 }}
-                        className="relative w-full max-w-md rounded-2xl border border-slate-700 bg-slate-900/95 p-6 text-slate-100 shadow-2xl"
+                        className="relative w-full max-w-md rounded-2xl border p-6 shadow-2xl transition-colors bg-white text-gray-900 border-gray-200 dark:border-slate-700 dark:bg-slate-900/95 dark:text-slate-100"
                     >
                         <button
                             type="button"
-                            className="absolute right-4 top-4 rounded-full p-1 text-slate-400 hover:text-slate-200"
+                            className="absolute right-4 top-4 rounded-full p-1 text-gray-500 hover:text-gray-800 dark:text-slate-400 dark:hover:text-slate-200"
                             onClick={() => setShowInstallHelp(false)}
                             aria-label={t('nav.closeMenu')}
                         >
                             <X size={16} />
                         </button>
-                        <h2 id={installTitleId} className="text-lg font-semibold text-sky-200">
+                        <h2 id={installTitleId} className="text-lg font-semibold text-sky-700 dark:text-sky-200">
                             {t('pwa.manualInstallTitle')}
                         </h2>
-                        <p id={installDescriptionId} className="mt-2 text-sm text-slate-200/80">
+                        <p id={installDescriptionId} className="mt-2 text-sm text-gray-600 dark:text-slate-200/80">
                             {t('pwa.manualInstallSubtitle')}
                         </p>
                         <ol className="mt-4 space-y-3 text-left text-sm">
                             {iosInstallSteps.map((step, index) => (
                                 <li key={index} className="flex items-start gap-3">
-                                    <span className="mt-0.5 flex h-7 w-7 items-center justify-center rounded-full bg-sky-500/20 text-sm font-semibold text-sky-200">
+                                    <span className="mt-0.5 flex h-7 w-7 items-center justify-center rounded-full bg-sky-500/20 text-sm font-semibold text-sky-700 dark:text-sky-200">
                                         {index + 1}
                                     </span>
-                                    <span className="flex-1 text-slate-100">{step}</span>
+                                    <span className="flex-1 text-gray-900 dark:text-slate-100">{step}</span>
                                 </li>
                             ))}
                         </ol>

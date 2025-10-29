@@ -98,8 +98,8 @@ export function ProfilePage() {
         newPassword === confirmNewPassword
 
     return (
-        <section className="flex-1 flex items-center justify-center p-4 px-4 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-950 text-gray-100">
-            <Card className="w-full max-w-md rounded-2xl bg-gray-900/80 backdrop-blur border border-gray-800 text-gray-100 shadow-lg">
+        <section className="flex-1 flex items-center justify-center p-4 px-4 bg-gradient-to-br from-gray-100 via-gray-50 to-gray-200 text-gray-900 dark:from-gray-900 dark:via-gray-800 dark:to-gray-950 dark:text-gray-100 transition-colors">
+            <Card className="w-full max-w-md rounded-2xl backdrop-blur border shadow-lg bg-white/90 border-gray-200 text-gray-900 dark:bg-gray-900/80 dark:border-gray-800 dark:text-gray-100">
                 <CardHeader>
                     <CardTitle>{t('profile.title')}</CardTitle>
                     <CardDescription>{t('profile.password.title')}</CardDescription>

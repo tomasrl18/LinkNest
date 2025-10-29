@@ -90,12 +90,12 @@ function TreeNode({ node, depth, onCreate, onRename, onDelete, onShare }: NodePr
     };
     return (
         <li ref={setNodeRef} style={style} className="list-none">
-            <div className="group flex items-center gap-1 rounded-xl px-2 py-1 bg-gray-900/50 border border-gray-800 transition-all hover:border-pink-600">
-                <button aria-label="drag" {...listeners} {...attributes} className="cursor-move p-1 text-gray-400 group-hover:text-gray-200">
+            <div className="group flex items-center gap-1 rounded-xl px-2 py-1 bg-white border border-gray-200 transition-all hover:border-pink-600 dark:bg-gray-900/50 dark:border-gray-800">
+                <button aria-label="drag" {...listeners} {...attributes} className="cursor-move p-1 text-gray-500 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-gray-200">
                     <MoreVertical size={14} />
                 </button>
                 {node.children.length > 0 && (
-                    <button onClick={() => setExpanded(e => !e)} aria-label="toggle" className="p-1 text-gray-400 group-hover:text-gray-200">
+                    <button onClick={() => setExpanded(e => !e)} aria-label="toggle" className="p-1 text-gray-600 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-gray-200">
                         {expanded ? <ChevronDown size={14} /> : <ChevronRight size={14} />}
                     </button>
                 )}

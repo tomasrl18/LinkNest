@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="es" class="dark" data-theme="mydark">
+<html lang="es" data-theme="mydark">
     <head>
         <!-- Primary Meta Tags -->
         <meta charset="UTF-8" />
@@ -40,6 +40,21 @@
     
         <link rel="canonical" href="https://linknest.example.com/" />
     
+        <!-- Early theme application to avoid FOUC -->
+        <script>
+            (function() {
+              try {
+                var key = 'ln-theme';
+                var saved = localStorage.getItem(key);
+                var systemDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+                var theme = (saved === 'light' || saved === 'dark') ? saved : (systemDark ? 'dark' : 'light');
+                var root = document.documentElement;
+                if (theme === 'dark') root.classList.add('dark'); else root.classList.remove('dark');
+                root.setAttribute('data-theme', theme === 'dark' ? 'mydark' : 'light');
+              } catch (e) {}
+            })();
+        </script>
+
         <!-- Preconnect & Preload Critical Assets -->
         <link rel="preconnect" href="https://linknest.example.com" />
         <link rel="preload" href="/assets/index-b65Ax0Kw.css" as="style" crossorigin="anonymous" />

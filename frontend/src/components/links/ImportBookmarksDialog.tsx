@@ -96,17 +96,17 @@ const ImportBookmarksDialog: React.FC<ImportBookmarksDialogProps> = ({ open, onC
             onClick={handleBackdropClick}
             className={`fixed inset-0 z-50 flex items-center justify-center bg-black/60 transition-opacity duration-200 ${animate ? 'opacity-100' : 'opacity-0'}`}
         >
-            <div className={`bg-gray-900 rounded-2xl p-6 shadow-xl border border-gray-800 min-w-[300px] flex flex-col items-center transform transition-all duration-200 ${animate ? 'scale-100 translate-y-0 opacity-100' : 'scale-90 translate-y-8 opacity-0'}`}>
+            <div className={`rounded-2xl p-6 shadow-xl border min-w-[300px] flex flex-col items-center transform transition-all duration-200 bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-800 ${animate ? 'scale-100 translate-y-0 opacity-100' : 'scale-90 translate-y-8 opacity-0'}`}>
                 <Upload size={32} className="text-indigo-400 mb-2" />
                 <h2 className="text-lg font-semibold mb-2">
                     {t('links.import.title')}
                 </h2>
-                <div className="flex items-center justify-center text-gray-400 mb-4">
+                <div className="flex items-center justify-center text-gray-600 dark:text-gray-400 mb-4">
                     <p className="text-center">{t('links.import.howTo')}</p>
                     <TooltipProvider>
                         <Tooltip>
                             <TooltipTrigger asChild>
-                                <HelpCircle size={16} className="ml-2 cursor-help text-gray-400" />
+                                <HelpCircle size={16} className="ml-2 cursor-help text-gray-500 dark:text-gray-400" />
                             </TooltipTrigger>
                             <TooltipContent>
                                 <p>{t('links.import.tooltip')}</p>
@@ -121,7 +121,7 @@ const ImportBookmarksDialog: React.FC<ImportBookmarksDialogProps> = ({ open, onC
                     className="mb-4 cursor-pointer"
                 />
                 <button
-                    className="px-4 py-1 rounded-lg bg-gray-700 hover:bg-gray-600 text-gray-200 cursor-pointer"
+                    className="px-4 py-1 rounded-lg bg-gray-200 hover:bg-gray-300 text-gray-900 cursor-pointer dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-gray-200 transition-colors"
                     onClick={onClose}
                 >
                     {t('links.import.close')}

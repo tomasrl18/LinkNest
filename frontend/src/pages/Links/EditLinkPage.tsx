@@ -98,7 +98,7 @@ export function EditLinkPage() {
     };
 
     return (
-        <main className="min-h-[calc(100dvh-80px)] bg-gradient-to-br from-gray-900 via-gray-800 to-gray-950 text-white flex flex-col items-center relative overflow-hidden">
+        <main className="min-h-[calc(100dvh-80px)] flex flex-col items-center relative overflow-hidden bg-gradient-to-br from-gray-100 via-gray-50 to-gray-200 text-gray-900 dark:from-gray-900 dark:via-gray-800 dark:to-gray-950 dark:text-white transition-colors">
             <CreateCategoryDialog
                 open={categoryDialogOpen}
                 onClose={() => setCategoryDialogOpen(false)}
@@ -120,7 +120,7 @@ export function EditLinkPage() {
             <section className="container mx-auto px-4 py-10 z-10">
                 <motion.form
                     onSubmit={handleSubmit}
-                    className="space-y-7 bg-gray-900/70 backdrop-blur-2xl border border-gray-700/40 shadow-2xl rounded-3xl p-8 relative overflow-hidden"
+                    className="space-y-7 backdrop-blur-2xl shadow-2xl rounded-3xl p-8 relative overflow-hidden border bg-white/90 border-gray-200 dark:bg-gray-900/70 dark:border-gray-700/40 transition-colors"
                     initial={{ y: 40, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ duration: 0.6, type: 'spring' }}
@@ -144,7 +144,7 @@ export function EditLinkPage() {
                                 required
                                 value={form.url}
                                 onChange={handleChange}
-                                className="input input-bordered w-full rounded-xl px-3 py-2 text-sm bg-gray-800/80 focus:ring-2 focus:ring-pink-500 outline-none"
+                                className="input input-bordered w-full rounded-xl px-3 py-2 text-sm bg-white focus:ring-2 focus:ring-pink-500 outline-none dark:bg-gray-800/80"
                             />
                         </div>
                         <div className="flex flex-col sm:flex-row gap-5">
@@ -157,8 +157,8 @@ export function EditLinkPage() {
                                     name="title"
                                     value={form.title}
                                     onChange={handleChange}
-                                    className="input input-bordered w-full rounded-xl px-3 py-2 text-sm bg-gray-800/80"
-                                />
+                                className="input input-bordered w-full rounded-xl px-3 py-2 text-sm bg-white dark:bg-gray-800/80"
+                            />
                             </div>
                             <div className="flex-1 flex flex-col gap-1">
                                 <label htmlFor="category_id" className="text-sm font-medium pl-1">
@@ -170,7 +170,7 @@ export function EditLinkPage() {
                                         name="category_id"
                                         value={form.category_id}
                                         onChange={e => setForm(prev => ({ ...prev, category_id: e.target.value }))}
-                                        className="select select-bordered w-full rounded-xl px-3 py-2 text-sm bg-gray-800/80"
+                                        className="select select-bordered w-full rounded-xl px-3 py-2 text-sm bg-white dark:bg-gray-800/80"
                                     >
                                         <option value="">
                                             {t('links.formFields.noCat')}
@@ -200,7 +200,7 @@ export function EditLinkPage() {
                                 maxLength={240}
                                 value={form.description}
                                 onChange={handleChange}
-                                className="textarea textarea-bordered w-full rounded-xl px-3 py-2 text-sm bg-gray-800/80 resize-none"
+                                className="textarea textarea-bordered w-full rounded-xl px-3 py-2 text-sm bg-white dark:bg-gray-800/80 resize-none"
                             />
                             <span className="text-xs text-gray-500 text-right">{form.description.length}/240</span>
                         </div>
@@ -216,7 +216,7 @@ export function EditLinkPage() {
                                         onChange={e => setTagInput(e.target.value)}
                                         onKeyDown={e => { if (e.key === 'Enter') { e.preventDefault(); addTag(); } }}
                                         placeholder={t('links.formFields.placeholders.tags')}
-                                        className="input input-bordered w-full rounded-xl px-2 py-2 text-sm bg-gray-800/80"
+                                        className="input input-bordered w-full rounded-xl px-2 py-2 text-sm bg-white dark:bg-gray-800/80"
                                     />
                                     <button
                                         type="button"
