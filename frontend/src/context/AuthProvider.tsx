@@ -62,10 +62,12 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     };
 
     const signInWithGoogle = async () => {
+        const redirectTo = `${window.location.origin}/links`;
+
         const { error } = await supabase.auth.signInWithOAuth({
             provider: 'google',
             options: {
-                redirectTo: 'https://www.linknest.es/links',
+                redirectTo,
             },
         });
 
