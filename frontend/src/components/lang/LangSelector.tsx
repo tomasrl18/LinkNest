@@ -34,7 +34,7 @@ export function LanguageSwitcher() {
                     className="gap-2 text-gray-300 hover:text-white cursor-pointer"
                     aria-label={t('langSelector.ariaLabelButton')}
                 >
-                    <span className="hidden sm:inline-flex items-center gap-1">
+                    <span className="inline-flex items-center gap-1">
                         <span className={`fi fi-${LANGS[current].code} rounded-[2px]`} />
                     </span>
                 </Button>
