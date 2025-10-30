@@ -69,7 +69,7 @@ export function CreateCategoryDialog({ open, onClose, onCreate }: CreateCategory
                             </div>
                             <input
                                 type="text"
-                                className="input input-bordered w-full rounded-xl bg-white text-gray-900 dark:bg-gray-800/80 dark:text-white transition-colors"
+                                className="input input-bordered w-full rounded-xl bg-gray-100 text-gray-900 dark:bg-gray-800/80 dark:text-white transition-colors"
                                 placeholder={t('categories.actions.name')}
                                 value={name}
                                 onChange={e => setName(e.target.value)}
@@ -79,7 +79,7 @@ export function CreateCategoryDialog({ open, onClose, onCreate }: CreateCategory
                             {error && <span className="text-xs text-pink-400 pl-1">{error}</span>}
                             <button
                                 type="submit"
-                                className="btn btn-primary w-full rounded-xl mt-2 flex items-center justify-center gap-2"
+                                className="btn btn-primary w-full rounded-xl mt-2 flex items-center justify-center gap-2 text-black dark:text-black"
                                 disabled={loading}
                             >
                                 {loading && <Loader2 className="h-4 w-4 animate-spin" />}

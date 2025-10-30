@@ -128,7 +128,7 @@ export function CreateLinkPage() {
                                 value={form.url}
                                 onChange={handleChange}
                                 placeholder={t('links.formFields.placeholders.url')}
-                                className="input input-bordered w-full rounded-xl px-3 py-2 text-sm bg-white focus:ring-2 focus:ring-pink-500 outline-none transition-all duration-200 dark:bg-gray-800/80"
+                                className="input input-bordered w-full rounded-xl px-3 py-2 text-sm bg-gray-100 focus:ring-2 focus:ring-pink-500 outline-none transition-all duration-200 dark:bg-gray-800/80"
                             />
                         </div>
                         <div className="flex flex-col sm:flex-row gap-5">
@@ -142,7 +142,7 @@ export function CreateLinkPage() {
                                     value={form.title}
                                     onChange={handleChange}
                                     placeholder={t('links.formFields.placeholders.title')}
-                                    className="input input-bordered w-full rounded-xl px-3 py-2 text-sm bg-white dark:bg-gray-800/80"
+                                    className="input input-bordered w-full rounded-xl px-3 py-2 text-sm bg-gray-100 dark:bg-gray-800/80"
                                 />
                             </div>
                             <div className="flex-1 flex flex-col gap-1">
@@ -155,7 +155,7 @@ export function CreateLinkPage() {
                                         name="category_id"
                                         value={form.category_id}
                                         onChange={e => setForm(prev => ({ ...prev, category_id: e.target.value }))}
-                                        className="select select-bordered w-full rounded-xl px-3 py-2 text-sm bg-white dark:bg-gray-800/80"
+                                        className="select select-bordered w-full rounded-xl px-3 py-2 text-sm bg-gray-100 dark:bg-gray-800/80"
                                     >
                                         <option value="">
                                             {t('links.formFields.noCat')}
@@ -186,7 +186,7 @@ export function CreateLinkPage() {
                                 value={form.description}
                                 onChange={handleChange}
                                 placeholder={t('links.formFields.placeholders.description')}
-                                className="textarea textarea-bordered w-full rounded-xl px-3 py-2 text-sm bg-white dark:bg-gray-800/80 resize-none"
+                                className="textarea textarea-bordered w-full rounded-xl px-3 py-2 text-sm bg-gray-100 dark:bg-gray-800/80 resize-none"
                             />
                             <span className="text-xs text-gray-500 text-right">{form.description.length}/240</span>
                         </div>
@@ -202,7 +202,7 @@ export function CreateLinkPage() {
                                         onChange={e => setTagInput(e.target.value)}
                                         onKeyDown={e => { if (e.key === 'Enter') { e.preventDefault(); addTag(); } }}
                                         placeholder={t('links.formFields.placeholders.tags')}
-                                        className="input input-bordered w-full rounded-xl px-2 py-2 text-sm bg-white dark:bg-gray-800/80"
+                                        className="input input-bordered w-full rounded-xl px-2 py-2 text-sm bg-gray-100 dark:bg-gray-800/80"
                                     />
                                     <button
                                         type="button"

@@ -29,7 +29,7 @@ export default function SocialIcon({ url }: { url: string }) {
         return (
             <img
                 src={match.src}
-                className="w-5 h-5 mt-1 invert"
+                className="w-5 h-5 mt-1 dark:invert"
                 alt={match.alt}
             />
         );

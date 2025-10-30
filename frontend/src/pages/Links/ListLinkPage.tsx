@@ -125,27 +125,27 @@ export function ListLinkPage() {
                                     <div className="flex gap-2 mt-2 sm:mt-0 sm:absolute sm:top-3 sm:right-4 sm:flex-row self-end">
                                         <Link
                                             to={`/links/${link.id}/edit`}
-                                            className="cursor-pointer p-1 shadow opacity-80"
+                                            className="cursor-pointer p-1 opacity-80"
                                             title={t('links.actions.editLink')}
                                         >
                                             <Pencil size={20} className="hover:text-indigo-400 transition-colors" />
                                         </Link>
                                         <button
                                             onClick={() => setDeleteModal({ open: true, id: link.id })}
-                                            className="cursor-pointer p-1 shadow opacity-80"
+                                            className="cursor-pointer p-1 opacity-80"
                                             title={t('links.actions.deleteLink')}
                                         >
                                             <Trash size={20} className="hover:text-red-500 transition-colors" />
                                         </button>
                                         <button
                                             onClick={() => toggleFav(link.id, link.favorite)}
-                                            className="cursor-pointer p-1 shadow opacity-80"
+                                            className="cursor-pointer p-1 opacity-80"
                                             title={link.favorite ? t('links.favs.removeFav') : t('links.favs.markFav')}
                                         >
                                             <Star
                                                 size={20}
                                                 className={
-                                                    `transition-all duration-300 transform ${
+                                                    `transition-all duration-300 transform hover:text-yellow-300 ${
                                                         link.favorite
                                                             ? 'fill-yellow-400 text-yellow-400 drop-shadow scale-125 rotate-12'
                                                             : 'scale-100 rotate-0'
