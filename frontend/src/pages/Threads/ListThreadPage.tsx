@@ -29,7 +29,7 @@ export function ListThreadPage() {
                         />
                     </div>
                     <div className="flex justify-end">
-                        <Link to="/threads/new" className="btn btn-primary rounded-xl px-4 py-2 flex items-center gap-2">
+                        <Link to="/threads/new" className="btn btn-primary rounded-xl px-4 py-2 flex items-center gap-2 text-black">
                             <Plus size={16} /> {t('threads.create.new')}
                         </Link>
                     </div>

@@ -98,7 +98,7 @@
             }
         },
         "add": { "select": "Select a link", "add": "Add link" },
-        "view": { "timeline": "Timeline", "stacked": "Stacked cards" }
+        "view": { "timeline": "Timeline", "stacked": "Stacked cards" }, "remove": { "title": "Remove link from thread?", "clarification": "This will only remove it from this thread. The link will not be deleted.", "buttonCancel": "Cancel", "buttonConfirm": "Remove" }
     },
     "auth": {
         "login": "Log in",
@@ -427,3 +427,4 @@
         }
     }
 }
+

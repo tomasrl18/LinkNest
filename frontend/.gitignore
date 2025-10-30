@@ -33,3 +33,6 @@ vitest.*
 playwright.*
 
 test-results/
+
+.sql
+*.sql

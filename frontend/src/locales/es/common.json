@@ -98,7 +98,7 @@
             }
         },
         "add": { "select": "Selecciona un enlace", "add": "A√±adir enlace" },
-        "view": { "timeline": "Cronolog√≠a", "stacked": "Tarjetas apiladas" }
+        "view": { "timeline": "Cronolog√≠a", "stacked": "Tarjetas apiladas" }, "remove": { "title": "øQuitar enlace del hilo?", "clarification": "Solo se quitar· de este hilo. No se eliminar· el enlace.", "buttonCancel": "Cancelar", "buttonConfirm": "Quitar" }
     },
     "auth": {
         "login": "Iniciar sesi√≥n",
@@ -427,3 +427,4 @@
         }
     }
 }
+
