@@ -157,22 +157,22 @@ export function HomePage() {
             >
                 {[
                     {
-                        icon: <Bookmark className="w-6 h-6 text-indigo-400" />,
+                        icon: <Bookmark className="w-6 h-6 text-indigo-200 dark:text-indigo-400" />,
                         title: t('home.infoSection.instantlySave.title'),
                         description: t('home.infoSection.instantlySave.subtitle'),
                     },
                     {
-                        icon: <Sparkles className="w-6 h-6 text-fuchsia-400" />,
+                        icon: <Sparkles className="w-6 h-6 text-fuchsia-200 dark:text-fuchsia-400" />,
                         title: t('home.infoSection.sortFind.title'),
                         description: t('home.infoSection.sortFind.subtitle'),
                     },
                     {
-                        icon: <Share2 className="w-6 h-6 text-gray-600 dark:text-gray-300" />, 
+                        icon: <Share2 className="w-6 h-6 text-white dark:text-gray-300" />, 
                         title: t('home.infoSection.share.title'),
                         description: t('home.infoSection.share.subtitle'),
                     },
                     {
-                        icon: <Upload className="w-6 h-6 text-gray-600 dark:text-gray-300" />, 
+                        icon: <Upload className="w-6 h-6 text-white dark:text-gray-300" />, 
                         title: t('home.infoSection.importBookmarks.title'),
                         description: t('home.infoSection.importBookmarks.subtitle'),
                     },
@@ -182,7 +182,7 @@ export function HomePage() {
                         variants={child}
                         className="rounded-2xl bg-white/90 backdrop-blur border border-gray-200 p-6 shadow-lg hover:scale-[1.02] transition-transform dark:bg-gray-900/80 dark:border-gray-800"
                     >
-                        <div className="w-12 h-12 flex items-center justify-center bg-indigo-900/40 rounded-full mb-4">
+                        <div className="w-12 h-12 flex items-center justify-center bg-gray-900/80 rounded-full mb-4">
                             {icon}
                         </div>
                         <h3 className="text-xl font-semibold mb-1 text-gray-900 dark:text-gray-100">{title}</h3>
