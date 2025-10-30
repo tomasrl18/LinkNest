@@ -142,7 +142,7 @@ export function HomePage() {
                                     {requiresManualInstall ? t("pwa.manualInstallTitle") : t("home.pwaAnnouncement.cta")}
                                 </Button>
                             ) : (
-                                <span className="text-sm font-medium text-sky-200">
+                                <span className="text-sm font-medium text-sky-700 dark:text-sky-200">
                                     {t("home.pwaAnnouncement.available")}
                                 </span>
                             )}
