@@ -78,11 +78,11 @@ export function ListLinkPage() {
                         </div>
                     </div>
                     <div className="flex flex-col sm:flex-row gap-2 sm:items-center">
-                        <div className="flex items-center gap-2 rounded-xl px-3 py-1 bg-gray-100 dark:bg-gray-800/70 transition-colors">
+                        <div className="flex items-center gap-2 rounded-xl px-3 py-1 bg-gray-100 border border-gray-200 dark:bg-gray-800/70 transition-colors">
                             <select
                                 value={categoryId}
                                 onChange={e => setCategoryId(e.target.value)}
-                                className="backdrop-blur rounded-xl px-3 py-1 text-sm text-gray-900 shadow-inner transition-all duration-200 outline-none dark:text-gray-100"
+                                className="text-sm text-gray-900 transition-all duration-200 outline-none dark:text-gray-100"
                             >
                                 <option value="" className="bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-300">{t('links.allCat')}</option>
                                 {categories.map(c => (
@@ -119,7 +119,7 @@ export function ListLinkPage() {
                         {filtered.map(link => (
                             <li key={link.id} className="group relative">
                                 <div
-                                    className="transition-all duration-200 rounded-2xl shadow-lg hover:shadow-2xl hover:border-pink-600 hover:scale-[1.025] flex flex-col sm:flex-row items-stretch relative bg-white/90 border border-gray-200 dark:bg-gray-900/70 dark:border-gray-800"
+                                    className="transition-all duration-200 rounded-2xl shadow-lg hover:shadow-2xl hover:border-pink-600 hover:scale-[1.025] flex flex-col sm:flex-row items-stretch relative bg-white/90 border border-gray-200 dark:bg-gray-900/70 dark:border-gray-800 p-3 sm:p-4"
                                 >
                                     <LinkCard link={link} />
                                     <div className="flex gap-2 mt-2 sm:mt-0 sm:absolute sm:top-3 sm:right-4 sm:flex-row self-end">
