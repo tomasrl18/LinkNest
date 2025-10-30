@@ -69,11 +69,36 @@
     "nav": {
         "links": "My links",
         "categories": "My categories",
+        "threads": "Threads",
         "addLink": "Add link",
         "usage": "Usage",
         "profile": "Profile",
         "openMenu": "Open menu",
         "closeMenu": "Close menu"
+    },
+    "threads": {
+        "search": "Search thread...",
+        "empty": "No threads yet.",
+        "create": {
+            "new": "New thread",
+            "title": "Create thread",
+            "creating": "Creating...",
+            "create": "Create thread"
+        },
+        "form": {
+            "title": "Title",
+            "description": "Description",
+            "tags": "Tags",
+            "addTag": "Add tag",
+            "public": "Public thread",
+            "placeholders": {
+                "title": "Learn Next.js",
+                "description": "Articles, videos and repos to learn Next.js",
+                "tags": "nextjs, react, tutorial"
+            }
+        },
+        "add": { "select": "Select a link", "add": "Add link" },
+        "view": { "timeline": "Timeline", "stacked": "Stacked cards" }
     },
     "auth": {
         "login": "Log in",

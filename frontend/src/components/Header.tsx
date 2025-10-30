@@ -83,6 +83,17 @@ export function Header() {
                             </NavLink>
 
                             <NavLink
+                                to="/threads"
+                                className={({ isActive }) =>
+                                    isActive
+                                        ? "font-semibold text-indigo-700 dark:text-indigo-300"
+                                        : "text-gray-700 hover:text-indigo-700 dark:text-gray-300 dark:hover:text-indigo-200 transition-colors"
+                                }
+                            >
+                                {t('nav.threads')}
+                            </NavLink>
+
+                            <NavLink
                                 to="/usage"
                                 className={({ isActive }) =>
                                     isActive
@@ -227,6 +238,17 @@ export function Header() {
                             }
                         >
                             {t('nav.categories')}
+                        </NavLink>
+                        <NavLink
+                            to="/threads"
+                            onClick={() => setMenuOpen(false)}
+                            className={({ isActive }) =>
+                                isActive
+                                    ? 'font-semibold text-indigo-700 dark:text-indigo-300'
+                                    : 'text-gray-700 hover:text-indigo-700 dark:text-gray-300 dark:hover:text-indigo-200 transition-colors'
+                            }
+                        >
+                            {t('nav.threads')}
                         </NavLink>
                         <NavLink
                             to="/usage"

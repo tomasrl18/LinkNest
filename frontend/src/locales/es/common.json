@@ -69,11 +69,36 @@
     "nav": {
         "links": "Mis enlaces",
         "categories": "Mis categorías",
+        "threads": "Hilos",
         "addLink": "Añadir enlace",
         "usage": "Uso",
         "profile": "Perfil",
         "openMenu": "Abrir menú",
         "closeMenu": "Cerrar menú"
+    },
+    "threads": {
+        "search": "Buscar hilo...",
+        "empty": "Aún no hay hilos.",
+        "create": {
+            "new": "Nuevo hilo",
+            "title": "Crear hilo",
+            "creating": "Creando...",
+            "create": "Crear hilo"
+        },
+        "form": {
+            "title": "Título",
+            "description": "Descripción",
+            "tags": "Etiquetas",
+            "addTag": "Añadir etiqueta",
+            "public": "Hilo público",
+            "placeholders": {
+                "title": "Aprender Next.js",
+                "description": "Artículos, vídeos y repos para aprender Next.js",
+                "tags": "nextjs, react, tutorial"
+            }
+        },
+        "add": { "select": "Selecciona un enlace", "add": "Añadir enlace" },
+        "view": { "timeline": "Cronología", "stacked": "Tarjetas apiladas" }
     },
     "auth": {
         "login": "Iniciar sesión",

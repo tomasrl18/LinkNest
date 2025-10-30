@@ -10,6 +10,9 @@ import { CreateLinkPage } from './pages/Links/CreateLinkPage';
 import EditLinkPage from './pages/Links/EditLinkPage';
 import ListCategoryPage from './pages/Categories/ListCategoryPage';
 import { UsagePage } from './pages/UsagePage';
+import ListThreadPage from './pages/Threads/ListThreadPage';
+import CreateThreadPage from './pages/Threads/CreateThreadPage';
+import ViewThreadPage from './pages/Threads/ViewThreadPage';
 import { AnimatePresence } from "framer-motion";
 import { PrivacyPolicyPage } from './pages/PrivacyPolicyPage';
 import { TermsOfServicePage } from './pages/TermsOfServicePage';
@@ -35,6 +38,9 @@ function AnimatedRoutes() {
                     <Route path="/links/new" element={<CreateLinkPage />} />
                     <Route path="/links/:id/edit" element={<EditLinkPage />} />
                     <Route path="/categories" element={<ListCategoryPage />} />
+                    <Route path="/threads" element={<ListThreadPage />} />
+                    <Route path="/threads/new" element={<CreateThreadPage />} />
+                    <Route path="/threads/:id" element={<ViewThreadPage />} />
                     <Route path="/usage" element={<UsagePage />} />
                     <Route path="/profile" element={<ProfilePage />} />
                 </Route>
