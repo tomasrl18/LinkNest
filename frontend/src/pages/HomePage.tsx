@@ -82,7 +82,7 @@ export function HomePage() {
                     <Button
                         asChild
                         variant="secondary"
-                        className="group relative inline-flex items-center gap-2 text-base px-8 py-3 rounded-2xl border border-indigo-500/50 text-indigo-300 hover:bg-indigo-500/10 hover:text-indigo-100 transition"
+                        className="group relative inline-flex items-center gap-2 text-base px-8 py-3 rounded-2xl border border-indigo-500/50 text-indigo-300 hover:bg-indigo-500/10 hover:text-indigo-700 dark:hover:text-indigo-100 transition"
                     >
                         <a
                             href="https://github.com/tomasrl18/LinkNest"
