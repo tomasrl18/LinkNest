@@ -5,25 +5,25 @@ Organiza y redescubre tus enlaces favoritos en un mismo lugar. Guarda artículos
 ## ✨ Características principales
 
 ### Guarda y organiza tus enlaces
-- 🔑 **Autenticación** con correo/contraseña o Google mediante Supabase para proteger tu espacio personal.【F:frontend/src/pages/Auth/LoginPage.tsx†L1-L129】
-- ➕ **Crea enlaces** con título opcional, descripción, categoría, etiquetas y favoritos desde un formulario pensado para la productividad.【F:frontend/src/pages/Links/CreateLinkPage.tsx†L1-L220】
-- 📝 **Edita o elimina enlaces** y marca favoritos directamente desde la lista, con filtros por texto, categoría o favoritos.【F:frontend/src/pages/Links/ListLinkPage.tsx†L1-L166】
-- 📤 **Importa marcadores** en formato HTML para migrar rápidamente tu biblioteca actual.【F:frontend/src/components/links/ImportBookmarksDialog.tsx†L1-L134】
+- 🔑 **Autenticación** con correo/contraseña o Google mediante Supabase para proteger tu espacio personal.
+- ➕ **Crea enlaces** con título opcional, descripción, categoría, etiquetas y favoritos desde un formulario pensado para la productividad.
+- 📝 **Edita o elimina enlaces** y marca favoritos directamente desde la lista, con filtros por texto, categoría o favoritos.
+- 📤 **Importa marcadores** en formato HTML para migrar rápidamente tu biblioteca actual.
 
 ### Gestiona tus categorías
-- 🌳 **Árbol de categorías jerárquico** con creación, edición y eliminación, más búsqueda instantánea.【F:frontend/src/pages/Categories/ListCategoryPage.tsx†L1-L140】
-- 🔀 **Reordenamiento por arrastrar y soltar** para reorganizar categorías en el mismo nivel.【F:frontend/src/components/categories/CategoryTree.tsx†L1-L136】
-- 🤝 **Comparte categorías** con otras personas por correo electrónico y gestiona sus permisos desde un mismo diálogo.【F:frontend/src/components/categories/ShareCategoryDialog.tsx†L1-L101】
+- 🌳 **Árbol de categorías jerárquico** con creación, edición y eliminación, más búsqueda instantánea.
+- 🔀 **Reordenamiento por arrastrar y soltar** para reorganizar categorías en el mismo nivel.
+- 🤝 **Comparte categorías** con otras personas por correo electrónico y gestiona sus permisos desde un mismo diálogo.
 
 ### Analiza tu actividad
-- 📈 **Panel de uso** con totales, enlaces más visitados y enlaces nunca abiertos, filtrables por rango de fechas personalizado.【F:frontend/src/pages/UsagePage.tsx†L1-L178】
-- 🔎 **Seguimiento de aperturas** automático cada vez que visitas un enlace para alimentar las métricas.【F:frontend/src/components/links/LinkCard.tsx†L1-L47】
+- 📈 **Panel de uso** con totales, enlaces más visitados y enlaces nunca abiertos, filtrables por rango de fechas personalizado.
+- 🔎 **Seguimiento de aperturas** automático cada vez que visitas un enlace para alimentar las métricas.
 
 ### Experiencia web moderna
-- 🌍 **Interfaz multilingüe** en español e inglés con detección automática y carga dinámica de traducciones.【F:frontend/src/i18n/index.ts†L1-L32】
-- 📱 **Diseño responsive** con Tailwind CSS, DaisyUI y animaciones de Framer Motion en toda la aplicación.【F:frontend/src/pages/HomePage.tsx†L1-L192】
-- 📦 **Aplicación instalable (PWA)** con manifest personalizable, modo offline y pantalla dedicada cuando no hay conexión.【F:frontend/vite.config.ts†L1-L49】【F:frontend/src/pages/OfflinePage.tsx†L1-L45】
-- 🔐 **Gestión de perfil** para actualizar tu contraseña y cerrar sesiones en otros dispositivos de forma segura.【F:frontend/src/pages/ProfilePage.tsx†L1-L218】
+- 🌍 **Interfaz multilingüe** en español e inglés con detección automática y carga dinámica de traducciones.
+- 📱 **Diseño responsive** con Tailwind CSS, DaisyUI y animaciones de Framer Motion en toda la aplicación.
+- 📦 **Aplicación instalable (PWA)** con manifest personalizable, modo offline y pantalla dedicada cuando no hay conexión
+- 🔐 **Gestión de perfil** para actualizar tu contraseña y cerrar sesiones en otros dispositivos de forma segura.
 - 🧩 **Extensión oficial** para Chrome disponible en la [Chrome Web Store](https://chromewebstore.google.com/detail/linknest-%E2%80%93-save-to-linkne/inhbpecnljglajkelbkgipjnokmmnkgc).
 
 ## 🛠️ Tecnologías
