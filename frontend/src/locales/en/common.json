@@ -204,7 +204,7 @@
             "nameError": "The name is required",
             "name": "Category name",
             "create": {
-                "title": "Created category",
+                "title": "Create category",
                 "error": "Error creating category",
                 "form": {
                     "title": "New category",

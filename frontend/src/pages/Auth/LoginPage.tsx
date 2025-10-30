@@ -96,7 +96,7 @@ export const LoginPage = () => {
                         type="email"
                         required
                         placeholder={t('auth.email')}
-                        className="input input-bordered w-full bg-white text-gray-900 dark:bg-gray-900/50 dark:text-gray-100"
+                        className="input input-bordered w-full bg-gray-100 text-gray-900 dark:bg-gray-900/50 dark:text-gray-100"
                         disabled={isSubmitting}
                     />
                     <div className="relative">
@@ -105,7 +105,7 @@ export const LoginPage = () => {
                             type={showPassword ? "text" : "password"}
                             required
                             placeholder={t('auth.password')}
-                            className="input input-bordered w-full bg-white text-gray-900 pr-10 dark:bg-gray-900/50 dark:text-gray-100"
+                            className="input input-bordered w-full bg-gray-100 text-gray-900 pr-10 dark:bg-gray-900/50 dark:text-gray-100"
                             disabled={isSubmitting}
                         />
                         <button
@@ -121,7 +121,7 @@ export const LoginPage = () => {
 
                     <button
                         type="submit"
-                        className="btn btn-primary w-full rounded-xl flex items-center justify-center gap-2"
+                        className="btn btn-primary w-full rounded-xl flex items-center justify-center gap-2 text-gray-700"
                         disabled={isSubmitting}
                     >
                         {loading && <Loader2 className="h-4 w-4 animate-spin" />}

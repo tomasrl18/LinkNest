@@ -25,7 +25,7 @@ function LinkCard({ link, onOpen }: { link: LinkInput; onOpen?: () => void }) {
     );
 
     return (
-        <article className="flex items-start gap-3 p-4 rounded-xl shadow-sm">
+        <article className="flex items-start gap-3 p-4 rounded-xl">
             <SocialIcon url={link.url} />
             <div className="flex-1">
                 <a
